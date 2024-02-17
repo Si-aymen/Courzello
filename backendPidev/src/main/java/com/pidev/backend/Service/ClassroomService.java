@@ -9,6 +9,10 @@ public interface ClassroomService {
     List<Classroom> GetAllClassrooms();
     Classroom GetClassroomByClassroomLevel(String lvl);
     Classroom AddClassroom(Classroom classroom);
-//    User updateUser(String login, User user);
-//    void deleteUser(String login);
+    Classroom UpdateClassroom(Classroom classroom);
+    void DeleteClassroom(Long id);
+
+    public Classroom AddNewTeachersToClassroom(Long IdClassroom , List<User> ListeTeacher) ;
+
+
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/Classroom")
+@RequestMapping("/classrooms")
 public class ClassroomController {
 
     private ClassroomService classroomService ;
@@ -23,9 +23,20 @@ public class ClassroomController {
         return classroomService.GetAllClassrooms();
     }
 
+
+    @GetMapping("/{lvl}")
+    public Classroom getClassroomByLvl(@PathVariable("lvl") String lvl) {
+        return classroomService.GetClassroomByClassroomLevel(lvl);
+    }
+
     @PostMapping
     public Classroom AddClassRoom(@RequestBody Classroom classroom) {
         return classroomService.AddClassroom(classroom);
+    }
+
+    @PutMapping("/AddTeachers/{IDClassroom}")
+    public Classroom AddTeachersToClassroom(@PathVariable("IDClassroom") Long id,@RequestBody List<User> teachers) {
+        return classroomService.AddNewTeachersToClassroom(id,teachers);
     }
 
 

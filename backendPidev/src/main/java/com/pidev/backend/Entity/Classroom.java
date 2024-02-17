@@ -19,7 +19,6 @@ public class Classroom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long idClassroom;
     private int classroomCapacity;
     //String / int (?)
