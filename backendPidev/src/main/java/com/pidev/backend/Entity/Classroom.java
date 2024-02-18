@@ -5,11 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,20 +19,19 @@ import java.util.Set;
 @Document(collection = "Classrooms")
 public class Classroom {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idClassroom;
+    private String id;
     private int classroomCapacity;
-    //String / int (?)
     private String classroomLevel;
 
     // association User Teachers
-    @ManyToMany(mappedBy="classrooms", cascade = CascadeType.ALL)
-    private Set<User> teachers ;
+    @DBRef
+    private Set<User> teachers =new HashSet<>();
 
 
     // association User Studnets
-    @ManyToMany(mappedBy="classrooms", cascade = CascadeType.ALL)
-    private Set<User> studnets  ;
+    @DBRef
+    private Set<User> studnets  =new HashSet<>();
 
 }

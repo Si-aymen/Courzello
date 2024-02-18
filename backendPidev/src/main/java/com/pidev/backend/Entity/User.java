@@ -1,13 +1,14 @@
 package com.pidev.backend.Entity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,6 +18,7 @@ import java.util.Set;
 public class User {
 
     @Id
+    private String id;
     private String login;
     private String password;
     private String firstName;
@@ -27,8 +29,7 @@ public class User {
     private Role role;
 
     // Association classroom
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Classroom> classrooms;
+    @DBRef
+    private Set<Classroom> classrooms = new HashSet<>();
 
-    // Getters and setters
 }
