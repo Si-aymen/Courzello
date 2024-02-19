@@ -14,6 +14,7 @@ public interface ClassroomService {
 
     public Classroom AddNewTeachersToClassroom(Long IdClassroom , List<User> ListeTeacher) ;
     public void AddTeachersToClassroom(String IdClassroom , List<String> ListeTeacherLogin) ;
+    public void AddStudnetsToClassroom(String IdClassroom , List<String> ListeStudentsLogin) ;
 
 
 }

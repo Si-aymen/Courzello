@@ -40,6 +40,10 @@ public class ClassroomController {
     public void AddTeachersToClassroom(@PathVariable("IDClassroom") String id,@PathVariable("Logins") List<String> logins) {
        classroomService.AddTeachersToClassroom(id, logins);
     }
+    @PutMapping("/AddStudnets/{IDClassroom}/{Logins}")
+    public void AddStudentsToClassroom(@PathVariable("IDClassroom") String id,@PathVariable("Logins") List<String> logins) {
+       classroomService.AddStudnetsToClassroom(id, logins);
+    }
 
 
 }
