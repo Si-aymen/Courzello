@@ -19,7 +19,7 @@ public class ReclamationController {
     @Autowired
     private ReclamationService reclamationService;
     private UsersService userService;
-    @GetMapping("/getall")
+    @GetMapping("/get_all")
     public List<Reclamation> getAllReclamations() {
         return reclamationService.getAllReclamations();
     }
@@ -30,11 +30,19 @@ public class ReclamationController {
     }
 
 
-    @PostMapping("/post/{login}")
-    public Reclamation createReclamation(@RequestBody Reclamation reclamation, @PathVariable String login) {
-        Users user=userService.getUserByLogin(login);
+    @PostMapping("/postV1")
+    public Reclamation createReclamation_1(@RequestParam String user_id, @RequestBody Reclamation reclamation) {
+        Users user = userService.getUserByLogin(user_id);
         reclamation.setUser(user);
         reclamationService.createReclamation(reclamation);
+        return reclamation;
+    }
+    @PostMapping("/postV2")
+    public Reclamation createReclamation_2(@RequestBody Reclamation reclamation) {
+        System.out.println(reclamation.getDateSubmitted());
+        //String user_id = reclamation.getUser().getId();
+        //reclamation.setUser(userService.getUserByLogin(user_id));
+        //reclamationService.createReclamation(reclamation);
         return reclamation;
     }
     @PutMapping("/put/{id}")
