@@ -29,6 +29,7 @@ public class ReclamationController {
         return reclamationService.getReclamationById(id);
     }
 
+
     @PostMapping("/post/{login}")
     public Reclamation createReclamation(@RequestBody Reclamation reclamation, @PathVariable String login) {
         Users user=userService.getUserByLogin(login);
