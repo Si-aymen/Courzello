@@ -1,13 +1,19 @@
 package com.pidev.backend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-@Entity
+import java.util.HashSet;
+import java.util.Set;
+
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,12 +21,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Classrooms")
 public class Classroom {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long idClass;
-    private int classCapacity;
-    //String / int (?)
-    private String classLevel;
+    @MongoId
+    private String id;
+    private int classroomCapacity;
+    private String classroomName;
+    @Enumerated(EnumType.STRING)
+    private  ClassroomLvl classroomLvl ;
+
+
+    // association User Teachers
+    @DBRef
+    @JsonIgnore
+    private Set<User> teachers =new HashSet<>();
+
+
+    // association User Studnets
+    @DBRef
+    @JsonIgnore
+    private Set<User> studnets  =new HashSet<>();
 
 }
