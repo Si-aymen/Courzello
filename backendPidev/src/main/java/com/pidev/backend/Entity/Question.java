@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @Document(collection = "Question")
 public class Question {
-    @Id
+    @MongoId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String contenue;

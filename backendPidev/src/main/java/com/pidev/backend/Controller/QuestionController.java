@@ -4,8 +4,9 @@ import com.pidev.backend.Entity.Question;
 import com.pidev.backend.Service.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.*;
 
-import java.util.List;
+
 
 
 @CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
@@ -28,7 +29,6 @@ public class QuestionController {
 
     }
     @GetMapping("/get-questions")
-    @ResponseBody
     public List<Question> afficherlesquestions() {
         return questionserv.afficherQuestions();
 
