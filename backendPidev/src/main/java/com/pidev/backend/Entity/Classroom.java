@@ -1,5 +1,6 @@
 package com.pidev.backend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,18 +22,23 @@ import java.util.Set;
 public class Classroom {
 
 
-    @Id
+    @MongoId
     private String id;
     private int classroomCapacity;
-    private String classroomLevel;
+    private String classroomName;
+    @Enumerated(EnumType.STRING)
+    private  ClassroomLvl classroomLvl ;
+
 
     // association User Teachers
     @DBRef
+    @JsonIgnore
     private Set<User> teachers =new HashSet<>();
 
 
     // association User Studnets
     @DBRef
+    @JsonIgnore
     private Set<User> studnets  =new HashSet<>();
 
 }

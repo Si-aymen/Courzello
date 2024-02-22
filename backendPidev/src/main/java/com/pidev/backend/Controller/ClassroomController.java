@@ -21,6 +21,11 @@ public class ClassroomController {
         return classroomService.GetAllClassrooms();
     }
 
+    @DeleteMapping("/DeleteClassroom/{ClassName}")
+    public void DeleteClassroom(@PathVariable("ClassName") String ClassName) {
+         classroomService.DeleteClassroom(ClassName);
+    }
+
 
     @GetMapping("/{lvl}")
     public Classroom getClassroomByLvl(@PathVariable("lvl") String lvl) {

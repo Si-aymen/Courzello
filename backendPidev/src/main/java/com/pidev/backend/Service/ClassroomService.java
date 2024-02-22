@@ -10,7 +10,7 @@ public interface ClassroomService {
     Classroom GetClassroomByClassroomLevel(String lvl);
     Classroom AddClassroom(Classroom classroom);
     Classroom UpdateClassroom(Classroom classroom);
-    void DeleteClassroom(Long id);
+    void DeleteClassroom(String Name);
 
     public Classroom AddNewTeachersToClassroom(Long IdClassroom , List<User> ListeTeacher) ;
     public void AddTeachersToClassroom(String IdClassroom , List<String> ListeTeacherLogin) ;

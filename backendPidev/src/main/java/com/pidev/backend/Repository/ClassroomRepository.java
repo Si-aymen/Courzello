@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ClassroomRepository extends MongoRepository<Classroom, Long> {
-    Classroom getClassroomByClassroomLevel(String lvl );
+    Classroom getClassroomByClassroomName(String lvl );
     Classroom getClassroomById(String id) ;
 }

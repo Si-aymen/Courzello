@@ -25,7 +25,7 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     @Override
     public Classroom GetClassroomByClassroomLevel(String lvl) {
-        return classroomRepository.getClassroomByClassroomLevel( lvl);
+        return classroomRepository.getClassroomByClassroomName( lvl);
     }
 
     @Override
@@ -39,8 +39,9 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public void DeleteClassroom(Long id) {
-        classroomRepository.deleteById(id);
+    public void DeleteClassroom(String Name) {
+        Classroom c = classroomRepository.getClassroomByClassroomName(Name);
+        classroomRepository.delete(c);
 
     }
 
@@ -54,42 +55,9 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
 
-
-//    @Override
-//    public void AddTeachersToClassroom(Long IdClassroom, List<String> ListeTeacherLogin) {
-//        Classroom c = classroomRepository.getClassroomByIdClassroom(IdClassroom);
-//        Set<User> teachers = new HashSet<>();
-//
-//        for (String s : ListeTeacherLogin) {
-//            User u = userRepository.getUserByLoginAndRole(s, Role.TEACHER);
-////            if (u.getClassrooms() == null){
-////
-////                Set<Classroom> classroomSet = new HashSet<>();
-////                classroomSet.add(c);
-////                u.setClassrooms(classroomSet);
-////                userRepository.save(u);
-////            }
-////            else {
-//                u.getClassrooms().add(c);
-//
-//           // }
-//
-//            teachers.add(u);
-//            if(c.getTeachers() == null) {
-//                c.setTeachers(teachers);
-//            }
-//            else {
-//                c.getTeachers().add(u);
-//            }
-//        }
-//
-//       classroomRepository.save(c);
-//    }
-//
-
     @Override
     public void AddTeachersToClassroom(String IdClassroom, List<String> ListeTeacherLogin) {
-        Classroom c = classroomRepository.getClassroomByClassroomLevel(IdClassroom);
+        Classroom c = classroomRepository.getClassroomByClassroomName(IdClassroom);
         //Set<User> teachers = new HashSet<>();
         System.out.println(c.getId());
 
@@ -110,7 +78,7 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     @Override
     public void AddStudnetsToClassroom(String IdClassroom, List<String> ListeStudentsLogin) {
-        Classroom c = classroomRepository.getClassroomByClassroomLevel(IdClassroom);
+        Classroom c = classroomRepository.getClassroomByClassroomName(IdClassroom);
         System.out.println(c.getId());
 
         for (String s : ListeStudentsLogin) {
