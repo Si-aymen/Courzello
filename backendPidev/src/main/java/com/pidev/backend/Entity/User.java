@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -25,7 +28,7 @@ public class User {
 
     @MongoId
     private String id;
-    private String login;
+    private String login ;
     private String password;
     private String firstName;
     private String lastName;
@@ -47,4 +50,6 @@ public class User {
     @JsonIgnore
     private List<Reponse> reponses;
 
+
+    // Getters and setters
 }
