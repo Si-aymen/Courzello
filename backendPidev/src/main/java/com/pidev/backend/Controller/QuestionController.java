@@ -12,6 +12,7 @@ import java.util.*;
 @CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
 @RestController
 @RequestMapping("/question")
+
 public class QuestionController {
 
     @Autowired

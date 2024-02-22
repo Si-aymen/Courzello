@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/classrooms")
+@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
 public class ClassroomController {
 
     private ClassroomService classroomService ;
@@ -32,7 +33,7 @@ public class ClassroomController {
         return classroomService.GetClassroomByClassroomLevel(lvl);
     }
 
-    @PostMapping
+    @PostMapping("/Save")
     public Classroom AddClassRoom(@RequestBody Classroom classroom) {
         return classroomService.AddClassroom(classroom);
     }
