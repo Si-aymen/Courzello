@@ -18,7 +18,7 @@ export const navItems: INavData[] = [
 
   {
     name: 'Classrooms',
-    url: '/',
+    url: '/Classroom/all',
     iconComponent: { name: 'cil-pencil' }
   },
   {

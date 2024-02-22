@@ -24,6 +24,7 @@ import { ChecksRadiosComponent } from './checks-radios/checks-radios.component';
 import { InputGroupsComponent } from './input-groups/input-groups.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ValidationComponent } from './validation/validation.component';
+import { ClassroomComponent } from '../Classroom/classroom.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ValidationComponent } from './validation/validation.component';
     ChecksRadiosComponent,
     InputGroupsComponent,
     LayoutComponent,
+    ClassroomComponent,
     ValidationComponent
   ],
   imports: [
@@ -47,7 +49,6 @@ import { ValidationComponent } from './validation/validation.component';
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    FormModule,
     ButtonModule,
     ButtonGroupModule,
     DropdownModule,
