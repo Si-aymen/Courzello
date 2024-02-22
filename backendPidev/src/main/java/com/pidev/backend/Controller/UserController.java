@@ -7,6 +7,7 @@ import com.pidev.backend.Service.UserService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
 @RequestMapping("/users")
 public class UserController {
 

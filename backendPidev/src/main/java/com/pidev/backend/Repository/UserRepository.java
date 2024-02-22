@@ -9,4 +9,5 @@ import com.pidev.backend.Entity.User;
 public interface UserRepository extends MongoRepository<User, String> {
 
     User getUserByLoginAndRole(String login , Role role ) ;
+
 }

@@ -1,14 +1,19 @@
 package com.pidev.backend.Entity;
 import jakarta.persistence.*;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
-
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -26,11 +31,20 @@ public class User {
     private String lastName;
     private String email;
     private Date dateOfBirth;
-    @Enumerated( EnumType.STRING )
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     // Association classroom
     @DBRef
     private Set<Classroom> classrooms = new HashSet<>();
+
+    @DBRef
+    private List<Vote> votes = new ArrayList<Vote>();
+    @DBRef
+    @JsonIgnore
+    private List<Question> questions;
+    @DBRef
+    @JsonIgnore
+    private List<Reponse> reponses;
 
 }
