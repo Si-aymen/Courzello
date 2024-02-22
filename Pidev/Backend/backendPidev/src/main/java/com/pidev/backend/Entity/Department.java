@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,9 +19,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long departmentID;
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @MongoId
+    private Long departmentId;
     private String name;
     private String contactInformation;
+
+    @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<User> teachers;
 
 }

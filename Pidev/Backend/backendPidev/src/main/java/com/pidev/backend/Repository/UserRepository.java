@@ -6,4 +6,6 @@ import com.pidev.backend.Entity.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
+    void deleteByLogin(String Login);
+    User findUserByLogin(String login);
 }
