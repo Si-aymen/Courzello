@@ -32,7 +32,7 @@ public class ConversationController {
         return conversationService.modifyConversation(c);
     }
     @DeleteMapping("/delete-conversation/{conversation-id}")
-    public void deleteConversation(@PathVariable("conversation-id") Long conversationId) {
+    public void deleteConversation(@PathVariable("conversation-id") String conversationId) {
         conversationService.deleteConversation(conversationId);
     }
 
