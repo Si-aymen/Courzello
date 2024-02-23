@@ -43,6 +43,6 @@ import { WidgetsModule } from '../widgets/widgets.module';
     FormsModule, // Adding FormsModule to imports array
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [ClassroomComponent],
+  declarations: [],
 })
 export class ClassroomModule { }

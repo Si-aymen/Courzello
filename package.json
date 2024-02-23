@@ -37,6 +37,7 @@
     "@coreui/utils": "^2.0.2",
     "@mui/icons-material": "^5.15.10",
     "chart.js": "^3.9.1",
+    "cors": "^2.8.5",
     "lodash-es": "^4.17.21",
     "ngx-scrollbar": "^13.0.3",
     "rxjs": "~7.8.1",

@@ -1,24 +1,126 @@
-<div class="container mt-4" >
-  <h1>Classroom Registation</h1>
-  <div class="card">
-         
-<form>
- 
-  <div class="form-group">
-    <label >Classroom Capacity</label>
-    <input type="number"  [(ngModel)]="classroomCapacity" [ngModelOptions]="{standalone: true}"   class="form-control" id="classroomCapacity" name="classroomCapacity" placeholder="Enter Classroom Capacity">
-  </div>
-  
-  <div class="form-group">
-      <label >Classroom Name</label>
-      <input type="text" [(ngModel)]="classroomName" [ngModelOptions]="{standalone: true}" class="form-control" id="classroomName" name="classroomName" placeholder="Enter classroom Name">
-    </div>
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Classroom Form</c-card-header>
+      <c-card-body>
+        <form cForm>
+          <div class="mb-3">
+            <label>Classroom Capacity</label>
+            <input
+              type="number"
+              [(ngModel)]="classroomCapacity"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="classroomCapacity"
+              name="classroomCapacity"
+              placeholder="Enter Classroom Capacity"
+            />
+          </div>
 
-    <div class="form-group">
-      <label >Classroom Level</label>
-      <input type="text" [(ngModel)]="classroomLvl" [ngModelOptions]="{standalone: true}" class="form-control" id="classroomLvl" name="classroomLvl" placeholder="Enter classroom Level ">
-    </div>
+          <div class="mb-3">
+            <label>Classroom Name</label>
+            <input
+              type="text"
+              [(ngModel)]="classroomName"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="classroomName"
+              name="classroomName"
+              placeholder="Enter classroom Name"
+            />
+          </div>
 
-    <button type="submit" class="btn btn-primary mt-4" (click)="register()" >Submit</button>
-</form>
+          <div class="mb-3">
+            <label for="classroomLevel">Classroom Level</label>
+            <select
+              [(ngModel)]="classroomLvl"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="classroomLevel"
+              name="classroomLevel"
+            >
+              <option value="FIRST">First</option>
+              <option value="SECOND">Second</option>
+              <option value="THIRD">Third</option>
+              <option value="FOURTH">fourth</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="speciality">Classroom speciality</label>
+            <select
+              [(ngModel)]="speciality"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="speciality"
+              name="speciality"
+            >
+              <option value="INFO">info</option>
+              <option value="GENIECIVIL">geniecivil</option>
+
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary mt-4"
+            (click)="register()"
+          >
+            Submit
+          </button>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<div>
+
+
+  <c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Classroom Table</c-card-header>
+        <c-card-body>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>classroom ID</th>
+                <th>classroom Name</th>
+                <th>classroom Capacity</th>
+                <th>classroom Lvl</th>
+                <th>classroom Speciality</th>
+
+                <th>Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let classroom of classroomArray; index as i">
+                <td class="text-center">{{ classroom.id }}</td>
+                <td>
+                  <div>{{ classroom.classroomName }}</div>
+                  <div class="small text-medium-emphasis text-nowrap">
+                    <span>Registered: {{ classroom.classroomCapacity }}</span>
+                  </div>
+                </td>
+                <td class="text-center">{{ classroom.classroomCapacity }}</td>
+                <td class="text-center">{{ classroom.classroomLvl }}</td>
+                <td class="text-center">{{ classroom.speciality }}</td>
+
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="setDelete(classroom)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
 </div>

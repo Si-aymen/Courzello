@@ -12,10 +12,10 @@ describe('ClassroomComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ClassroomComponent], // Add your component to the declarations
+      declarations: [ClassroomComponent],
       imports: [CardModule, GridModule, DocsComponentsModule, RouterTestingModule],
       providers: [IconSetService],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line to handle custom elements
+      schemas: [CUSTOM_ELEMENTS_SCHEMA], 
     }).compileComponents();
 
     fixture = TestBed.createComponent(ClassroomComponent);
