@@ -2,7 +2,6 @@ package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.UserRepository;

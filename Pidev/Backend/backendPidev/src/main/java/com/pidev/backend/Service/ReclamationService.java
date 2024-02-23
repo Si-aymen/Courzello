@@ -12,4 +12,6 @@ public interface ReclamationService {
     Reclamation updateReclamation(Reclamation reclamation);
     void deleteReclamation(String id);
     void deleteAllReclamations();
+    String generateAutomaticResponse(String reclamationType, String categorieReclamation);
+    ;
 }

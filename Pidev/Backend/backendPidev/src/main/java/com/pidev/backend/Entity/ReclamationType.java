@@ -1,9 +1,9 @@
 package com.pidev.backend.Entity;
 
 public enum ReclamationType {
-    TECHNICAL
-    ,GRADE
-    ,ASSIGNMENT
-    ,ADMINISTRATION
+    INCIDENT,
+    SUPPORT_REQUEST,
+    SUGGESTION,
+    OTHER
 
 }

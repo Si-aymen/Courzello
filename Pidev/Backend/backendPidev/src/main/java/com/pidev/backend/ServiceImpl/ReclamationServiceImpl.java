@@ -46,4 +46,20 @@ public class ReclamationServiceImpl implements ReclamationService {
     public void deleteAllReclamations() {
         reclamationRepository.deleteAll();
     }
+    @Override
+    public String generateAutomaticResponse(String reclamationType, String categorieReclamation) {
+        // Logique de génération de réponse automatique en fonction des critères
+        // Vous pouvez utiliser la logique que vous avez implémentée dans la méthode getPredefinedResponse du contrôleur
+        // ou vous pouvez implémenter une nouvelle logique ici.
+
+        // Exemple:
+        if ("INCIDENT".equals(reclamationType) && "TECHNICAL".equals(categorieReclamation)) {
+            return "Thank you for reporting the technical incident. Our team is working on resolving it.";
+        } else if ("SUGGESTION".equals(reclamationType) && "QUALITY".equals(categorieReclamation)) {
+            return "We appreciate your suggestion for improving quality. It will be considered in our future enhancements.";
+        } else {
+            // Retourner null si aucune réponse prédéfinie n'est trouvée pour les critères donnés
+            return null;
+        }
+    }
 }

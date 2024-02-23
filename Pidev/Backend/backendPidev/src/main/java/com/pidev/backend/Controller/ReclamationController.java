@@ -1,11 +1,8 @@
 package com.pidev.backend.Controller;
 
 import com.pidev.backend.Entity.Reclamation;
-import com.pidev.backend.Entity.User;
-import com.pidev.backend.Entity.Users;
 import com.pidev.backend.Service.ReclamationService;
 import com.pidev.backend.Service.UserService;
-import com.pidev.backend.Service.UsersService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +15,7 @@ import java.util.List;
 public class ReclamationController {
     @Autowired
     private ReclamationService reclamationService;
-    private UsersService userService;
+    private UserService userService;
     @GetMapping("/get_all")
     public List<Reclamation> getAllReclamations() {
         return reclamationService.getAllReclamations();
@@ -28,23 +25,21 @@ public class ReclamationController {
     public Reclamation getReclamationById(@PathVariable String id) {
         return reclamationService.getReclamationById(id);
     }
-
-
-    @PostMapping("/postV1")
-    public Reclamation createReclamation_1(@RequestParam String user_id, @RequestBody Reclamation reclamation) {
-        Users user = userService.getUserByLogin(user_id);
-        reclamation.setUser(user);
-        reclamationService.createReclamation(reclamation);
-        return reclamation;
-    }
-    @PostMapping("/postV2")
+    @PostMapping("/post")
     public Reclamation createReclamation_2(@RequestBody Reclamation reclamation) {
-        System.out.println(reclamation.getDateSubmitted());
-        //String user_id = reclamation.getUser().getId();
-        //reclamation.setUser(userService.getUserByLogin(user_id));
-        //reclamationService.createReclamation(reclamation);
+        String user_id = reclamation.getUser().getId();
+        reclamation.setUser(userService.getUserByLogin(user_id));
+
+        // Appel de la méthode generateAutomaticResponse
+        reclamation.setAutomaticResponse(reclamation.generateAutomaticResponse());
+
+        // Création de la réclamation
+        reclamationService.createReclamation(reclamation);
+
+        // Retour de la réclamation, y compris la réponse automatique
         return reclamation;
     }
+
     @PutMapping("/put/{id}")
     public Reclamation updateReclamation(@PathVariable String id, @RequestBody Reclamation reclamation) {
         reclamation.setReclamationID(id);

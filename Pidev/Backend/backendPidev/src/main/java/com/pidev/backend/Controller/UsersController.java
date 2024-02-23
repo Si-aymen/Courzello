@@ -1,7 +1,7 @@
 package com.pidev.backend.Controller;
 
-import com.pidev.backend.Entity.Users;
-import com.pidev.backend.Service.UsersService;
+import com.pidev.backend.Entity.User;
+import com.pidev.backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,25 +12,25 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
-    private UsersService userService;
+    private UserService userService;
 
     @GetMapping("/getall")
-    public List<Users> getAllUsers() {
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/getone/{login}")
-    public Users getUserByLogin(@PathVariable String login) {
+    public User getUserByLogin(@PathVariable String login) {
         return userService.getUserByLogin(login);
     }
 
     @PostMapping("/post")
-    public Users createUser(@RequestBody Users user) {
+    public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
     @PutMapping("/update/{login}")
-    public Users updateUser(@PathVariable String login, @RequestBody Users user) {
+    public User updateUser(@PathVariable String login, @RequestBody User user) {
         return userService.updateUser(login, user);
     }
 
