@@ -3,14 +3,15 @@ package com.pidev.backend.Controller;
 import com.pidev.backend.Entity.Conversation;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Service.ConversationService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
 @RestController
+@AllArgsConstructor
 @RequestMapping("/conversations")
-@CrossOrigin(origins = "http://localhost:4200")
 
 public class ConversationController {
 

@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,6 +23,7 @@ public class Conversation {
     String description ;
     @Enumerated(EnumType.STRING)
     Theme theme ;
-
+    @DBRef
+    private List<User> users;
 
 }

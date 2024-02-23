@@ -50,6 +50,7 @@ public class User {
     @JsonIgnore
     private List<Reponse> reponses;
 
-
+    @DBRef
+    private List<Conversation> conversations = new ArrayList<>();
     // Getters and setters
 }
