@@ -33,7 +33,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Conversation',
-    url: '/',
+    url: 'conversation',
     iconComponent: { name: 'cil-speech' }
   },
   {

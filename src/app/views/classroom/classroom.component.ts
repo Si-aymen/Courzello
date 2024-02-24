@@ -52,7 +52,7 @@ export class ClassroomComponent implements OnInit {
   setDelete(data: any) {
     this.http.delete("http://localhost:8090/pi/classrooms/DeleteClassroom/" + data._, { responseType: 'text' }).subscribe((resultData: any) => {
       console.log(resultData);
-      alert("Student Deleted");
+      alert("Classroom Deleted");
       this.GetAllClassoom();
       this.classroomName = '';
       this.classroomLvl = '';

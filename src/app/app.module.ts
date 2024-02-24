@@ -44,6 +44,8 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ClassroomComponent } from './views/Classroom/classroom.component';
+import { ConversationComponent } from './views/conversation/conversation.component';
+
 
 
 const APP_CONTAINERS = [
@@ -53,7 +55,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS,ClassroomComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS,ClassroomComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

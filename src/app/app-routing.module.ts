@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ClassroomComponent } from './views/Classroom/classroom.component'
+import { ConversationComponent } from './views/conversation/conversation.component'
 
 import { DefaultLayoutComponent } from './containers';
 import { Page404Component } from './views/pages/page404/page404.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
+      {
+        path: 'conversation',
+        component:ConversationComponent ,
+       },
       {
         path: 'Classroom/all',
         component:ClassroomComponent ,
