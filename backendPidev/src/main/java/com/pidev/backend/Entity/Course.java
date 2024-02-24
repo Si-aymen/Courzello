@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,6 +25,8 @@ public class Course {
     private String courseLevel;
     private Long courseDuration;
     private Date dateAdded;
+    @DBRef
+    private Set<Chapter> chapters = new HashSet<>();
 
 
 }
