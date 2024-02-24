@@ -1,10 +1,7 @@
+/*
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Importing FormsModule
-
-import { ClassroomComponent } from './classroom.component'; 
 
 import {
   AvatarModule,
@@ -20,7 +17,10 @@ import {
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
+
+
 import { WidgetsModule } from '../widgets/widgets.module';
+import { ClassroomComponent } from '../Classroom/classroom.component';
 
 @NgModule({
   imports: [
@@ -39,10 +39,10 @@ import { WidgetsModule } from '../widgets/widgets.module';
     ChartjsModule,
     AvatarModule,
     TableModule,
-    WidgetsModule,
-    FormsModule, // Adding FormsModule to imports array
+    WidgetsModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [],
+  declarations: [ClassroomComponent]
 })
-export class ClassroomModule { }
+export class ClassroomModule {
+}
+*/

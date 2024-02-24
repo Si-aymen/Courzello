@@ -11,6 +11,9 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppRoutingModule } from './app-routing.module';
 
 // Import app component
+import { ChartsModule } from './views/charts/charts.module';
+import { ChartjsModule } from '@coreui/angular-chartjs';
+
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -40,6 +43,8 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ClassroomComponent } from './views/Classroom/classroom.component';
+
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -48,7 +53,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS,ClassroomComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -77,6 +82,8 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule, 
     FormsModule,
+    ChartsModule,
+    ChartjsModule,
     HttpClientModule
   ],
   providers: [

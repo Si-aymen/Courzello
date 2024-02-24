@@ -36,7 +36,6 @@ import { ClassroomComponent } from '../Classroom/classroom.component';
     ChecksRadiosComponent,
     InputGroupsComponent,
     LayoutComponent,
-    ClassroomComponent,
     ValidationComponent
   ],
   imports: [

@@ -1,6 +1,11 @@
 import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
+
+  {
+    title: true,
+    name: 'Main dashboards'
+  },
   {
     name: 'Dashboard',
     url: '/dashboard',
@@ -10,6 +15,11 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+  {
+    title: true,
+    name: 'Managment'
+  },
+  
   {
     name: 'Users',
     url: '/',
