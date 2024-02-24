@@ -3,7 +3,7 @@ package com.pidev.backend.ServiceImpl;
 import com.pidev.backend.Entity.Question;
 import com.pidev.backend.Entity.Reponse;
 import com.pidev.backend.Entity.User;
-import com.pidev.backend.Iservice.IReponseService;
+import com.pidev.backend.Service.IReponseService;
 import com.pidev.backend.Repository.QuestionRepository;
 import com.pidev.backend.Repository.ReponseRepository;
 import com.pidev.backend.Repository.UserRepository;

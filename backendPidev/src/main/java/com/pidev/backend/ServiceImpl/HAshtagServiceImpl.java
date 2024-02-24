@@ -1,7 +1,7 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Hashtag;
-import com.pidev.backend.Iservice.IHashtagService;
+import com.pidev.backend.Service.IHashtagService;
 import com.pidev.backend.Repository.HashtagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

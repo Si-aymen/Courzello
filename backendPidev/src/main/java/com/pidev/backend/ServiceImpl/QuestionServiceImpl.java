@@ -1,7 +1,7 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.*;
-import com.pidev.backend.Iservice.IQuestionService;
+import com.pidev.backend.Service.IQuestionService;
 import com.pidev.backend.Repository.HashtagRepository;
 import com.pidev.backend.Repository.QuestionRepository;
 import com.pidev.backend.Repository.SignaBAdWordRepository;
