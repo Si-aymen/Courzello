@@ -32,6 +32,7 @@ public class CourseController {
     public Course modifyCourse(@RequestBody Course c) {
         return courseService.modifyCourse(c);
     }
+
     @DeleteMapping("/delete-course/{course-id}")
     public void deleteCourse(@PathVariable("course-id") String courseId) {
 courseService.deleteCourse(courseId);

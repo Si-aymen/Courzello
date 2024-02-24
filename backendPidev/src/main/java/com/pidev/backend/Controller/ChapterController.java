@@ -36,6 +36,8 @@ public class ChapterController {
     public void deleteChapter(@PathVariable("chapter-id") String chapterId) {
         chapterService.deleteChapter(chapterId);
     }
+
+
     @PutMapping ("/assign-chapters/{course-id}")
     public void assignChaptersToCourse (@RequestBody List<Chapter> chapterList , @PathVariable("course-id") String id){
         chapterService.assignChapterToCourse(chapterList,id);

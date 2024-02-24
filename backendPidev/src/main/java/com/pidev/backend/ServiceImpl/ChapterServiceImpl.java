@@ -2,6 +2,8 @@ package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Chapter;
 import com.pidev.backend.Entity.Course;
+import com.pidev.backend.Entity.Role;
+import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.ChapterRepository;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Service.ChapterService;
@@ -46,13 +48,12 @@ public class ChapterServiceImpl implements ChapterService {
 
         Set<Chapter> chapterSet = new HashSet<>();
             Course course = courseRepository.findById(idCourse).get();
-            chapterSet.addAll(chapterList);
-            course.setChapters(chapterSet);
+        for (Chapter s : chapterList) {
+            s.getCourses().add(course);
+            chapterRepository.save(s);
+            course.getChapters().add(s);
             courseRepository.save(course);
 
-
-
+        }
     }
-
-
 }

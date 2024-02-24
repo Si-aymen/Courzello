@@ -22,7 +22,7 @@ public class Chapter {
     @MongoId
     private String id;
     private String chapterName;
-    private String duration;
+    private Long duration;
     @DBRef
     @JsonIgnore
     private Set<Course> courses =new HashSet<>();
