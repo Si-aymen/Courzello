@@ -67,6 +67,8 @@ export class ClassroomComponent implements OnInit, AfterContentInit {
       this.classroomId = '';
     });
   }
+ 
+
 
   generateChartDoughnutData() {
     const nameCounts: { [name: string]: number } = {};

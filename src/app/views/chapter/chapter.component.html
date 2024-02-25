@@ -9,7 +9,7 @@
   <c-row>
     <c-col xs="12" lg="6">
       <c-card class="mb-4">
-        <c-card-header> Doughnut Chart - Course Level</c-card-header>
+        <c-card-header> Doughnut Chart - chapter Level</c-card-header>
         <c-card-body>
           <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
         </c-card-body>
@@ -18,20 +18,9 @@
 
     <c-col xs="12" lg="6">
         <c-card class="mb-4">
-          <c-card-header> Doughnut Chart - Course Duration</c-card-header>
+          <c-card-header> Doughnut Chart - chapter Duration</c-card-header>
           <c-card-body>
             <c-chart type="doughnut" [data]="chartDoughnutData2"> </c-chart>
-          </c-card-body>
-        </c-card>
-      </c-col>
-
-      <c-col xs="12" lg="6">
-        <c-card class="mb-4">
-          <c-card-header>
-            Bar Chart Number of courses per month 
-          </c-card-header>
-          <c-card-body>
-            <c-chart type="bar" [data]="chartBarData"></c-chart>
           </c-card-body>
         </c-card>
       </c-col>
@@ -42,50 +31,36 @@
   <c-row>
       <c-col xs>
         <c-card class="mb-4">
-          <c-card-header>course Form</c-card-header>
+          <c-card-header>chapter Form</c-card-header>
           <c-card-body>
             <form cForm>
              
     
               <div class="mb-3">
-                <label>Course Name</label>
+                <label>chapter Name</label>
                 <input
                   type="text"
-                  [(ngModel)]="courseName"
+                  [(ngModel)]="chapterName"
                   [ngModelOptions]="{ standalone: true }"
                   class="form-control"
-                  id="courseName"
-                  name="courseName"
-                  placeholder="Enter courseName here "
+                  id="chapterName"
+                  name="chapterName"
+                  placeholder="Enter chapterName here "
                 />
               </div>
     
-              <div class="mb-3">
-                <label >Course Level </label>
-               <input
-                  type="text"
-                  [(ngModel)]="courseLevel"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control"
-                  id="courseLevel"
-                  name="courseLevel"
-                  placeholder="Enter courseLevel here "
-  
-              
-                 />
-               
-              </div>
+
 
               <div class="mb-3">
-                <label >Course Duration </label>
+                <label >chapter Duration </label>
                <input
                   type="number"
-                  [(ngModel)]="courseDuration"
+                  [(ngModel)]="duration"
                   [ngModelOptions]="{ standalone: true }"
                   class="form-control"
-                  id="courseDuration"
-                  name="courseDuration"
-                  placeholder="Enter courseDuration here "
+                  id="duration"
+                  name="duration"
+                  placeholder="Enter duration here "
   
               
                  />
@@ -113,26 +88,26 @@
       <c-row>
         <c-col xs>
           <c-card class="mb-4">
-            <c-card-header>Course Table</c-card-header>
+            <c-card-header>chapter Table</c-card-header>
             <c-card-body>
               <table class="table">
                 <thead class="thead-light">
                   <tr>
-                    <th>Course ID</th>
-                    <th>Course Name</th>
-                    <th>Course Duration</th>
+                    <th>chapter ID</th>
+                    <th>chapter Name</th>
+                    <th>chapter Duration</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let course of courseArray ; index as i">
-                    <td >{{ course.id }}</td>
+                  <tr *ngFor="let chapter of chapterArray ; index as i">
+                    <td >{{ chapter.id }}</td>
                     <td>
-                      <div>{{ course.courseName}}</div>
+                      <div>{{ chapter.chapterName}}</div>
                         <div class="small text-medium-emphasis text-nowrap">
-                        <span>Level: {{ course.courseLevel}}</span>
+                        <span>Level: Static </span>
                       </div>
                     </td>
-                    <td >{{ course.courseDuration }}</td>
+                    <td >{{ chapter.duration }}</td>
                    
     
                   </tr>

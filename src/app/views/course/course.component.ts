@@ -20,6 +20,7 @@ export class CourseComponent implements OnInit {
   CurrentcourseID = "";
   chartDoughnutData :any ;
   chartDoughnutData2 :any ;
+  chartBarData: any;
 
 
   constructor(private http: HttpClient) {
@@ -34,6 +35,7 @@ export class CourseComponent implements OnInit {
       this.courseArray = resultData;
       this.generateChartDoughnutData();
       this.generateChartDoughnutData2();
+      this.generateChartBarData();
 
     
     });
@@ -51,7 +53,6 @@ export class CourseComponent implements OnInit {
       console.log(resultData);
       alert("course added Successfully");
       this.GetAllcourse();
-
       this.courseName = '';
       this.courseLevel = '';
       this.courseDuration = 0;
@@ -102,6 +103,29 @@ export class CourseComponent implements OnInit {
       colors.push('#' + Math.floor(Math.random() * 16777215).toString(16));
     }
     return colors;
+  }
+
+
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+
+  generateChartBarData() {
+    const monthlyCounts: number[] = new Array(12).fill(0); // Initialize counts for each month to zero
+    this.courseArray.forEach(course => {
+      const monthIndex = new Date(course.dateAdded).getMonth();
+      monthlyCounts[monthIndex]++;
+    });
+
+    this.chartBarData = {
+      labels: this.months,
+      datasets: [
+        {
+          label: 'Number of Courses per month',
+          backgroundColor: '#f87979',
+          data: monthlyCounts
+        }
+      ]
+    };
   }
 
 

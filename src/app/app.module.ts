@@ -45,10 +45,13 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ClassroomComponent } from './views/Classroom/classroom.component';
+import { ClassroomComponent } from './views/classroom/classroom.component';
 import { ConversationComponent } from './views/conversation/conversation.component';
 import { CourseComponent } from '../app/views/course/course.component';
+import { ChapterComponent } from '../app/views/chapter/chapter.component';
 
+// add API 
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -66,10 +69,12 @@ const APP_CONTAINERS = [
     AppComponent,
     APP_CONTAINERS,
     ClassroomComponent,
-    CourseComponent
+    CourseComponent,
+    ChapterComponent
 
   ],
   imports: [
+    MatPaginatorModule,
     WidgetsModule,
     BrowserModule,
     BrowserAnimationsModule,

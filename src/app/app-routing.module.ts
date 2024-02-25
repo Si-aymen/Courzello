@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ClassroomComponent } from './views/Classroom/classroom.component'
 import { ConversationComponent } from './views/conversation/conversation.component'
 
 import { DefaultLayoutComponent } from './containers';
@@ -10,6 +9,10 @@ import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { CourseComponent } from './views/course/course.component'
+import { ClassroomComponent } from './views/classroom/classroom.component'
+import { ChapterComponent } from './views/chapter/chapter.component'
+
+
 const routes: Routes = [
   {
     path: '',
@@ -39,6 +42,10 @@ const routes: Routes = [
       {
         path: 'course',
         component:CourseComponent ,
+      },
+      {
+        path: 'chapter',
+        component:ChapterComponent ,
       },
       {
         path: 'theme',
