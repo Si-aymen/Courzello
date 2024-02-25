@@ -9,7 +9,7 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
-//import { ClassroomComponent } from './views/Classroom/classroom.component'
+import { CourseComponent } from './views/course/course.component'
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +35,10 @@ const routes: Routes = [
       {
         path: 'Classroom/all',
         component:ClassroomComponent ,
+      },
+      {
+        path: 'course',
+        component:CourseComponent ,
       },
       {
         path: 'theme',

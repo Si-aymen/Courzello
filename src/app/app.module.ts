@@ -47,6 +47,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ClassroomComponent } from './views/Classroom/classroom.component';
 import { ConversationComponent } from './views/conversation/conversation.component';
+import { CourseComponent } from '../app/views/course/course.component';
+
+
 
 
 
@@ -58,9 +61,15 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [ConversationComponent,AppComponent, ...APP_CONTAINERS,ClassroomComponent ],
+  declarations: [
+    ConversationComponent,
+    AppComponent,
+    APP_CONTAINERS,
+    ClassroomComponent,
+    CourseComponent
+
+  ],
   imports: [
-  
     WidgetsModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -102,7 +111,12 @@ const APP_CONTAINERS = [
     Title
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [    
+    ConversationComponent,
+    AppComponent,
+    APP_CONTAINERS,
+    ClassroomComponent] 
 })
 export class AppModule {
 }
