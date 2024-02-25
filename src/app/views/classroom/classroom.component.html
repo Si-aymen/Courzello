@@ -1,3 +1,29 @@
+<!-- widghets 
+<div>
+  <c-row>
+    <c-col *ngFor="let widget of brandData; index as i" md="12" lg="6" xl="4">
+      <c-widget-stat-d
+      [style]="widget.capBg ?? null"
+      [values]="widget.values"
+      class="mb-4"
+      >
+        <svg [cIcon]="widget.icon" class="my-4 text-white" height="52"></svg>
+        <ng-container *ngIf="withCharts">
+          <c-chart
+            #chart="cChart"
+            [data]="widget.data"
+            [options]="chartOptions"
+            class="position-absolute w-100 h-100"
+            type="line"
+          >{{ chart.id }}</c-chart
+          >
+        </ng-container>
+      </c-widget-stat-d>
+    </c-col>
+  </c-row>
+  </div>
+  -->
+  
 
 <c-col xs="12">
   <app-docs-callout href="charts">
@@ -6,6 +32,7 @@
     <br>
   </app-docs-callout>
 </c-col>
+
 <c-row>
   <c-col xs="12" lg="6">
     <c-card class="mb-4">
@@ -23,7 +50,6 @@
       </c-card-body>
     </c-card>
   </c-col>
-  
 </c-row>
 
 <c-row>
@@ -70,12 +96,12 @@
               <option value="FIRST">First</option>
               <option value="SECOND">Second</option>
               <option value="THIRD">Third</option>
-              <option value="FOURTH">fourth</option>
+              <option value="FOURTH">Fourth</option>
             </select>
           </div>
 
           <div class="mb-3">
-            <label for="speciality">Classroom speciality</label>
+            <label for="speciality">Classroom Speciality</label>
             <select
               [(ngModel)]="speciality"
               [ngModelOptions]="{ standalone: true }"
@@ -83,8 +109,8 @@
               id="speciality"
               name="speciality"
             >
-              <option value="INFO">info</option>
-              <option value="GENIECIVIL">geniecivil</option>
+              <option value="INFO">Info</option>
+              <option value="GENIECIVIL">Genie Civil</option>
             </select>
           </div>
 
@@ -110,12 +136,11 @@
           <table class="table">
             <thead class="thead-light">
               <tr>
-                <th>classroom ID</th>
-                <th>classroom Name</th>
-                <th>classroom Capacity</th>
-                <th>classroom Lvl</th>
-                <th>classroom Speciality</th>
-
+                <th>Classroom ID</th>
+                <th>Classroom Name</th>
+                <th>Classroom Capacity</th>
+                <th>Classroom Level</th>
+                <th>Classroom Speciality</th>
                 <th>Option</th>
               </tr>
             </thead>
@@ -131,7 +156,6 @@
                 <td class="text-center">{{ classroom.classroomCapacity }}</td>
                 <td class="text-center">{{ classroom.classroomLvl }}</td>
                 <td class="text-center">{{ classroom.speciality }}</td>
-
                 <td>
                   <button
                     type="button"

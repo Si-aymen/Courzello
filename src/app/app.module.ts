@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 // Import app component
 import { ChartsModule } from './views/charts/charts.module';
 import { ChartjsModule } from '@coreui/angular-chartjs';
+import { WidgetsModule } from './views/widgets/widgets.module';
+
 
 import { AppComponent } from './app.component';
 
@@ -48,6 +50,7 @@ import { ConversationComponent } from './views/conversation/conversation.compone
 
 
 
+
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -57,6 +60,8 @@ const APP_CONTAINERS = [
 @NgModule({
   declarations: [ConversationComponent,AppComponent, ...APP_CONTAINERS,ClassroomComponent ],
   imports: [
+  
+    WidgetsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
