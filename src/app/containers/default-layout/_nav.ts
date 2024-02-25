@@ -22,7 +22,7 @@ export const navItems: INavData[] = [
   
   {
     name: 'Users',
-    url: '/',
+    url: '/users',
     iconComponent: { name: 'cil-people' }
   },
 
@@ -32,18 +32,28 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-pencil' }
   },
   {
-    name: 'Conversation',
+    name: 'Courses',
+    url: '/course',
+    iconComponent: { name: 'cil-pencil' }
+  },
+  {
+    name: 'Chapters',
+    url: '/chapter',
+    iconComponent: { name: 'cil-pencil' }
+  },
+  {
+    name: 'Conversations',
     url: 'conversation',
     iconComponent: { name: 'cil-speech' }
   },
   {
     name: 'Reclamations',
-    url: '/',
+    url: '/reclamations',
     iconComponent: { name: 'cil-description' }
   },
   {
     name: 'Forum',
-    url: '/',
+    url: '/forum',
     iconComponent: { name: 'cil-notes' }
   },
   {

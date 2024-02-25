@@ -55,7 +55,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS,ClassroomComponent ],
+  declarations: [ConversationComponent,AppComponent, ...APP_CONTAINERS,ClassroomComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

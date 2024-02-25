@@ -12,8 +12,9 @@ export class ConversationComponent implements OnInit {
   id: String = "";
   message: String = "";
   description: string = "";
- theme: string = "";
+  theme: string = "";
   CurrentConversationID = "";
+  chartDoughnutData :any ;
 
 
   constructor(private http: HttpClient) {
@@ -25,6 +26,8 @@ export class ConversationComponent implements OnInit {
     this.http.get("http://localhost:8090/pi/conversations/retrieve-conversations").subscribe((resultData: any) => {
       console.log(resultData);
       this.conversationArray = resultData;
+      this.generateChartDoughnutData();
+
     
     });
   }
@@ -43,6 +46,32 @@ export class ConversationComponent implements OnInit {
       this.description = '';
       this.theme = '';
     });
+  }
+
+
+  generateChartDoughnutData() {
+    const nameCounts: { [name: string]: number } = {};
+    this.conversationArray.forEach(conversation => {
+      const name = conversation.theme;
+      nameCounts[name] = (nameCounts[name] || 0) + 1;
+    });
+
+    this.chartDoughnutData = {
+      labels: Object.keys(nameCounts),
+      datasets: [{
+        data: Object.values(nameCounts),
+        backgroundColor: this.generateRandomColors(Object.keys(nameCounts).length),
+        hoverBackgroundColor: this.generateRandomColors(Object.keys(nameCounts).length)
+      }]
+    };
+  }
+
+  generateRandomColors(numColors: number): string[] {
+    const colors: string[] = [];
+    for (let i = 0; i < numColors; i++) {
+      colors.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+    }
+    return colors;
   }
 
 

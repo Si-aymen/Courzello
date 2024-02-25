@@ -24,7 +24,6 @@ import { ChecksRadiosComponent } from './checks-radios/checks-radios.component';
 import { InputGroupsComponent } from './input-groups/input-groups.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ValidationComponent } from './validation/validation.component';
-import { ClassroomComponent } from '../Classroom/classroom.component';
 import { ConversationComponent } from '../conversation/conversation.component';
 
 
@@ -39,7 +38,7 @@ import { ConversationComponent } from '../conversation/conversation.component';
     InputGroupsComponent,
     LayoutComponent,
     ValidationComponent,
-    ConversationComponent
+    
   ],
   imports: [
     CommonModule,
