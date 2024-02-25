@@ -7,8 +7,12 @@ import com.pidev.backend.Service.AttachementService;
 import com.pidev.backend.Service.ReclamationService;
 import com.pidev.backend.Service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -51,5 +55,17 @@ public class ReclamationController {
     @DeleteMapping("/delete_all")
     public void deleteAllReclamation() {
         reclamationService.deleteAllReclamations();
+    }
+    @GetMapping("/statistics")
+    public ResponseEntity<Map<String, Object>> getReclamationStatistics() {
+        Map<String, Object> statistics = new HashMap<>();
+        statistics.put("totalReclamations", reclamationService.getTotalReclamations());
+        statistics.put("reclamationsByState", reclamationService.getReclamationsByStateCount());
+
+        return ResponseEntity.ok(statistics);
+    }
+    @GetMapping("/get_by_user")
+    public List<Reclamation> getReclamationsByUser(@RequestParam String userId) {
+        return reclamationService.getReclamationsByUser(userId);
     }
 }

@@ -1,9 +1,11 @@
 package com.pidev.backend.Service;
 
 import com.pidev.backend.Entity.Reclamation;
+import com.pidev.backend.Entity.ReclamtionState;
 import com.pidev.backend.Entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ReclamationService {
     List<Reclamation> getAllReclamations();
@@ -12,4 +14,13 @@ public interface ReclamationService {
     Reclamation updateReclamation(Reclamation reclamation);
     void deleteReclamation(String id);
     void deleteAllReclamations();
+    long getTotalReclamations();
+
+    Map<ReclamtionState, Long> getReclamationsByStateCount();
+
+    List<Reclamation> getReclamationsByUser(String userId);
+
+    void updatePriorities();
+
+
 }
