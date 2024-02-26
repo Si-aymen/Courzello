@@ -40,6 +40,7 @@ export class CourseComponent implements OnInit {
     
     });
   }
+
   add() {
     let bodyData = {
       "id" : this.id ,
@@ -60,7 +61,35 @@ export class CourseComponent implements OnInit {
 
     });
   }
+  onFileSelected(event: any, courseId: string) {
+    const file: File = event.target.files[0];
+    if (file) {
+      // Do something with the selected file and courseId
+      console.log("Selected file:", file);
+      console.log("Course ID:", courseId);
+    }
+  }
 
+  addPDF(courseId: string) {
+    // Create form data to include the course ID
+    let formData = new FormData();
+  
+    this.http.put("http://localhost:8090/pi/courses/course-UploadPDF/" + courseId , formData).subscribe(
+      (resultData: any) => {
+        console.log(resultData);
+        alert("Course added Successfully");
+        this.GetAllcourse();
+        this.courseName = '';
+        this.courseLevel = '';
+        this.courseDuration = 0;
+      },
+      (error) => {
+        console.error("Error adding course:", error);
+        // Handle error as needed
+      }
+    );
+  }
+  
 
   generateChartDoughnutData() {
     const nameCounts: { [name: string]: number } = {};

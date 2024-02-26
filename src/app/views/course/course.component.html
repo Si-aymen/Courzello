@@ -91,7 +91,17 @@
                  />
                
               </div>
-    
+              <!-- upload PDF -->
+              <div class="mb-3">
+                <label cLabel for="formFileMultiple">Upload Course PDF</label>
+                <input cFormControl id="formFileMultiple" multiple type="file" />
+              </div>
+              <!-- Upload Video-->
+
+              <div class="mb-3">
+                <label cLabel for="formFileMultiple">Upload Course Video</label>
+                <input cFormControl id="formFileMultiple" multiple type="file" />
+              </div>
 
               <button
                 type="submit"
@@ -105,43 +115,60 @@
         </c-card>
       </c-col>
     </c-row>
+
+
+    
   
   
   <!-- Table -->
   
   <div>
-      <c-row>
-        <c-col xs>
-          <c-card class="mb-4">
-            <c-card-header>Course Table</c-card-header>
-            <c-card-body>
-              <table class="table">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Course ID</th>
-                    <th>Course Name</th>
-                    <th>Course Duration</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let course of courseArray ; index as i">
-                    <td >{{ course.id }}</td>
-                    <td>
-                      <div>{{ course.courseName}}</div>
-                        <div class="small text-medium-emphasis text-nowrap">
-                        <span>Level: {{ course.courseLevel}}</span>
-                      </div>
-                    </td>
-                    <td >{{ course.courseDuration }}</td>
-                   
-    
-                  </tr>
-                </tbody>
-              </table>
-            </c-card-body>
-          </c-card>
-        </c-col>
-      </c-row>
-    </div>
-    
+    <c-row>
+      <c-col xs>
+        <c-card class="mb-4">
+          <c-card-header>Course Table</c-card-header>
+          <c-card-body>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th>Course ID</th>
+                  <th>Course Name</th>
+                  <th>Course Duration</th>
+                  <th>Options</th>
+                  <th>Upload PDF</th>
+                  <th>Upload Video</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let course of courseArray; let i = index">
+                  <td>{{ course.id }}</td>
+                  <td>
+                    <div>{{ course.courseName }}</div>
+                    <div class="small text-medium-emphasis text-nowrap">
+                      <span>Level: {{ course.courseLevel }}</span>
+                    </div>
+                  </td>
+                  <td>{{ course.courseDuration }}</td>
+                  <td>
+                    <button cButton >Edit</button> <!-- (click)="editCourse(course)"-->
+                    <button cButton >Delete</button> <!--(click)="deleteCourse(course)" -->
+                  </td>
+                  <td>
+                    <label cLabel for="pdfFile{{i}}">Upload Course PDF</label>
+                    <input cFormControl id="pdfFile{{i}}" name="file" type="file"  (change)="onFileSelected($event, course.id)" /> 
+                    <button cButton (click)="addPDF(course.id)">Upload PDF</button>
+                  </td>
+                  <td>
+                    <label cLabel for="videoFile{{i}}">Upload Course Video</label>
+                    <input cFormControl id="videoFile{{i}}" name="file" type="file"  />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </div>
+  
     
