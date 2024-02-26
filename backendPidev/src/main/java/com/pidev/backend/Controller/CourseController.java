@@ -1,11 +1,11 @@
 package com.pidev.backend.Controller;
 
-import com.pidev.backend.Entity.Conversation;
 import com.pidev.backend.Entity.Course;
 import com.pidev.backend.Service.CourseService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -37,5 +37,11 @@ public class CourseController {
     public void deleteCourse(@PathVariable("course-id") String courseId) {
 courseService.deleteCourse(courseId);
     }
+
+    @PutMapping("/course-UploadPDF/{course-id}")
+    public void uploadPDF(@PathVariable("course-id") String courseId, @RequestParam("file") MultipartFile file) {
+        courseService.uploadPdf(file, courseId);
+    }
+
 
 }

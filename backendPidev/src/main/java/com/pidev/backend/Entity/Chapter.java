@@ -25,5 +25,5 @@ public class Chapter {
     private Long duration;
     @DBRef
     @JsonIgnore
-    private Set<Course> courses =new HashSet<>();
+    private Set<Course> courses = new HashSet<>();
 }

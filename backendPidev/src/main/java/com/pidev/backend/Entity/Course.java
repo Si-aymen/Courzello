@@ -20,13 +20,19 @@ import java.util.Set;
 public class Course {
 
     @MongoId
+    // details course
     private String id;
     private String courseName;
     private String courseLevel;
     private Long courseDuration;
     private Date dateAdded;
+    //upload course
+    private String pdfUrl;
+    private String videoUrl;
     @DBRef
     private Set<Chapter> chapters = new HashSet<>();
+
+
 
 
 }
