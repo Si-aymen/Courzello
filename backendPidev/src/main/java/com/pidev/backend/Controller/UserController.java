@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("/GetAllUsers")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -25,7 +25,7 @@ public class UserController {
         return userService.getUserByLogin(login);
     }
 
-    @PostMapping
+    @PostMapping("/Save/user")
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
