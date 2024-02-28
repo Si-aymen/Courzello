@@ -50,8 +50,6 @@ import { ConversationComponent } from './views/conversation/conversation.compone
 import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
 
-// add API 
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -74,7 +72,6 @@ const APP_CONTAINERS = [
 
   ],
   imports: [
-    MatPaginatorModule,
     WidgetsModule,
     BrowserModule,
     BrowserAnimationsModule,
