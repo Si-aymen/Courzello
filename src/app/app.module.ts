@@ -49,6 +49,7 @@ import { ClassroomComponent } from './views/classroom/classroom.component';
 import { ConversationComponent } from './views/conversation/conversation.component';
 import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
+import { PaginationsComponent } from '../app/views/base/paginations/paginations.component';
 
 // add API 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -105,7 +106,7 @@ const APP_CONTAINERS = [
     FormsModule,
     ChartsModule,
     ChartjsModule,
-    HttpClientModule
+    HttpClientModule 
   ],
   providers: [
     {
