@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from './views/charts/charts.module';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { WidgetsModule } from './views/widgets/widgets.module';
+import { ReclamationComponent } from './views/reclamation/reclamation.component';
+
 
 
 import { AppComponent } from './app.component';
@@ -51,8 +53,6 @@ import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
 import { PaginationsComponent } from '../app/views/base/paginations/paginations.component';
 
-// add API 
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -71,11 +71,11 @@ const APP_CONTAINERS = [
     APP_CONTAINERS,
     ClassroomComponent,
     CourseComponent,
-    ChapterComponent
+    ChapterComponent,
+    ReclamationComponent
 
   ],
   imports: [
-    MatPaginatorModule,
     WidgetsModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -118,7 +118,8 @@ const APP_CONTAINERS = [
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [    
+  exports: [ 
+    ReclamationComponent,   
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,

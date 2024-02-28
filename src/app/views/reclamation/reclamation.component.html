@@ -1,0 +1,182 @@
+<!-- title -->
+
+<c-col xs="12">
+    <app-docs-callout href="charts">
+      Stats 
+      <br>
+      <br>
+    </app-docs-callout>
+  </c-col>
+  <!-- Stats -->
+  <c-row>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header> Doughnut Chart - State </c-card-header>
+        <c-card-body>
+          <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    
+  </c-row>
+  
+  <!-- Formulaire -->
+  
+  <c-row>
+      <c-col xs>
+        <c-card class="mb-4">
+          <c-card-header>Conversation Form</c-card-header>
+          <c-card-body>
+            <form cForm>
+             
+    
+              <div class="mb-3">
+                <label>Subject</label>
+                <input
+                  type="text"
+                  [(ngModel)]="subject"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  id="subject"
+                  name="subject"
+                  placeholder="Enter subject here "
+                />
+              </div>
+    
+              <div class="mb-3">
+                <label >Description </label>
+               <input
+                  [(ngModel)]="description"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  placeholder="Enter description here "
+  
+              
+                 />
+               
+              </div>
+    
+              <div class="mb-3">
+                <label for="state">Reclamation state </label>
+                <select
+                  [(ngModel)]="state"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  id="state"
+                  name="state"
+                >
+                  <option value="DARK">Dark</option>
+                  <option value="LIGHT">Light</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="category">Reclamation category </label>
+                <select
+                  [(ngModel)]="category"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  id="category"
+                  name="category"
+                >
+                  <option value="DARK">Dark</option>
+                  <option value="LIGHT">Light</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label >User Impact </label>
+               <input
+                  type="number"
+                  [(ngModel)]="userImpact"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  id="userImpact"
+                  name="userImpact"
+                  placeholder="Enter userImpact here "
+  
+              
+                 />
+               
+              </div>
+
+              <div class="mb-3">
+                <label >Reclamtion Priority </label>
+               <input
+                  type="number"
+                  [(ngModel)]="priority"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="form-control"
+                  id="priority"
+                  name="priority"
+                  placeholder="Enter priority here "
+  
+              
+                 />
+               
+              </div>
+    
+              <button
+                type="submit"
+                class="btn btn-primary mt-4"
+                (click)="add()"
+              >
+                Submit
+              </button>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  
+  
+  <!-- Table -->
+  
+  <div>
+      <c-row>
+        <c-col xs>
+          <c-card class="mb-4">
+            <c-card-header>Reclamation Table</c-card-header>
+            <c-card-body>
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Reclamation ID</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>State</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>UserImpact</th>
+                
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let reclamation of reclamationArray ; index as i">
+                    <td >{{ reclamation.reclamationID }}</td>
+                    <td>
+                      <div>{{ reclamation.subject}}</div>
+                        <div class="small text-medium-emphasis text-nowrap">
+                        <span>Description: {{ reclamation.description }}</span>
+                      </div>
+                    </td>
+                    <td> {{ reclamation.description }}</td>
+                    <td>{{reclamation.state}}</td>
+                    <td >{{ reclamation.category }}</td>
+                    <td >{{ reclamation.priority }}</td>
+                    <td >{{ reclamation.userImpact }}</td>
+
+                    
+    
+                  </tr>
+                </tbody>
+              </table>
+            </c-card-body>
+          </c-card>
+        </c-col>
+      </c-row>
+    </div>
+    
+    
