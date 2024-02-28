@@ -1,0 +1,92 @@
+<c-col xs="12">
+    <app-docs-callout href="charts">
+      Stats 
+      <br>
+      <br>
+    </app-docs-callout>
+  </c-col>
+  <!-- Stats -->
+  <c-row>
+
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>Doughnut Chart - user Duration</c-card-header>
+        <c-card-body>
+          <c-chart type="doughnut" [data]="chartDoughnutData2"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+
+  </c-row>
+  <!-- Formulaire -->
+  <c-row>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>User Form</c-card-header>
+        <c-card-body>
+          <form cForm>
+            <div class="mb-3">
+              <label for="firstName">First Name</label>
+              <input type="text" [(ngModel)]="firstName" class="form-control" id="firstName" name="firstName" placeholder="Enter firstName here">
+            </div>
+            <div class="mb-3">
+              <label for="lastName">Last Name</label>
+              <input type="text" [(ngModel)]="lastName" class="form-control" id="lastName" name="lastName" placeholder="Enter lastName here">
+            </div>
+            <div class="mb-3">
+              <label for="email">E-mail</label>
+              <input type="text" [(ngModel)]="email" class="form-control" id="email" name="email" placeholder="Enter email here">
+            </div>
+            <div class="mb-3">
+              <label for="role">Role</label>
+              <input type="text" [(ngModel)]="role" class="form-control" id="role" name="role" placeholder="Enter role here">
+            </div>
+            <button type="submit" class="btn btn-primary mt-4" (click)="add()">Submit</button>
+          </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  <!-- Table -->
+  <div>
+    <c-row>
+      <c-col xs="12">
+        <c-card class="mb-4">
+          <c-card-header>User Table</c-card-header>
+          <c-card-body>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th>ID or Login</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of userArray; let i = index">
+                  <td>{{ user.id }}</td>
+                  <td>
+                    <div>{{ user.firstName }}</div>
+                    <div class="small text-medium-emphasis text-nowrap">
+                      <span>Level: {{ user.lastName }}</span>
+                    </div>
+                  </td>
+                  <td>{{ user.lastName }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.role }}</td>
+                  <td>
+                    <button cButton>Edit</button> <!-- (click)="edituser(user)"-->  &nbsp;
+                    <button cButton>Delete</button> <!--(click)="deleteuser(user)" -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </div>
+  

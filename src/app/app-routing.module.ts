@@ -12,6 +12,7 @@ import { CourseComponent } from './views/course/course.component';
 import { ClassroomComponent } from './views/classroom/classroom.component';
 import { ChapterComponent } from './views/chapter/chapter.component';
 import { ReclamationComponent } from './views/reclamation/reclamation.component';
+import { UserComponent } from './views/user/user.component';
 
 
 
@@ -34,9 +35,13 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
+        path: 'user',
+        component:UserComponent ,
+      },
+      {
         path: 'conversation',
         component:ConversationComponent ,
-       },
+      },
       {
         path: 'Classroom/all',
         component:ClassroomComponent ,

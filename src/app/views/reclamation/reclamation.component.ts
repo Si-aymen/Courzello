@@ -21,6 +21,8 @@ export class ReclamationComponent implements OnInit{
 
   CurrentReclamationID = "";
   chartDoughnutData :any ;
+  chartDoughnutData2 : any  ;
+
 
   constructor(private http: HttpClient) {
     this.GetAllReclamation();
@@ -32,6 +34,7 @@ export class ReclamationComponent implements OnInit{
       console.log(resultData);
       this.reclamationArray = resultData;
       this.generateChartDoughnutData();
+      this.generateChartDoughnutData2(); 
     });
   }
 
@@ -70,6 +73,24 @@ export class ReclamationComponent implements OnInit{
     });
 
     this.chartDoughnutData = {
+      labels: Object.keys(nameCounts),
+      datasets: [{
+        data: Object.values(nameCounts),
+        backgroundColor: this.generateRandomColors(Object.keys(nameCounts).length),
+        hoverBackgroundColor: this.generateRandomColors(Object.keys(nameCounts).length)
+      }]
+    };
+  }
+
+
+  generateChartDoughnutData2() {
+    const nameCounts: { [name: string]: number } = {};
+    this.reclamationArray.forEach(reclamation => {
+      const name = reclamation.category;
+      nameCounts[name] = (nameCounts[name] || 0) + 1;
+    });
+
+    this.chartDoughnutData2 = {
       labels: Object.keys(nameCounts),
       datasets: [{
         data: Object.values(nameCounts),

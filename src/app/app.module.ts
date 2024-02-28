@@ -51,7 +51,9 @@ import { ClassroomComponent } from './views/classroom/classroom.component';
 import { ConversationComponent } from './views/conversation/conversation.component';
 import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
+import { UserComponent } from '../app/views/user/user.component';
 import { PaginationsComponent } from '../app/views/base/paginations/paginations.component';
+
 
 
 
@@ -66,6 +68,7 @@ const APP_CONTAINERS = [
 
 @NgModule({
   declarations: [
+    UserComponent,
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,
@@ -119,11 +122,14 @@ const APP_CONTAINERS = [
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [ 
+    
     ReclamationComponent,   
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,
-    ClassroomComponent] 
+    ClassroomComponent,
+    UserComponent
+] 
 })
 export class AppModule {
 }
