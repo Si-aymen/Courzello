@@ -22,5 +22,8 @@ public interface ReclamationService {
 
     void updatePriorities();
 
+    double getAverageResolutionTime();
+    long getPendingReclamationsCount();
+
 
 }

@@ -73,4 +73,14 @@ public class ReclamationController {
         reclamationService.updatePriorities();
         return ResponseEntity.ok("Priorities optimized successfully");
     }
+
+    @GetMapping("/advanced_statistics")
+    public ResponseEntity<Map<String, Object>> getAdvancedStatistics() {
+        Map<String, Object> statistics = new HashMap<>();
+        statistics.put("averageResolutionTime", reclamationService.getAverageResolutionTime());
+        statistics.put("pendingReclamationsCount", reclamationService.getPendingReclamationsCount());
+        // Ajoutez d'autres métriques en fonction de vos besoins
+
+        return ResponseEntity.ok(statistics);
+    }
 }

@@ -112,4 +112,27 @@ public class ReclamationServiceImpl implements ReclamationService {
 
         return Math.toIntExact(resolutionTimeInHours);
     }
+
+    @Override
+    public double getAverageResolutionTime() {
+        List<Reclamation> reclamations = getAllReclamations();
+
+        if (reclamations.isEmpty()) {
+            return 0.0; // Évitez une division par zéro
+        }
+
+        long totalResolutionTime = reclamations.stream()
+                .mapToLong(this::calculateResolutionTimeInHours)
+                .sum();
+
+        return (double) totalResolutionTime / reclamations.size();
+    }
+
+    @Override
+    public long getPendingReclamationsCount() {
+        return getAllReclamations().stream()
+                .filter(reclamation -> ReclamtionState.EN_ATTENTE.equals(reclamation.getState()))
+                .count();
+    }
+
 }
