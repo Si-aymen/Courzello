@@ -24,8 +24,11 @@ public class Course {
     private String id;
     private String courseName;
     private String courseLevel;
+    private String courseDomain;
     private Long courseDuration;
     private Date dateAdded;
+    private float coursePrice ;
+    private  String courseDescription  ;
     //upload course
     private String pdfUrl;
     private String videoUrl;
