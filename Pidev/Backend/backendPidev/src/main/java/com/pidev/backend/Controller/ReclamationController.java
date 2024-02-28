@@ -68,4 +68,9 @@ public class ReclamationController {
     public List<Reclamation> getReclamationsByUser(@RequestParam String userId) {
         return reclamationService.getReclamationsByUser(userId);
     }
+    @PutMapping("/optimize_priorities")
+    public ResponseEntity<String> optimizePriorities() {
+        reclamationService.updatePriorities();
+        return ResponseEntity.ok("Priorities optimized successfully");
+    }
 }
