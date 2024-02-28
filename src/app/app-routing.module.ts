@@ -8,9 +8,11 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
-import { CourseComponent } from './views/course/course.component'
-import { ClassroomComponent } from './views/classroom/classroom.component'
-import { ChapterComponent } from './views/chapter/chapter.component'
+import { CourseComponent } from './views/course/course.component';
+import { ClassroomComponent } from './views/classroom/classroom.component';
+import { ChapterComponent } from './views/chapter/chapter.component';
+import { ReclamationComponent } from './views/reclamation/reclamation.component';
+
 
 
 const routes: Routes = [
@@ -46,6 +48,10 @@ const routes: Routes = [
       {
         path: 'chapter',
         component:ChapterComponent ,
+      },
+      {
+        path: 'reclamations',
+        component:ReclamationComponent ,
       },
       {
         path: 'theme',

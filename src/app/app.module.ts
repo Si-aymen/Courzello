@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from './views/charts/charts.module';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { WidgetsModule } from './views/widgets/widgets.module';
+import { ReclamationComponent } from './views/reclamation/reclamation.component';
+
 
 
 import { AppComponent } from './app.component';
@@ -68,7 +70,8 @@ const APP_CONTAINERS = [
     APP_CONTAINERS,
     ClassroomComponent,
     CourseComponent,
-    ChapterComponent
+    ChapterComponent,
+    ReclamationComponent
 
   ],
   imports: [
@@ -114,7 +117,8 @@ const APP_CONTAINERS = [
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [    
+  exports: [ 
+    ReclamationComponent,   
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,

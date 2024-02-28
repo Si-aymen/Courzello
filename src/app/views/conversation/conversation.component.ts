@@ -27,8 +27,6 @@ export class ConversationComponent implements OnInit {
       console.log(resultData);
       this.conversationArray = resultData;
       this.generateChartDoughnutData();
-
-    
     });
   }
   add() {
