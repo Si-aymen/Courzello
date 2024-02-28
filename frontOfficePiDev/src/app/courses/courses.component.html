@@ -225,8 +225,11 @@
   <div class="container">
     <div class="courses-items">
       <div class="row">
+
+
+
         <!-- Single item -->
-        <div class="single-item col-lg-4 col-md-6">
+        <div class="single-item col-lg-4 col-md-6" *ngFor="let course of courseArray; let i = index">
           <div class="item">
             <div class="thumb">
               <a href="#">
@@ -244,19 +247,19 @@
                   <span>4.8 (867)</span>
                 </div>
                 <div class="price">
-                  $15.00
+                  ${{course.coursePrice}}
                 </div>
               </div>
               <div class="meta">
                 <ul>
                   <li>
                     <img src="/assets/img/advisor/1.jpg" alt="Advisor">
-                    <a href="#">Busel park</a> in <a href="#">Programming</a>
+                    <a href="#">{{course}}</a> in <a href="#">Programming</a>
                   </li>
                 </ul>
               </div>
               <h4>
-                <a href="#">Social Science & Humanities</a>
+                <a href="#">{{ course.courseName}}</a>
               </h4>
               <p>
                 Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new.
@@ -264,7 +267,7 @@
               <div class="bottom-info">
                 <div class="course-info">
                   <ul>
-                    <li><i class="fas fa-clock"></i> 08:27:00</li>
+                    <li><i class="fas fa-clock"></i> {{course.courseDuration}} Hours</li>
                     <li><i class="fas fa-list-ul"></i> 65</li>
                     <li><i class="fas fa-user"></i> 6K</li>
                   </ul>
