@@ -49,6 +49,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ClassroomComponent } from './views/classroom/classroom.component';
 import { ConversationComponent } from './views/conversation/conversation.component';
+import { ForumComponent } from './views/forum/forum.component';
+
 import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
 import { UserComponent } from '../app/views/user/user.component';
@@ -75,6 +77,7 @@ const APP_CONTAINERS = [
     ClassroomComponent,
     CourseComponent,
     ChapterComponent,
+    ForumComponent,
     ReclamationComponent
 
   ],
@@ -128,7 +131,8 @@ const APP_CONTAINERS = [
     AppComponent,
     APP_CONTAINERS,
     ClassroomComponent,
-    UserComponent
+    UserComponent,
+    ForumComponent
 ] 
 })
 export class AppModule {

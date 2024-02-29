@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './reclamation.component.scss'
 })
 export class ReclamationComponent implements OnInit{
+
   reclamationArray: any[] = [];
   reclamationID: String = "";
   subject: String = "";
@@ -29,6 +30,7 @@ export class ReclamationComponent implements OnInit{
   }
 
   ngOnInit(): void {}
+  
   GetAllReclamation() {
     this.http.get("http://localhost:8090/pi/reclamations/get_all").subscribe((resultData: any) => {
       console.log(resultData);

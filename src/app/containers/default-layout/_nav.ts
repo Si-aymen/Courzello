@@ -53,7 +53,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Forum',
-    url: '/forum',
+    url: 'forum',
     iconComponent: { name: 'cil-notes' }
   },
   {

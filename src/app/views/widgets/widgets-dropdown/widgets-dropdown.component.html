@@ -6,10 +6,10 @@
       title="Users"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        26K
-        <span class="fs-6 fw-normal">
-          (-12.4% <svg cIcon name="cilArrowBottom"></svg>)
-        </span>
+        {{userArray.length}}
+        <!--<span class="fs-6 fw-normal">(-12.4% <svg cIcon name="cilArrowBottom"></svg>) </span>-->
+        <span> number of users</span>
+        
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
@@ -52,7 +52,7 @@
             <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
           </button>
           <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
+            <li><a routerLink="/user" cDropdownItem>Action</a></li>
             <li><a routerLink="./" cDropdownItem>Another action</a></li>
             <li><a routerLink="./" cDropdownItem>Something else here</a></li>
             <li><a [disabled]="true" routerLink="./" cDropdownItem>Disabled</a></li>

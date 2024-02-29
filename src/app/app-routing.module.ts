@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ConversationComponent } from './views/conversation/conversation.component'
+import { ForumComponent } from './views/forum/forum.component'
 
 import { DefaultLayoutComponent } from './containers';
 import { Page404Component } from './views/pages/page404/page404.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'conversation',
         component:ConversationComponent ,
+      },
+      {
+        path: 'forum',
+        component:ForumComponent ,
       },
       {
         path: 'Classroom/all',

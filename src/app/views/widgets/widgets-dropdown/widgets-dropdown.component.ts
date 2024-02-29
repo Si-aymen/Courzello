@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -17,10 +19,37 @@ import { ChartjsComponent } from '@coreui/angular-chartjs';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
+  CountUsers : number =0;
+  userArray : any ;
 
   constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+    private changeDetectorRef: ChangeDetectorRef,private http: HttpClient
+  ) {
+    this.countUsers();
+    this.GetAlluser();
+  }
+
+  countUsers() {
+    this.http.get("http://localhost:8090/pi/users/countUsers").subscribe((resultData: any) => {
+      console.log(resultData);
+      this.CountUsers = resultData;
+
+
+    
+    });
+  }
+
+  
+  GetAlluser() {
+    this.http.get("http://localhost:8090/pi/users/GetAllUsers").subscribe((resultData: any) => {
+      console.log(resultData);
+      this.userArray = resultData;
+
+
+    
+    });
+  }
+
 
   data: any[] = [];
   options: any[] = [];
@@ -168,6 +197,10 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
       }
     }
   }
+
+
+
+
 }
 
 @Component({
@@ -211,6 +244,8 @@ export class ChartSample implements AfterViewInit {
       }
     }
   };
+
+
 
   ngAfterViewInit(): void {
     setTimeout(() => {
