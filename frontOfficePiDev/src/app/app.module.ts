@@ -7,6 +7,9 @@ import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CourseformComponent } from './courseform/courseform.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,11 +17,14 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     CoursesComponent,
-    TeachersComponent
+    TeachersComponent,
+    CourseformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule ,
     HttpClientModule
   ],
   providers: [],
