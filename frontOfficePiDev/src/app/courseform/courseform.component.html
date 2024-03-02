@@ -215,16 +215,20 @@
                 <li class="active">Courses</li>
               </ul>
               <form action="#">
-                <input type="text" id="id" class="form-control" placeholder="ID">
-                <input type="text" id="courseName" class="form-control" placeholder="Course Name">
-                <input type="text" id="courseLevel" class="form-control" placeholder="Course Level">
-                <input type="text" id="courseDomain" class="form-control" placeholder="Course Domain">
-                <input type="number" id="courseDuration" class="form-control" placeholder="Course Duration">
-                <input type="date" id="dateAdded" class="form-control" placeholder="dateAdded">
-                <input type="number" id="coursePrice" class="form-control" placeholder="coursePrice">
-                <input id="courseDescription" class="form-control" placeholder="courseDescription">
+                <input type="text" id="id" name="id" [(ngModel)]="id" class="form-control" placeholder="ID">
+                <input type="text" id="courseName" name="courseName" [(ngModel)]="courseName" class="form-control" placeholder="Course Name">
+                <input type="text" id="courseLevel" name="courseLevel"[(ngModel)]="courseLevel" class="form-control" placeholder="Course Level">
+                <input type="text" id="courseDomain" name="courseDomain" [(ngModel)]="courseDomain" class="form-control" placeholder="Course Domain">
+                <input type="number" id="courseDuration" name="courseDuration" [(ngModel)]="courseDuration"class="form-control" placeholder="Course Duration">
+                <input type="date" id="dateAdded" name="dateAdded" [(ngModel)]="dateAdded" class="form-control" placeholder="dateAdded">
+                <input type="number" id="coursePrice" name="coursePrice" [(ngModel)]="coursePrice"class="form-control" placeholder="course Price">
+                <input  type="text" id="courseDescription" name="courseDescription"  [(ngModel)]="courseDescription"class="form-control" placeholder="courseDescription">
               </form>
-            </div>
+
+              <div class="enroll" style="display: flex; justify-content: center;">
+                <a class="btn btn-theme effect btn-sm"  (click)="add()">Add Course</a>
+              </div>
+                          </div>
           </div>
         </div>
       </div>
