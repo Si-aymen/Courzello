@@ -10,9 +10,18 @@
 
     <c-col xs="12" lg="6">
       <c-card class="mb-4">
-        <c-card-header>Doughnut Chart - user Duration</c-card-header>
+        <c-card-header>Doughnut Chart - user Role</c-card-header>
         <c-card-body>
           <c-chart type="doughnut" [data]="chartDoughnutData2"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>Doughnut Chart - user speciality</c-card-header>
+        <c-card-body>
+          <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
         </c-card-body>
       </c-card>
     </c-col>
@@ -26,6 +35,10 @@
         <c-card-body>
           <form cForm>
             <div class="mb-3">
+              <label for="login">Login</label>
+              <input type="text" [(ngModel)]="login" class="form-control" id="login" name="login" placeholder="Enter Login  here">
+            </div>
+            <div class="mb-3">
               <label for="firstName">First Name</label>
               <input type="text" [(ngModel)]="firstName" class="form-control" id="firstName" name="firstName" placeholder="Enter firstName here">
             </div>
@@ -38,9 +51,33 @@
               <input type="text" [(ngModel)]="email" class="form-control" id="email" name="email" placeholder="Enter email here">
             </div>
             <div class="mb-3">
-              <label for="role">Role</label>
-              <input type="text" [(ngModel)]="role" class="form-control" id="role" name="role" placeholder="Enter role here">
-            </div>
+              <label for="role">User Speciality</label>
+              <select
+                [(ngModel)]="role"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="role"
+                name="role"
+              >
+              <option value="TEACHER">Teacher</option>
+              <option value="STUDENT">Student</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </div>
+            <div class="mb-3">
+              <label for="speciality">User Speciality</label>
+              <select
+                [(ngModel)]="speciality"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="speciality"
+                name="speciality"
+              >
+              <option value="INFO">Info</option>
+              <option value="GENIECIVIL">Genie Civil</option>
+            </select>
+          </div>
+
             <button type="submit" class="btn btn-primary mt-4" (click)="add()">Submit</button>
           </form>
         </c-card-body>
@@ -57,11 +94,12 @@
             <table class="table">
               <thead class="thead-light">
                 <tr>
-                  <th>ID or Login</th>
+                  <th>ID</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Email</th>
                   <th>Role</th>
+                  <th> speciality</th>
                   <th>Options</th>
                 </tr>
               </thead>
@@ -71,12 +109,13 @@
                   <td>
                     <div>{{ user.firstName }}</div>
                     <div class="small text-medium-emphasis text-nowrap">
-                      <span>Level: {{ user.lastName }}</span>
+                      <span>Login: {{ user.login }}</span>
                     </div>
                   </td>
                   <td>{{ user.lastName }}</td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.role }}</td>
+                  <td>{{ user.speciality }}</td>
                   <td>
                     <button cButton>Edit</button> <!-- (click)="edituser(user)"-->  &nbsp;
                     <button cButton>Delete</button> <!--(click)="deleteuser(user)" -->

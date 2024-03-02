@@ -1,6 +1,5 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppModule } from 'src/app/app.module';
 
 
 @Component({
@@ -14,15 +13,18 @@ export class UserComponent implements OnInit {
 
   userArray: any[] = [];
   id: String = "";
+  login:string="";
   firstName: String = "";
   lastName: string = "";
   dateAdded: Date =new Date();
   email: string = "";
   role : string = "" ; 
+  speciality:string="";
   CurrentuserID = "";
   chartDoughnutData :any ;
   chartDoughnutData2 :any ;
   chartBarData: any;
+
 
 
   constructor(private http: HttpClient) {
@@ -44,22 +46,26 @@ export class UserComponent implements OnInit {
   }
 
   add() {
+    
     let bodyData = {
-      "id" : this.id ,
+      "login":this.login,
       "firstName": this.firstName,
       "lastName": this.lastName,
       "email": this.email,
-      "role": this.role
+      "role": this.role,
+      "speciality":this.speciality
     };
 
     this.http.post("http://localhost:8090/pi/users/Save/user", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
       console.log(resultData);
       alert("user added Successfully");
       this.GetAlluser();
+      this.login='';
       this.firstName = '';
       this.lastName = '';
       this.email = '';
       this.role ='';
+      this.speciality='';
       
 
     });
@@ -99,7 +105,7 @@ export class UserComponent implements OnInit {
   generateChartDoughnutData() {
     const nameCounts: { [name: string]: number } = {};
     this.userArray.forEach(user => {
-      const name = user.userLevel;
+      const name = user.speciality;
       nameCounts[name] = (nameCounts[name] || 0) + 1;
     });
 

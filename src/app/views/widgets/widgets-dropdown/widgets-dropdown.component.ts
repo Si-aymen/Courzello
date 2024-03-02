@@ -19,25 +19,17 @@ import { HttpClient } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
-  CountUsers : number =0;
   userArray : any ;
+  courseArray : any ; 
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,private http: HttpClient
   ) {
-    this.countUsers();
     this.GetAlluser();
+    this.GetAllcourse();
+
   }
 
-  countUsers() {
-    this.http.get("http://localhost:8090/pi/users/countUsers").subscribe((resultData: any) => {
-      console.log(resultData);
-      this.CountUsers = resultData;
-
-
-    
-    });
-  }
 
   
   GetAlluser() {
@@ -45,6 +37,15 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
       console.log(resultData);
       this.userArray = resultData;
 
+
+    
+    });
+  }
+
+  GetAllcourse() {
+    this.http.get("http://localhost:8090/pi/courses/retrieve-courses").subscribe((resultData: any) => {
+      console.log(resultData);
+      this.courseArray = resultData;
 
     
     });

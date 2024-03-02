@@ -54,7 +54,6 @@ import { ForumComponent } from './views/forum/forum.component';
 import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
 import { UserComponent } from '../app/views/user/user.component';
-import { PaginationsComponent } from '../app/views/base/paginations/paginations.component';
 
 
 

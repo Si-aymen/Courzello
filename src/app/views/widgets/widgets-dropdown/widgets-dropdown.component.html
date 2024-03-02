@@ -6,9 +6,8 @@
       title="Users"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        {{userArray.length}}
         <!--<span class="fs-6 fw-normal">(-12.4% <svg cIcon name="cilArrowBottom"></svg>) </span>-->
-        <span> number of users</span>
+        <span>  users : {{userArray.length}}  </span>
         
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
@@ -41,9 +40,10 @@
       color="info"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        <span>$6.200</span>
+        <span>Courses : </span>
         <span class="fs-6 fw-normal">
-          (40.9%<svg cIcon name="cilArrowTop"></svg>)
+          {{courseArray.length}}
+          <!--(40.9%<svg cIcon name="cilArrowTop"></svg>)-->
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
