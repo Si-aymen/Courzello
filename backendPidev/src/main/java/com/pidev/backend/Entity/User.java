@@ -18,6 +18,7 @@ import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -36,6 +37,7 @@ public class User {
     private Date dateOfBirth;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private Speciality speciality ;
 
     // Association classroom
     @DBRef

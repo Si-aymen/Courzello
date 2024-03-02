@@ -1,5 +1,6 @@
 package com.pidev.backend.Controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.pidev.backend.Entity.User;
@@ -7,12 +8,12 @@ import com.pidev.backend.Service.UserService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
+@AllArgsConstructor
 
+@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
     private UserService userService;
 
     @GetMapping("/GetAllUsers")
@@ -40,9 +41,6 @@ public class UserController {
         userService.deleteUser(login);
     }
 
-    @GetMapping("/countUsers")
-    public  long countUsers(){
-        return userService.countUsers();
-    }
+
 }
 

@@ -45,8 +45,5 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(login);
     }
 
-    @Override
-    public long countUsers() {
-        return userRepository.count() ;
-    }
+
 }

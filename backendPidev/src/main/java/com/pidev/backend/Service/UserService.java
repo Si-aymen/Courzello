@@ -9,6 +9,4 @@ public interface UserService {
     User createUser(User user);
     User updateUser(String login, User user);
     void deleteUser(String login);
-
-    long countUsers();
 }
