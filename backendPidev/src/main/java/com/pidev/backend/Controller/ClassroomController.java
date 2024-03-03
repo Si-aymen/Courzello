@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
+@CrossOrigin(origins = "*", exposedHeaders="Access-Control-Allow-Origin" )
 @RestController
 @AllArgsConstructor
 @RequestMapping("/classrooms")
@@ -19,6 +19,10 @@ public class ClassroomController {
     @GetMapping
     public List<Classroom> getAllClassroom() {
         return classroomService.GetAllClassrooms();
+    }
+    @GetMapping("/GetClassroom/{ClassroomId}")
+    public Classroom getClassroomById(@PathVariable("ClassroomId")String classroomid ) {
+        return classroomService.GetById(classroomid);
     }
 
     @DeleteMapping("/DeleteClassroom/{ClassName}")
@@ -37,10 +41,10 @@ public class ClassroomController {
         return classroomService.AddClassroom(classroom);
     }
 
-    @PutMapping("/AddTeachers/{IDClassroom}")
-    public Classroom AddNewTeachersToClassroom(@PathVariable("IDClassroom") Long id,@RequestBody List<User> teachers) {
-        return classroomService.AddNewTeachersToClassroom(id,teachers);
-    }
+//    @PutMapping("/AddTeachers/{IDClassroom}")
+//    public Classroom AddNewTeachersToClassroom(@PathVariable("IDClassroom") Long id,@RequestBody List<User> teachers) {
+//        return classroomService.AddNewTeachersToClassroom(id,teachers);
+//    }
     @PutMapping("/AddTeachers/{IDClassroom}/{Logins}")
     public void AddTeachersToClassroom(@PathVariable("IDClassroom") String id,@PathVariable("Logins") List<String> logins) {
        classroomService.AddTeachersToClassroom(id, logins);

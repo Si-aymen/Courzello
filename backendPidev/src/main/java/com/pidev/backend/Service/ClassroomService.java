@@ -13,7 +13,7 @@ public interface ClassroomService {
     Classroom UpdateClassroom(Classroom classroom);
     void DeleteClassroom(String Name);
 
-    public Classroom AddNewTeachersToClassroom(Long IdClassroom , List<User> ListeTeacher) ;
+    //public Classroom AddNewTeachersToClassroom(Long IdClassroom , List<User> ListeTeacher) ;
     public void AddTeachersToClassroom(String IdClassroom , List<String> ListeTeacherLogin) ;
     public void AddStudnetsToClassroom(String IdClassroom , List<String> ListeStudentsLogin) ;
 
@@ -22,6 +22,8 @@ public interface ClassroomService {
     public void AddCoursesToClassroom (String IdClassroom , List<String> ListeCourseesID) ;
 
     //List<Course> GetAllCoursesOfClassroom(String ClassroomId);
+
+    Classroom GetById(String ClassroomId) ;
 
 
 }
