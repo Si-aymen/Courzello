@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { cibFacebook, cibLinkedin, cibTwitter } from '@coreui/icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-classroom',
@@ -21,7 +21,7 @@ export class ClassroomComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private http: HttpClient, private changeDetectorRef: ChangeDetectorRef,private router: Router) {
     this.GetAllClassroom();
 
   }
@@ -114,8 +114,9 @@ export class ClassroomComponent implements OnInit {
     return colors;
   }
 
-
-
+  details(id: string): void {
+    this.router.navigate(['/classroom-details', id]);
+  }
 
 
 

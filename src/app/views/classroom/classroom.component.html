@@ -138,12 +138,13 @@
                 <td class="text-center">{{ classroom.speciality }}</td>
                 <td>
                   <button
-                    type="button"
-                    class="btn btn-danger"
-                    (click)="setDelete(classroom)"
-                  >
-                    Delete
-                  </button>
+                  type="button"
+                  class="btn btn-primary"
+                  [routerLink]="'/Classroom/Details/'+ classroom.id"
+                >
+                  Details 
+                </button>
+                
                 </td>
               </tr>
             </tbody>

@@ -14,6 +14,7 @@ import { ClassroomComponent } from './views/classroom/classroom.component';
 import { ChapterComponent } from './views/chapter/chapter.component';
 import { ReclamationComponent } from './views/reclamation/reclamation.component';
 import { UserComponent } from './views/user/user.component';
+import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
 
 
 
@@ -63,6 +64,12 @@ const routes: Routes = [
         path: 'reclamations',
         component:ReclamationComponent ,
       },
+
+      {
+        path: 'Classroom/Details/:id', 
+        component: ClassroomDetailsComponent, 
+      },
+
       {
         path: 'theme',
         loadChildren: () =>
@@ -110,6 +117,7 @@ const routes: Routes = [
       },
     ]
   },
+
   {
     path: '404',
     component: Page404Component,

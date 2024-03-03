@@ -54,6 +54,8 @@ import { ForumComponent } from './views/forum/forum.component';
 import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
 import { UserComponent } from '../app/views/user/user.component';
+import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
+
 
 
 
@@ -77,7 +79,9 @@ const APP_CONTAINERS = [
     CourseComponent,
     ChapterComponent,
     ForumComponent,
-    ReclamationComponent
+    ReclamationComponent,
+    ClassroomDetailsComponent
+
 
   ],
   imports: [
@@ -131,7 +135,8 @@ const APP_CONTAINERS = [
     APP_CONTAINERS,
     ClassroomComponent,
     UserComponent,
-    ForumComponent
+    ForumComponent,
+    ClassroomDetailsComponent
 ] 
 })
 export class AppModule {
