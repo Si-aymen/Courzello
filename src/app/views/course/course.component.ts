@@ -1,6 +1,5 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppModule } from 'src/app/app.module';
 
 
 @Component({
@@ -25,6 +24,7 @@ export class CourseComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.GetAllcourse();
+    
   }
 
   ngOnInit(): void {}
@@ -85,7 +85,6 @@ export class CourseComponent implements OnInit {
       },
       (error) => {
         console.error("Error adding course:", error);
-        // Handle error as needed
       }
     );
   }

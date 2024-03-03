@@ -1,0 +1,52 @@
+<p>course-details works!</p>
+
+<c-row>
+
+ <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Course Details </c-card-header>
+      <c-card-body>
+        <div class="details-row">
+          <span class="details-label">Course ID:</span>
+          <span class="details-value">{{ course.id }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Course Name:</span>
+          <span class="details-value">{{ course.courseName }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">course Level:</span>
+          <span class="details-value">{{ course.courseLevel }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Course Duration :</span>
+          <span class="details-value">{{ course.courseDuration }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Course Price:</span>
+          <span class="details-value">{{ course.coursePrice }}</span>
+        </div>    
+        <div>
+            <button
+            type="button"
+            class="btn btn-primary"
+          >
+            delete  
+          </button>
+          &nbsp;
+          <button
+          type="button"
+          class="btn btn-primary"
+        >
+          edit  
+        </button>
+        <br>
+        <br>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+
+</c-row>
+

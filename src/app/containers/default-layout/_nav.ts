@@ -42,6 +42,10 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-pencil' }
   },
   {
+    title: true,
+    name: 'Chat part'
+  },
+  {
     name: 'Conversations',
     url: 'conversation',
     iconComponent: { name: 'cil-speech' }
@@ -54,6 +58,11 @@ export const navItems: INavData[] = [
   {
     name: 'Forum',
     url: 'forum',
+    iconComponent: { name: 'cil-notes' }
+  },  
+  {
+    name: 'GPT',
+    url: 'GPT',
     iconComponent: { name: 'cil-notes' }
   },
   {
@@ -75,6 +84,9 @@ export const navItems: INavData[] = [
     name: 'Components',
     title: true
   },
+
+
+
   {
     name: 'Base',
     url: '/base',

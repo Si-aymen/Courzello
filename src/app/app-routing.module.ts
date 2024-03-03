@@ -15,6 +15,7 @@ import { ChapterComponent } from './views/chapter/chapter.component';
 import { ReclamationComponent } from './views/reclamation/reclamation.component';
 import { UserComponent } from './views/user/user.component';
 import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
+import { CourseDetailsComponent  } from './views/course-details/course-details.component';
 
 
 
@@ -68,6 +69,10 @@ const routes: Routes = [
       {
         path: 'Classroom/Details/:id', 
         component: ClassroomDetailsComponent, 
+      },
+      {
+        path: 'Course/Details/:id', 
+        component: CourseDetailsComponent, 
       },
 
       {
