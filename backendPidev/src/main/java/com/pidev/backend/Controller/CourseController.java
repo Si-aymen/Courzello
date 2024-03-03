@@ -1,6 +1,7 @@
 package com.pidev.backend.Controller;
 
 import com.pidev.backend.Entity.Course;
+import com.pidev.backend.Entity.User;
 import com.pidev.backend.Service.CourseService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,13 @@ courseService.deleteCourse(courseId);
     @PutMapping("/course-UploadPDF/{course-id}")
     public void uploadPDF(@PathVariable("course-id") String courseId, @RequestParam("file") MultipartFile file) {
         courseService.uploadPdf(file, courseId);
+    }
+
+
+    @GetMapping("/classroom/{classroomId}")
+    public List<Course> getCoursesByClassroom(@PathVariable String classroomId) {
+        List<Course> courses = courseService.getCoursessByClassroom(classroomId);
+        return  courses ;
     }
 
 

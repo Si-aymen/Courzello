@@ -1,7 +1,7 @@
 package com.pidev.backend.Controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Service.UserService;
@@ -39,6 +39,13 @@ public class UserController {
     @DeleteMapping("/{login}")
     public void deleteUser(@PathVariable String login) {
         userService.deleteUser(login);
+    }
+
+
+    @GetMapping("/classroom/{classroomId}")
+    public List<User> getUsersByClassroom(@PathVariable String classroomId) {
+        List<User> users = userService.getUsersByClassroom(classroomId);
+        return  users ;
     }
 
 

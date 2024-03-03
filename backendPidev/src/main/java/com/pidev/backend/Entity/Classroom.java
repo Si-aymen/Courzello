@@ -43,4 +43,9 @@ public class Classroom {
     @JsonIgnore
     private Set<User> studnets  =new HashSet<>();
 
+    // association User courses
+    @DBRef
+    @JsonIgnore
+    private Set<Course> courses  =new HashSet<>();
+
 }

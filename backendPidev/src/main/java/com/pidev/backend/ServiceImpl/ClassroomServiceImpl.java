@@ -1,9 +1,11 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Classroom;
+import com.pidev.backend.Entity.Course;
 import com.pidev.backend.Entity.Role;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.ClassroomRepository;
+import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.ClassroomService;
 import lombok.AllArgsConstructor;
@@ -19,6 +21,7 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     ClassroomRepository classroomRepository ;
     UserRepository userRepository ;
+    CourseRepository courseRepository ;
     @Override
     public List<Classroom> GetAllClassrooms() {
         return classroomRepository.findAll() ;     }
@@ -92,6 +95,24 @@ public class ClassroomServiceImpl implements ClassroomService {
         }
 
     }
+
+    @Override
+    public void AddCoursesToClassroom(String IdClassroom, List<String> ListeCourseesID) {
+        Classroom c = classroomRepository.getClassroomByClassroomName(IdClassroom);
+        System.out.println(c.getId());
+
+        for (String s : ListeCourseesID) {
+            Course course = courseRepository.findById(s).get();
+            System.out.println(course.getCourseName());
+            course.getClassrooms().add(c);
+            courseRepository.save(course);
+            c.getCourses().add(course);
+            classroomRepository.save(c);
+
+        }
+
+    }
+
 
 
 }

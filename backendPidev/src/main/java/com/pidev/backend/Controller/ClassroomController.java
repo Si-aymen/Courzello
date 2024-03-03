@@ -51,4 +51,12 @@ public class ClassroomController {
     }
 
 
+    @PutMapping("/AddCourses/{IDClassroom}/{coursesID}")
+    public void addCoursesToClassroom(@PathVariable("IDClassroom") String id,@PathVariable("coursesID") List<String> coursesID) {
+        classroomService.AddCoursesToClassroom(id, coursesID);
+    }
+
+
+
+
 }

@@ -32,8 +32,12 @@ public class Course {
     //upload course
     private String pdfUrl;
     private String videoUrl;
+
     @DBRef
     private Set<Chapter> chapters = new HashSet<>();
+
+    @DBRef
+    private Set<Classroom> classrooms = new HashSet<>();
 
 
 

@@ -1,6 +1,8 @@
 package com.pidev.backend.ServiceImpl;
 
+import com.pidev.backend.Entity.Classroom;
 import com.pidev.backend.Entity.Course;
+import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Service.CourseService;
 import lombok.AllArgsConstructor;
@@ -11,6 +13,7 @@ import java.io.IOException; // Added import
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @AllArgsConstructor
@@ -79,4 +82,25 @@ public class CourseServiceImpl implements CourseService {
             throw new RuntimeException("Failed to store the file", e);
         }
     }
+
+    @Override
+    public List<Course> getCoursessByClassroom(String classroomId) {
+
+        List<Course> Courses = courseRepository.findAll();
+        List<Course> CoursesInClassroom = new ArrayList<>();
+        for (Course Course : Courses) {
+            for (Classroom classroom : Course.getClassrooms()) {
+                if (classroom.getId().equals(classroomId)) {
+                    CoursesInClassroom.add(Course);
+                    break;
+                }
+            }
+        }
+        return CoursesInClassroom;
+
+
+    }
+
+
+
 }
