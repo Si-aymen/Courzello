@@ -15,4 +15,6 @@ public interface CourseService {
     public void uploadPdf(MultipartFile file, String courseId) ;
 
     public List<Course> getCoursessByClassroom(String classroomId) ;
+
+    Course getCourseById(String courseId) ;
 }

@@ -101,6 +101,10 @@ public class CourseServiceImpl implements CourseService {
 
     }
 
+    @Override
+    public Course getCourseById(String courseId) {
+        return courseRepository.findById(courseId).get() ;
+    }
 
 
 }
