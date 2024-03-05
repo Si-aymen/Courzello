@@ -21,23 +21,27 @@ export class CourseDetailsComponent implements OnInit {
   chartDoughnutData :any ;
   chartDoughnutData2 :any ;
   chartBarData: any;
+  chapterArray: any ; 
 
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.GetCourseById();
+    this.GetChaptersBycourse();
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.CurrentcourseID = params['id']; 
       this.GetCourseById(); 
+      this.GetChaptersBycourse();
+
     });
   }
   GetCourseById() {
     this.http.get("http://localhost:8090/pi/courses/GetCourseById/"+ this.CurrentcourseID ).subscribe((resultData: any) => {
       console.log(resultData);
       this.course = resultData;
-      this.generateChartBarData();
+     // this.generateChartBarData();
     
     });
   }
@@ -45,6 +49,41 @@ export class CourseDetailsComponent implements OnInit {
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 
+  GetChaptersBycourse() {
+    this.http.get("http://localhost:8090/pi/chapters/Course/"+ this.CurrentcourseID ).subscribe((resultData: any) => {
+      console.log(resultData);
+      this.chapterArray = resultData;
+      this.generateChartDoughnutData();
+    
+    });
+  }
+
+  generateChartDoughnutData() {
+    const nameCounts: { [name: string]: number } = {};
+    this.chapterArray.forEach((chapter:any) => {
+      const name = chapter.duration;
+      nameCounts[name] = (nameCounts[name] || 0) + 1;
+    });
+
+    this.chartDoughnutData = {
+      labels: Object.keys(nameCounts),
+      datasets: [{
+        data: Object.values(nameCounts),
+        backgroundColor: this.generateRandomColors(Object.keys(nameCounts).length),
+        hoverBackgroundColor: this.generateRandomColors(Object.keys(nameCounts).length)
+      }]
+    };
+  }
+
+  generateRandomColors(numColors: number): string[] {
+    const colors: string[] = [];
+    for (let i = 0; i < numColors; i++) {
+      colors.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+    }
+    return colors;
+  }
+
+  /*
   generateChartBarData() {
     const monthlyCounts: number[] = new Array(12).fill(0); 
     this.course.forEach((course:any) => {
@@ -63,5 +102,7 @@ export class CourseDetailsComponent implements OnInit {
       ]
     };
   }
+  */
+
 
 }
