@@ -26,18 +26,24 @@ export class ReclamationComponent implements OnInit{
 
 
 
-
+  averageResolutionTime: number=0;
+  pendingReclamationsCount: number=0;
   CurrentReclamationID = "";
   chartDoughnutData :any ;
   chartDoughnutData2 : any  ;
+  advancedStatistics: any;
+
 
 
   constructor(private http: HttpClient) {
     this.GetAllReclamation();
+    this.getAdvancedStatistics();
+
   }
 
   ngOnInit(): void {}
   
+
   GetAllReclamation() {
     this.http.get("http://localhost:8090/pi/reclamations/get_all").subscribe((resultData: any) => {
       console.log(resultData);
@@ -55,6 +61,8 @@ export class ReclamationComponent implements OnInit{
     this.priority = 0;
     this.creationDate = '';
     this.expectedResolutionDate = '';
+   // this.averageResolutionTime=0;
+    //this.pendingReclamationsCount=0;
   }
 
   
@@ -88,16 +96,17 @@ export class ReclamationComponent implements OnInit{
     });
   }
 
-  updateReclamation(reclamationId: string, updatedReclamation: any) {
-    this.http.put(`http://localhost:8090/pi/reclamations/put/${reclamationId}`, updatedReclamation)
+  updateReclamation(reclamationID: string, updatedReclamation: any) {
+    const idString: string = reclamationID.toString();
+    this.http.put(`http://localhost:8090/pi/reclamations/put/${idString}`, updatedReclamation)
       .subscribe((resultData: any) => {
         console.log(resultData);
         alert('Reclamation updated successfully');
         this.GetAllReclamation();
       });
   }
-  deleteReclamation(reclamationId: string) {
-    this.http.delete(`http://localhost:8090/pi/reclamations/delete/${reclamationId}`)
+  deleteReclamation(reclamationID: string) {
+    this.http.delete(`http://localhost:8090/pi/reclamations/delete/${reclamationID}`)
       .subscribe((resultData: any) => {
         console.log(resultData);
         alert('Reclamation deleted successfully');
@@ -145,6 +154,14 @@ export class ReclamationComponent implements OnInit{
       colors.push('#' + Math.floor(Math.random() * 16777215).toString(16));
     }
     return colors;
+  }
+  
+  
+  getAdvancedStatistics() {
+    this.http.get("http://localhost:8090/pi/reclamations/advanced_statistics").subscribe((resultData: any) => {
+      console.log(resultData);
+      this.advancedStatistics = resultData;
+    });
   }
 
 
