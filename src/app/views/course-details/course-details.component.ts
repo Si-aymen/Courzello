@@ -37,8 +37,31 @@ export class CourseDetailsComponent implements OnInit {
     this.http.get("http://localhost:8090/pi/courses/GetCourseById/"+ this.CurrentcourseID ).subscribe((resultData: any) => {
       console.log(resultData);
       this.course = resultData;
+      this.generateChartBarData();
     
     });
+  }
+
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+
+  generateChartBarData() {
+    const monthlyCounts: number[] = new Array(12).fill(0); 
+    this.course.forEach((course:any) => {
+      const monthIndex = new Date(course.dateAdded).getMonth();
+      monthlyCounts[monthIndex]++;
+    });
+
+    this.chartBarData = {
+      labels: this.months,
+      datasets: [
+        {
+          label: 'Number of Courses per month',
+          backgroundColor: '#f87979',
+          data: monthlyCounts
+        }
+      ]
+    };
   }
 
 }
