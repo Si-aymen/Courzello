@@ -1,192 +1,236 @@
 <!-- title -->
-
 <c-col xs="12">
-    <app-docs-callout href="charts">
-      Stats 
-      <br>
-      <br>
-    </app-docs-callout>
+  <app-docs-callout href="charts">
+    Stats 
+    <br>
+    <br>
+  </app-docs-callout>
+</c-col>
+
+<!-- Stats -->
+<c-row>
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - State </c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+      </c-card-body>
+    </c-card>
   </c-col>
-  <!-- Stats -->
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - Category </c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData2"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<!-- Formulaire -->
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Conversation Form</c-card-header>
+      <c-card-body>
+        <form cForm>
+          <div class="mb-3">
+            <label>Subject</label>
+            <input
+              type="text"
+              [(ngModel)]="subject"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="subject"
+              name="subject"
+              placeholder="Enter subject here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Description</label>
+            <input
+              [(ngModel)]="description"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Enter description here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="state">Reclamation state</label>
+            <select
+              [(ngModel)]="state"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="state"
+              name="state"
+            >
+              <option value="EN_ATTENTE">EN_ATTENTE</option>
+              <option value="EN_COURS">EN_COURS</option>
+              <option value="RESOLUE">RESOLUE</option>
+              <option value="REJETEE">REJETEE</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="category">Reclamation category</label>
+            <select
+              [(ngModel)]="category"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="category"
+              name="category"
+            >
+              <option value="TECHNICAL">TECHNICAL</option>
+              <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+              <option value="SUGGESTION">SUGGESTION</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>User Impact</label>
+            <input
+              type="number"
+              [(ngModel)]="userImpact"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="userImpact"
+              name="userImpact"
+              placeholder="Enter userImpact here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Reclamation Priority</label>
+            <input
+              type="number"
+              [(ngModel)]="priority"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="priority"
+              name="priority"
+              placeholder="Enter priority here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Creation Date</label>
+            <input
+              type="text"
+              [(ngModel)]="creationDate"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="creationDate"
+              name="creationDate"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Expected Resolution Date</label>
+            <input
+              type="text"
+              [(ngModel)]="expectedResolutionDate"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="expectedResolutionDate"
+              name="expectedResolutionDate"
+            />
+          </div>
+          <div class="mb-3">
+            <label>AttachmentData</label>
+            <input
+              [(ngModel)]="data"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="data"
+              name="data"
+              placeholder="Enter here "
+            />
+          </div>
+          <div class="mb-3">
+            <label>AttachmentType</label>
+            <input
+              [(ngModel)]="attachmentType"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="attachmentType"
+              name="attachmentType"
+              placeholder="Enter here "
+            />
+          </div>
+          <div class="mb-3">
+            <label>User</label>
+            <input
+              [(ngModel)]="your_authenticated_user_id"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="your_authenticated_user_id"
+              name="your_authenticated_user_id"
+              placeholder="Enter here "
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary mt-4" 
+            (click)="addReclamation()"
+            >
+            Submit
+          </button>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<!-- Table -->
+<div>
   <c-row>
-    <c-col xs="12" lg="6">
+    <c-col xs>
       <c-card class="mb-4">
-        <c-card-header> Doughnut Chart - State </c-card-header>
+        <c-card-header>Reclamation Table</c-card-header>
         <c-card-body>
-          <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>Reclamation ID</th>
+                <th>Action</th>
+                <th>Subject</th>
+                <th>Description</th>
+                <th>State</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>User Impact</th>
+                <th>Creation Date</th>
+                <th>Expected Resolution Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let reclamation of reclamationArray; index as i">
+                <td>{{ reclamation.reclamationID }}</td>
+                <td>
+                  <button class="btn btn-info" (click)="updateReclamation(i)">Update</button>
+                  <button class="btn btn-danger" (click)="deleteReclamation(reclamation.reclamationID)">Delete</button>
+                </td>
+                <td>{{ reclamation.subject }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.state }}</td>
+                <td>{{ reclamation.category }}</td>
+                <td>{{ reclamation.priority }}</td>
+                <td>{{ reclamation.userImpact }}</td>
+                <td>{{ reclamation.creationDate }}</td>
+                <td>{{ reclamation.expectedResolutionDate }}</td>
+              </tr>
+            </tbody>
+          </table>
         </c-card-body>
       </c-card>
     </c-col>
-
-
-    <c-col xs="12" lg="6">
-      <c-card class="mb-4">
-        <c-card-header> Doughnut Chart - Category </c-card-header>
-        <c-card-body>
-          <c-chart type="doughnut" [data]="chartDoughnutData2"> </c-chart>
-        </c-card-body>
-      </c-card>
-    </c-col>
-    
   </c-row>
-  
-  <!-- Formulaire -->
-  
-  <c-row>
-      <c-col xs>
-        <c-card class="mb-4">
-          <c-card-header>Conversation Form</c-card-header>
-          <c-card-body>
-            <form cForm>
-             
-    
-              <div class="mb-3">
-                <label>Subject</label>
-                <input
-                  type="text"
-                  [(ngModel)]="subject"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control"
-                  id="subject"
-                  name="subject"
-                  placeholder="Enter subject here "
-                />
-              </div>
-    
-              <div class="mb-3">
-                <label >Description </label>
-               <input
-                  [(ngModel)]="description"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control"
-                  id="description"
-                  name="description"
-                  placeholder="Enter description here "
-  
-              
-                 />
-               
-              </div>
-    
-              <div class="mb-3">
-                <label for="state">Reclamation state </label>
-                <select
-                  [(ngModel)]="state"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control"
-                  id="state"
-                  name="state"
-                >
-                  <option value="DARK">Dark</option>
-                  <option value="LIGHT">Light</option>
-                </select>
-              </div>
+</div>
 
-              <div class="mb-3">
-                <label for="category">Reclamation category </label>
-                <select
-                  [(ngModel)]="category"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control"
-                  id="category"
-                  name="category"
-                >
-                  <option value="DARK">Dark</option>
-                  <option value="LIGHT">Light</option>
-                </select>
-              </div>
-
-              <div class="mb-3">
-                <label >User Impact </label>
-               <input
-                  type="number"
-                  [(ngModel)]="userImpact"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control"
-                  id="userImpact"
-                  name="userImpact"
-                  placeholder="Enter userImpact here "
-  
-              
-                 />
-               
-              </div>
-
-              <div class="mb-3">
-                <label >Reclamtion Priority </label>
-               <input
-                  type="number"
-                  [(ngModel)]="priority"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control"
-                  id="priority"
-                  name="priority"
-                  placeholder="Enter priority here "
-  
-              
-                 />
-               
-              </div>
-    
-              <button
-                type="submit"
-                class="btn btn-primary mt-4"
-                (click)="add()"
-              >
-                Submit
-              </button>
-            </form>
-          </c-card-body>
-        </c-card>
-      </c-col>
-    </c-row>
-  
-  
-  <!-- Table -->
-  
-  <div>
-      <c-row>
-        <c-col xs>
-          <c-card class="mb-4">
-            <c-card-header>Reclamation Table</c-card-header>
-            <c-card-body>
-              <table class="table">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Reclamation ID</th>
-                    <th>Subject</th>
-                    <th>Description</th>
-                    <th>State</th>
-                    <th>Category</th>
-                    <th>Priority</th>
-                    <th>UserImpact</th>
-                
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let reclamation of reclamationArray ; index as i">
-                    <td >{{ reclamation.reclamationID }}</td>
-                    <td>
-                      <div>{{ reclamation.subject}}</div>
-                        <div class="small text-medium-emphasis text-nowrap">
-                        <span>Description: {{ reclamation.description }}</span>
-                      </div>
-                    </td>
-                    <td> {{ reclamation.description }}</td>
-                    <td>{{reclamation.state}}</td>
-                    <td >{{ reclamation.category }}</td>
-                    <td >{{ reclamation.priority }}</td>
-                    <td >{{ reclamation.userImpact }}</td>
-
-                    
-    
-                  </tr>
-                </tbody>
-              </table>
-            </c-card-body>
-          </c-card>
-        </c-col>
-      </c-row>
-    </div>
-    
-    
