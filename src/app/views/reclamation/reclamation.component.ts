@@ -17,20 +17,33 @@ export class ReclamationComponent implements OnInit{
   category: string = "";
   userImpact: number = 0 ;
   priority: number = 0;
+  creationDate: string = "2022-05-28T10:00:00";  // Assuming the creation date is a string, adjust as needed
+  expectedResolutionDate: string = "2022-05-28T10:00:00";
+
+  your_authenticated_user_id: string = ""; // Initialize with a default value or retrieve dynamically
+  attachmentType: string = 'IMAGE'; // Initialize with a default value or retrieve dynamically
+  data: string = ""; // Initialize with a default value or retrieve dynamically
 
 
 
+  averageResolutionTime: number=0;
+  pendingReclamationsCount: number=0;
   CurrentReclamationID = "";
   chartDoughnutData :any ;
   chartDoughnutData2 : any  ;
+  advancedStatistics: any;
+
 
 
   constructor(private http: HttpClient) {
     this.GetAllReclamation();
+    this.getAdvancedStatistics();
+
   }
 
   ngOnInit(): void {}
   
+
   GetAllReclamation() {
     this.http.get("http://localhost:8090/pi/reclamations/get_all").subscribe((resultData: any) => {
       console.log(resultData);
@@ -39,34 +52,67 @@ export class ReclamationComponent implements OnInit{
       this.generateChartDoughnutData2(); 
     });
   }
+  resetReclamationForm() {
+    this.subject = '';
+    this.description = '';
+    this.state = '';
+    this.category = '';
+    this.userImpact = 0;
+    this.priority = 0;
+    this.creationDate = '';
+    this.expectedResolutionDate = '';
+   // this.averageResolutionTime=0;
+    //this.pendingReclamationsCount=0;
+  }
 
   
-  add() {
-    let bodyData = {
-      "subject": this.subject,
-      "description": this.description,
-      "state": this.state,
-      "category": this.category,
-      "userImpact": this.userImpact,
-      "priority": this.priority
+  addReclamation() {
+    const authenticatedUserId = 'your_authenticated_user_id';
+
+    const bodyData = {
+      "rec": {
+        "subject": this.subject,
+        "description": this.description,
+        "state": this.state,
+        "category": this.category,
+        "userImpact": this.userImpact,
+        "priority": this.priority,
+        "creationDate": this.creationDate,
+        "expectedResolutionDate": this.expectedResolutionDate,
+        "user": { "id": authenticatedUserId }
+      },
+      "att": {
+        "type": this.attachmentType,
+        "data": this.data
+      }
     };
+
+    
 
     this.http.post("http://localhost:8090/pi/reclamations/post", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
       console.log(resultData);
-      alert("reclamation added Successfully");
-      this.GetAllReclamation();
-      this.subject = '';
-      this.description = '';
-      this.state = '';
-      this.category = '';
-      this.userImpact = 0;
-      this.priority = 0;
-
-
+      alert("Reclamation added Successfully");
+      this.resetReclamationForm();
     });
   }
 
-
+  updateReclamation(reclamationID: string, updatedReclamation: any) {
+    const idString: string = reclamationID.toString();
+    this.http.put(`http://localhost:8090/pi/reclamations/put/${idString}`, updatedReclamation)
+      .subscribe((resultData: any) => {
+        console.log(resultData);
+        alert('Reclamation updated successfully');
+        this.GetAllReclamation();
+      });
+  }
+  deleteReclamation(reclamationID: string) {
+    this.http.delete(`http://localhost:8090/pi/reclamations/delete/${reclamationID}`)
+      .subscribe((resultData: any) => {
+        console.log(resultData);
+        alert('Reclamation deleted successfully');
+        this.GetAllReclamation();
+      });
+  }
   generateChartDoughnutData() {
     const nameCounts: { [name: string]: number } = {};
     this.reclamationArray.forEach(reclamation => {
@@ -108,6 +154,14 @@ export class ReclamationComponent implements OnInit{
       colors.push('#' + Math.floor(Math.random() * 16777215).toString(16));
     }
     return colors;
+  }
+  
+  
+  getAdvancedStatistics() {
+    this.http.get("http://localhost:8090/pi/reclamations/advanced_statistics").subscribe((resultData: any) => {
+      console.log(resultData);
+      this.advancedStatistics = resultData;
+    });
   }
 
 
