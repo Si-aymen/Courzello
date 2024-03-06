@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CourseformComponent } from './courseform/courseform.component';
 import { FormsModule } from '@angular/forms';
+import { ClassroomComponent } from './classroom/classroom.component';
+import { ClassroomDetailsComponent } from './classroom-details/classroom-details.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     CoursesComponent,
     TeachersComponent,
-    CourseformComponent
+    CourseformComponent,
+    ClassroomComponent,
+    ClassroomDetailsComponent
   ],
   imports: [
     BrowserModule,
