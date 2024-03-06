@@ -1,5 +1,8 @@
 package com.pidev.backend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public enum Speciality {
-    INFO,GENIECIVIL,Math
+    GENIECIVIL,MATH,IT,DS,ELECTROMECANIQUE,IOT,DESIGN,FR,ANG
 }

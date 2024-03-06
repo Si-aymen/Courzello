@@ -26,6 +26,12 @@ public class UserController {
         return userService.getUserByLogin(login);
     }
 
+    @GetMapping("/get-id/{id}")
+    public User getUserById(@PathVariable String id) {
+        return userService.getUserByLogin(id);
+    }
+
+
     @PostMapping("/Save/user")
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);

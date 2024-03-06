@@ -1,10 +1,12 @@
 package com.pidev.backend.Entity;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -26,23 +28,41 @@ import jakarta.persistence.Id;
 @Document(collection = "users")
 
 public class User {
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", role=" + role +
+                ", speciality=" + speciality +
+                '}';
+    }
 
     @MongoId
     private String id;
+    @Indexed(unique = true)
+    @Id
     private String login ;
     private String password;
     private String firstName;
     private String lastName;
+    @Indexed(unique = true)
     private String email;
     private Date dateOfBirth;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private Speciality speciality ;
+    @Enumerated(EnumType.STRING)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Speciality speciality =null;
 
     // Association classroom
     @DBRef
     private Set<Classroom> classrooms = new HashSet<>();
-
     @DBRef
     private List<Vote> votes = new ArrayList<Vote>();
     @DBRef

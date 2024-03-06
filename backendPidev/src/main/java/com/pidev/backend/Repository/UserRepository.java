@@ -14,6 +14,9 @@ import java.util.Set;
 public interface UserRepository extends MongoRepository<User, String> {
 
     User getUserByLoginAndRole(String login , Role role ) ;
+    User deleteUserByLogin(String login);
+    User findUserByLogin(String login);
+    User findUserByEmail(String email);
 
    // List<User> findAllByClassrooms(String Classrooms) ;
 }

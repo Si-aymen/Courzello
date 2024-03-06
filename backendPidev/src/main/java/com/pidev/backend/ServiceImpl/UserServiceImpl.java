@@ -31,13 +31,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
+        if(userRepository.findUserByEmail(user.getEmail())!=null||userRepository.findUserByLogin(user.getLogin())!=null){
+            throw new IllegalArgumentException("Login or email already exists");
+        }
         return userRepository.save(user);
     }
 
     @Override
     public User updateUser(String login, User user) {
-        if (userRepository.existsById(login)) {
-            user.setLogin(login);
+        User userToUpdate = userRepository.findUserByLogin(login);
+        if (userToUpdate != null) {
+            user.setLogin(userToUpdate.getLogin());
+            user.setId(userToUpdate.getId());
+
             return userRepository.save(user);
         }
         return null;
@@ -45,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(String login) {
-        userRepository.deleteById(login);
+        userRepository.deleteUserByLogin(login);
     }
 
     public List<User> getUsersByClassroom(String classroomId) {
