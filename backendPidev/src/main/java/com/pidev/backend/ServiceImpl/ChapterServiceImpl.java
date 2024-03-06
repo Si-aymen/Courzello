@@ -1,15 +1,13 @@
 package com.pidev.backend.ServiceImpl;
 
-import com.pidev.backend.Entity.Chapter;
-import com.pidev.backend.Entity.Course;
-import com.pidev.backend.Entity.Role;
-import com.pidev.backend.Entity.User;
+import com.pidev.backend.Entity.*;
 import com.pidev.backend.Repository.ChapterRepository;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Service.ChapterService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,5 +53,24 @@ public class ChapterServiceImpl implements ChapterService {
             courseRepository.save(course);
 
         }
+    }
+
+
+
+    public List<Chapter> GetChapterByCourse(String classroomId) {
+
+        List<Chapter> Chapter = chapterRepository.findAll();
+        List<Chapter> ChapterInClassroom = new ArrayList<>();
+        for (Chapter chapter : Chapter) {
+            for (Course course : chapter.getCourses()) {
+                if (course.getId().equals(classroomId)) {
+                    ChapterInClassroom.add(chapter);
+                    break;
+                }
+            }
+        }
+        return ChapterInClassroom;
+
+
     }
 }

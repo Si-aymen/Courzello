@@ -13,4 +13,6 @@ public interface ChapterService {
     public void deleteChapter(String ChapterId);
     public void assignChapterToCourse (List<Chapter> chapterList  , String idCourse);
 
+    public List<Chapter> GetChapterByCourse(String classroomId);
+
 }

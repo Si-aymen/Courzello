@@ -25,5 +25,10 @@ public interface ClassroomService {
 
     Classroom GetById(String ClassroomId) ;
 
+    void DeleteClassroomById(String ClassroomId);
+
+
+
+
 
 }
