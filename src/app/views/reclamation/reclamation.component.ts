@@ -12,6 +12,7 @@ export class ReclamationComponent implements OnInit{
   reclamationArray: any[] = [];
   reclamationID: String = "";
   subject: String = "";
+  chartPieData:any ;
   description: string = "";
   state: string = "";
   category: string = "";
@@ -32,24 +33,31 @@ export class ReclamationComponent implements OnInit{
   chartDoughnutData :any ;
   chartDoughnutData2 : any  ;
   advancedStatistics: any;
+  chartBarData: any;
+
 
 
 
   constructor(private http: HttpClient) {
     this.GetAllReclamation();
     this.getAdvancedStatistics();
+    this.generateChartPieData();
+    this.generateChartBarData();
+
 
   }
 
   ngOnInit(): void {}
-  
+
 
   GetAllReclamation() {
     this.http.get("http://localhost:8090/pi/reclamations/get_all").subscribe((resultData: any) => {
       console.log(resultData);
       this.reclamationArray = resultData;
       this.generateChartDoughnutData();
-      this.generateChartDoughnutData2(); 
+      this.generateChartDoughnutData2();
+      this.generateChartPieData();
+      this.generateChartBarData();
     });
   }
   resetReclamationForm() {
@@ -61,11 +69,11 @@ export class ReclamationComponent implements OnInit{
     this.priority = 0;
     this.creationDate = '';
     this.expectedResolutionDate = '';
-   // this.averageResolutionTime=0;
+    // this.averageResolutionTime=0;
     //this.pendingReclamationsCount=0;
   }
 
-  
+
   addReclamation() {
     const authenticatedUserId = 'your_authenticated_user_id';
 
@@ -87,7 +95,7 @@ export class ReclamationComponent implements OnInit{
       }
     };
 
-    
+
 
     this.http.post("http://localhost:8090/pi/reclamations/post", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
       console.log(resultData);
@@ -96,22 +104,31 @@ export class ReclamationComponent implements OnInit{
     });
   }
 
-  updateReclamation(reclamationID: string, updatedReclamation: any) {
-    const idString: string = reclamationID.toString();
-    this.http.put(`http://localhost:8090/pi/reclamations/put/${idString}`, updatedReclamation)
-      .subscribe((resultData: any) => {
-        console.log(resultData);
-        alert('Reclamation updated successfully');
-        this.GetAllReclamation();
-      });
-  }
+  /* updateReclamation(reclamationID: string, updatedReclamation: any) {
+     this.http.put(http://localhost:8090/pi/reclamations/put/${reclamationID}, updatedReclamation)
+       .subscribe((resultData: any) => {
+         console.log(resultData);
+         alert('Reclamation updated successfully');
+         this.GetAllReclamation();
+       });
+   }*/
   deleteReclamation(reclamationID: string) {
     this.http.delete(`http://localhost:8090/pi/reclamations/delete/${reclamationID}`)
-      .subscribe((resultData: any) => {
+  .subscribe((resultData: any) => {
+      console.log(resultData);
+      alert('Reclamation deleted successfully');
+      this.GetAllReclamation();
+    });
+  }
+
+  updatePriorities() {
+    this.http.put("http://localhost:8090/pi/reclamations/optimize_priorities", {}).subscribe(
+      (resultData: any) => {
         console.log(resultData);
-        alert('Reclamation deleted successfully');
+        alert('Priorities optimized successfully');
         this.GetAllReclamation();
-      });
+      }
+    );
   }
   generateChartDoughnutData() {
     const nameCounts: { [name: string]: number } = {};
@@ -155,8 +172,8 @@ export class ReclamationComponent implements OnInit{
     }
     return colors;
   }
-  
-  
+
+
   getAdvancedStatistics() {
     this.http.get("http://localhost:8090/pi/reclamations/advanced_statistics").subscribe((resultData: any) => {
       console.log(resultData);
@@ -164,5 +181,43 @@ export class ReclamationComponent implements OnInit{
     });
   }
 
+  generateChartPieData() {
+    const nameCounts: { [name: string]: number } = {};
+    this.reclamationArray.forEach(reclamation => {
+      const name = reclamation.subject;
+      nameCounts[name] = (nameCounts[name] || 0) + 1;
+    });
+
+    this.chartPieData = {
+      labels: Object.keys(nameCounts),
+      datasets: [{
+        data: Object.values(nameCounts),
+        backgroundColor: this.generateRandomColors(Object.keys(nameCounts).length),
+        hoverBackgroundColor: this.generateRandomColors(Object.keys(nameCounts).length)
+      }]
+    };
+  }
+
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+
+  generateChartBarData() {
+    const monthlyCounts: number[] = new Array(12).fill(0); // Initialize counts for each month to zero
+    this.reclamationArray.forEach(reclamation => {
+      const monthIndex = new Date(reclamation.creationDate).getMonth();
+      monthlyCounts[monthIndex]++;
+    });
+
+    this.chartBarData = {
+      labels: this.months,
+      datasets: [
+        {
+          label: 'Number of reclamation per month',
+          backgroundColor: '#f87979',
+          data: monthlyCounts
+        }
+      ]
+    };
+  }
 
 }
