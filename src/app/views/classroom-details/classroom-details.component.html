@@ -57,15 +57,10 @@
             type="button"
             class="btn btn-primary"
           >
-            delete  
+            edit  
           </button>
           &nbsp;
-          <button
-          type="button"
-          class="btn btn-primary"
-        >
-          edit  
-        </button>
+          <button  class="btn btn-danger"  (click)="deleteClassroom()">Delete Classroom</button>
         <br>
         <br>
         </div>
@@ -165,7 +160,14 @@
                 <td>{{ course.courseDuration }}</td>
                 <td>{{ course.courseDomain }}</td>
                 <td>
-                  <button cButton >Delete from classroom </button> <!--(click)="deleteCourse(course)" -->
+                  <button cButton >Delete from classroom </button> &nbsp; <!--(click)="deleteCourse(course)" -->
+                  <button
+                  type="button"
+                  class="btn btn-primary"
+                  [routerLink]="'/Course/Details/'+ course.id"
+                >
+                  Details 
+                </button>
                 </td>
 
               </tr>

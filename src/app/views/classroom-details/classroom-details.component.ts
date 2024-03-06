@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-classroom-details',
@@ -23,11 +23,12 @@ export class ClassroomDetailsComponent implements OnInit {
   courseArray : any ;
   chartBarData :any ; 
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.classroomId = params['id']; 
+      this.classroomName = params['classroomName']; 
       this.GetClassroom(); 
       this.GetAllTeachers();
       this.GetAllcourse();
@@ -64,6 +65,20 @@ export class ClassroomDetailsComponent implements OnInit {
       this. generateChartBarData() ;
 
     });
+  }
+
+  deleteClassroom() {
+    this.http.delete("http://localhost:8090/pi/classrooms/DeleteClassroomById/" + this.classroomId).subscribe(
+      () => {
+        console.log('Classroom deleted successfully');
+        alert("Classroom Deleted");
+        this.router.navigate(['/#/Classroom/all']);
+        // Optionally, you can perform any necessary actions after successful deletion
+      },
+      error => {
+        console.error('Error deleting classroom:', error);
+      }
+    );
   }
 
 
