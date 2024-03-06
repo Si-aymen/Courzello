@@ -56,7 +56,7 @@ import { ChapterComponent } from '../app/views/chapter/chapter.component';
 import { UserComponent } from '../app/views/user/user.component';
 import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
 import { CourseDetailsComponent  } from './views/course-details/course-details.component';
-
+import {UserUpdateComponent} from './views/user-update/user-update.component';
 
 
 
@@ -82,7 +82,8 @@ const APP_CONTAINERS = [
     ForumComponent,
     ReclamationComponent,
     ClassroomDetailsComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    UserUpdateComponent,
 
 
   ],
@@ -113,11 +114,11 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule, 
+    NgScrollbarModule,
     FormsModule,
     ChartsModule,
     ChartjsModule,
-    HttpClientModule 
+    HttpClientModule
   ],
   providers: [
     {
@@ -129,9 +130,10 @@ const APP_CONTAINERS = [
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [ 
-    
-    ReclamationComponent,   
+  exports: [
+
+    UserUpdateComponent,
+    ReclamationComponent,
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,
@@ -140,7 +142,7 @@ const APP_CONTAINERS = [
     ForumComponent,
     ClassroomDetailsComponent,
     CourseDetailsComponent
-] 
+]
 })
 export class AppModule {
 }

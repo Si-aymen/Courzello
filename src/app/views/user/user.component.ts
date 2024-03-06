@@ -1,37 +1,36 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrl: './user.component.scss'
+  styleUrls: ['./user.component.scss']
 })
 
 export class UserComponent implements OnInit {
-  
 
   userArray: any[] = [];
-  id: String = "";
-  login:string="";
-  firstName: String = "";
+  id: string = "";
+  login: string = "";
+  password: string = "";
+  firstName: string = "";
   lastName: string = "";
-  dateAdded: Date =new Date();
   email: string = "";
-  role : string = "" ; 
-  speciality:string="";
+  dateOfBirth: Date = new Date();
+  role: string = "";
+  speciality: string = "";
   CurrentuserID = "";
-  chartDoughnutData :any ;
-  chartDoughnutData2 :any ;
+  chartDoughnutData: any;
+  chartDoughnutData2: any;
   chartBarData: any;
 
-
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.GetAlluser();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   GetAlluser() {
     this.http.get("http://localhost:8090/pi/users/GetAllUsers").subscribe((resultData: any) => {
@@ -40,36 +39,94 @@ export class UserComponent implements OnInit {
       this.generateChartDoughnutData();
       this.generateChartDoughnutData2();
       this.generateChartBarData();
-
-    
     });
   }
 
   add() {
-    
+    let bodyData: UserData = {
+      login: this.login,
+      password: this.password,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      role: this.role
+    };
+    if(this.role!='TEACHER')
+    {
+      this.speciality='';
+    }
+    if (this.speciality!='') {
+      bodyData["speciality"] = this.speciality;
+    }
+
+    this.http.post("http://localhost:8090/pi/users/Save/user", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
+      console.log(resultData);
+      alert("User added Successfully");
+      this.GetAlluser();
+      this.clearFormFields();
+    });
+  }
+
+  updateUser(login: string) {
     let bodyData = {
-      "login":this.login,
       "firstName": this.firstName,
       "lastName": this.lastName,
       "email": this.email,
       "role": this.role,
-      "speciality":this.speciality
+      "speciality": this.speciality
     };
 
-    this.http.post("http://localhost:8090/pi/users/Save/user", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
-      console.log(resultData);
-      alert("user added Successfully");
-      this.GetAlluser();
-      this.login='';
-      this.firstName = '';
-      this.lastName = '';
-      this.email = '';
-      this.role ='';
-      this.speciality='';
-      
-
-    });
+    this.http.put(`http://localhost:8090/pi/users/${login}`, bodyData, { responseType: 'text' }).subscribe(
+      (resultData: any) => {
+        console.log(resultData);
+        alert("User updated Successfully");
+        this.GetAlluser();
+        this.clearFormFields();
+      },
+      (error) => {
+        console.error("Error updating user:", error);
+        // Handle error as needed
+      }
+    );
   }
+
+  deleteUser(login: string) {
+    this.http.delete(`http://localhost:8090/pi/users/${login}`).subscribe(
+      (resultData: any) => {
+        console.log(resultData);
+        alert("User deleted Successfully");
+        this.GetAlluser();
+      },
+      (error) => {
+        console.error("Error deleting user:", error);
+        // Handle error as needed
+      }
+    );
+  }
+
+  getUserByLogin(login: string) {
+    this.http.get(`http://localhost:8090/pi/users/${login}`).subscribe(
+      (userData: any) => {
+        console.log(userData);
+        // Do something with the user data, maybe populate a form for editing
+      },
+      (error) => {
+        console.error("Error fetching user:", error);
+        // Handle error as needed
+      }
+    );
+  }
+
+  clearFormFields() {
+    this.login = '';
+    this.password = '';
+    this.firstName = '';
+    this.lastName = '';
+    this.email = '';
+    this.role = '';
+    this.speciality = '';
+  }
+
   onFileSelected(event: any, userId: string) {
     const file: File = event.target.files[0];
     if (file) {
@@ -79,20 +136,15 @@ export class UserComponent implements OnInit {
     }
   }
 
-
   addPDF(userId: string) {
-    // Create form data to include the user ID
     let formData = new FormData();
-  
-    this.http.put("http://localhost:8090/pi/users/Save/user" + userId , formData).subscribe(
+
+    this.http.put(`http://localhost:8090/pi/users/Save/user/${userId}`, formData).subscribe(
       (resultData: any) => {
         console.log(resultData);
-        alert("user added Successfully");
+        alert("User added Successfully");
         this.GetAlluser();
-        this.firstName = '';
-        this.lastName = '';
-        this.email = '';
-        this.role ='';
+        this.clearFormFields();
       },
       (error) => {
         console.error("Error adding user:", error);
@@ -100,7 +152,6 @@ export class UserComponent implements OnInit {
       }
     );
   }
-  
 
   generateChartDoughnutData() {
     const nameCounts: { [name: string]: number } = {};
@@ -118,7 +169,6 @@ export class UserComponent implements OnInit {
       }]
     };
   }
-
 
   generateChartDoughnutData2() {
     const nameCounts: { [name: string]: number } = {};
@@ -145,9 +195,7 @@ export class UserComponent implements OnInit {
     return colors;
   }
 
-
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 
   generateChartBarData() {
     const monthlyCounts: number[] = new Array(12).fill(0); // Initialize counts for each month to zero
@@ -167,9 +215,18 @@ export class UserComponent implements OnInit {
       ]
     };
   }
-
+  openUpdatePage(user: any) {
+    // Assuming you have a route named '/user-update/:id' where ':id' is the user ID
+    this.router.navigate(['user-update/'+user.id]);
+  }
 
 }
-
-
-
+interface UserData {
+  login: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  speciality?: string; // Make speciality field optional
+}

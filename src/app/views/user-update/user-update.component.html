@@ -1,0 +1,68 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>User Table</c-card-header>
+      <c-card-body>
+        <div *ngIf="user">
+          <form cForm (submit)="updateUser()">
+            <div class="mb-3">
+              <label for="login">Login:</label>
+              <input type="text" class="form-control" id="login" name="login" [(ngModel)]="user.login" />
+            </div>
+
+            <div class="mb-3">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" />
+            </div>
+
+            <div class="mb-3">
+              <label for="firstName">First Name:</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" />
+            </div>
+
+            <div class="mb-3">
+              <label for="lastName">Last Name:</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" />
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" />
+            </div>
+
+            <div class="mb-3">
+              <label for="dateOfBirth">Date of Birth:</label>
+              <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" />
+            </div>
+
+            <div class="mb-3">
+              <label for="role">Role:</label>
+              <select class="form-control" id="role" name="role" [(ngModel)]="user.role">
+                <option value="TEACHER">Teacher</option>
+                <option value="STUDENT">Student</option>
+                <option value="ADMIN">Admin</option>
+              </select>
+            </div>
+
+            <div class="mb-3" *ngIf="user.role === 'TEACHER'">
+              <label for="speciality" >Speciality:</label>
+              <select class="form-control" id="speciality" name="speciality" [(ngModel)]="user.speciality" >
+                <option value="IT">IT</option>
+                <option value="GENIECIVIL">Genie Civil</option>
+                <option value="MATH">Math</option>
+                <option value="DS">DS</option>
+                <option value="ELECTROMECANIQUE">Electro Mecanique</option>
+                <option value="IOT">IOT</option>
+                <option value="DESIGN">DESIGN</option>
+                <option value="FR">FR</option>
+                <option value="ANG">ANG</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Update User</button>
+          </form>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

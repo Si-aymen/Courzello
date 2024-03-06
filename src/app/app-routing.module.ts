@@ -16,6 +16,7 @@ import { ReclamationComponent } from './views/reclamation/reclamation.component'
 import { UserComponent } from './views/user/user.component';
 import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
 import { CourseDetailsComponent  } from './views/course-details/course-details.component';
+import {UserUpdateComponent} from "./views/user-update/user-update.component";
 
 
 
@@ -58,6 +59,10 @@ const routes: Routes = [
         component:CourseComponent ,
       },
       {
+        path: 'user-update/:id',
+        component: UserUpdateComponent,
+      },
+      {
         path: 'chapter',
         component:ChapterComponent ,
       },
@@ -67,12 +72,12 @@ const routes: Routes = [
       },
 
       {
-        path: 'Classroom/Details/:id', 
-        component: ClassroomDetailsComponent, 
+        path: 'Classroom/Details/:id',
+        component: ClassroomDetailsComponent,
       },
       {
-        path: 'Course/Details/:id', 
-        component: CourseDetailsComponent, 
+        path: 'Course/Details/:id',
+        component: CourseDetailsComponent,
       },
 
       {
