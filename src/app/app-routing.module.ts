@@ -17,6 +17,10 @@ import { UserComponent } from './views/user/user.component';
 import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
 import { CourseDetailsComponent  } from './views/course-details/course-details.component';
 import {UserUpdateComponent} from "./views/user-update/user-update.component";
+import {MainComponent} from './chat/main/main.component';
+import { UserChatComponent } from './chat/user-chat/user-chat.component';
+import { ChatComponent } from './chat/chat/chat.component';
+
 
 
 
@@ -79,7 +83,18 @@ const routes: Routes = [
         path: 'Course/Details/:id',
         component: CourseDetailsComponent,
       },
-
+      {
+        path: 'GPT',
+        component: MainComponent,
+      },
+      {
+        path: 'GPT/user',
+        component: UserChatComponent,
+      },
+      {
+        path: 'GPT/chat',
+        component: ChatComponent,
+      },
       {
         path: 'theme',
         loadChildren: () =>

@@ -57,6 +57,10 @@ import { UserComponent } from '../app/views/user/user.component';
 import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
 import { CourseDetailsComponent  } from './views/course-details/course-details.component';
 import {UserUpdateComponent} from './views/user-update/user-update.component';
+import {UserChatComponent} from './chat/user-chat/user-chat.component';
+import {ChatComponent} from './chat/chat/chat.component';
+import {MainComponent} from './chat/main/main.component';
+
 
 
 
@@ -84,6 +88,9 @@ const APP_CONTAINERS = [
     ClassroomDetailsComponent,
     CourseDetailsComponent,
     UserUpdateComponent,
+    UserChatComponent,
+    ChatComponent,
+    MainComponent
 
 
   ],
