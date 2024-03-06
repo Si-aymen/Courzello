@@ -118,5 +118,10 @@ public class ClassroomServiceImpl implements ClassroomService {
         return classroomRepository.findById(ClassroomId).get();
     }
 
+    @Override
+    public void DeleteClassroomById(String ClassroomId) {
+        classroomRepository.deleteById(ClassroomId);
+    }
+
 
 }
