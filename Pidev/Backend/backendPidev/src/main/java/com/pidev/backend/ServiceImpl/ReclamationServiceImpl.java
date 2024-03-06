@@ -100,7 +100,7 @@ public class ReclamationServiceImpl implements ReclamationService {
         int newPriority = basePriority + (int) (weightResolutionTime * resolutionTimeInHours + weightUserImpact * userImpact);
 
         // Limiter la priorité à une plage spécifique si nécessaire
-        return Math.min(Math.max(newPriority, 0), 100);
+        return Math.min(Math.max(newPriority, 0), 1000);
     }
 
     private int calculateResolutionTimeInHours(Reclamation reclamation) {
