@@ -553,6 +553,154 @@
 </div>
 <!-- End Courses Area -->
 
+
+<footer class="bg-dark text-light">
+  <div class="container">
+    <div class="f-items default-padding">
+      <h2>Reclamation</h2>
+        <form cForm>
+          <div class="mb-3">
+            <label>Subject</label>
+            <input
+              type="text"
+              [(ngModel)]="subject"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="subject"
+              name="subject"
+              placeholder="Enter subject here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Description</label>
+            <input
+              [(ngModel)]="description"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Enter description here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="state">Reclamation state</label>
+            <select
+              [(ngModel)]="state"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="state"
+              name="state"
+            >
+              <option value="EN_ATTENTE">EN_ATTENTE</option>
+              <option value="EN_COURS">EN_COURS</option>
+              <option value="RESOLUE">RESOLUE</option>
+              <option value="REJETEE">REJETEE</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="category">Reclamation category</label>
+            <select
+              [(ngModel)]="category"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="category"
+              name="category"
+            >
+              <option value="TECHNICAL">TECHNICAL</option>
+              <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+              <option value="SUGGESTION">SUGGESTION</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>User Impact</label>
+            <input
+              type="number"
+              [(ngModel)]="userImpact"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="userImpact"
+              name="userImpact"
+              placeholder="Enter userImpact here "
+            />
+          </div>
+
+          
+
+          <div class="mb-3">
+            <label>Creation Date</label>
+            <input
+              type="text"
+              [(ngModel)]="creationDate"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="creationDate"
+              name="creationDate"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Expected Resolution Date</label>
+            <input
+              type="text"
+              [(ngModel)]="expectedResolutionDate"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="expectedResolutionDate"
+              name="expectedResolutionDate"
+            />
+          </div>
+          <div class="mb-3">
+            <label>AttachmentData</label>
+            <input
+              [(ngModel)]="data"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="data"
+              name="data"
+              placeholder="Enter here "
+            />
+          </div>
+          <div class="mb-3">
+            <label>AttachmentType</label>
+            <input
+              [(ngModel)]="attachmentType"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="attachmentType"
+              name="attachmentType"
+              placeholder="Enter here "
+            />
+          </div>
+          <div class="mb-3">
+            <label>User</label>
+            <input
+              [(ngModel)]="your_authenticated_user_id"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="your_authenticated_user_id"
+              name="your_authenticated_user_id"
+              placeholder="Enter here "
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-md btn-gradient"         
+           (click)="addReclamation()"
+            >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+      </footer>
+
 <!-- Start Fun Factor Area
 ============================================= -->
 <div class="fun-factor-area overflow-hidden bg-gradient text-light default-padding">
