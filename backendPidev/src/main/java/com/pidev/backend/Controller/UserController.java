@@ -1,11 +1,14 @@
 package com.pidev.backend.Controller;
 
+import com.pidev.backend.Entity.Role;
+import com.pidev.backend.Repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Service.UserService;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @AllArgsConstructor
@@ -15,6 +18,7 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+    private UserRepository userRepository;
 
     @GetMapping("/GetAllUsers")
     public List<User> getAllUsers() {
@@ -45,6 +49,13 @@ public class UserController {
     @DeleteMapping("/{login}")
     public void deleteUser(@PathVariable String login) {
         userService.deleteUser(login);
+    }
+
+
+    @PostMapping("signin/{login}/{pwd}")
+    public boolean signinAdmin(@PathVariable String login, @PathVariable String pwd){
+        User user=userRepository.findUserByLogin(login);
+        return Objects.equals(user.getPassword(), pwd) && user.getRole()== Role.ADMIN;
     }
 
 

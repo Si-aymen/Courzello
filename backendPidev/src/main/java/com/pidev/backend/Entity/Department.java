@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,10 +15,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Departments")
 public class Department {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long departmentID;
+    @Getter
+    @MongoId
+    private String departmentId;
+
     private String name;
     private String contactInformation;
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
 
 }
