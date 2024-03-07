@@ -1,5 +1,6 @@
 import { Component , OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -38,7 +39,9 @@ export class ReclamationComponent implements OnInit{
 
 
 
-  constructor(private http: HttpClient) {
+
+
+  constructor(private http: HttpClient, private router:Router) {
     this.GetAllReclamation();
     this.getAdvancedStatistics();
     this.generateChartPieData();
@@ -104,14 +107,52 @@ export class ReclamationComponent implements OnInit{
     });
   }
 
-  /* updateReclamation(reclamationID: string, updatedReclamation: any) {
-     this.http.put(http://localhost:8090/pi/reclamations/put/${reclamationID}, updatedReclamation)
-       .subscribe((resultData: any) => {
-         console.log(resultData);
-         alert('Reclamation updated successfully');
-         this.GetAllReclamation();
-       });
-   }*/
+  updateUser(reclamationID: string) {
+    const authenticatedUserId = 'your_authenticated_user_id';
+
+    let bodyData = {
+      "rec": {
+        "subject": this.subject,
+        "description": this.description,
+        "state": this.state,
+        "category": this.category,
+        "userImpact": this.userImpact,
+        "priority": this.priority,
+        "creationDate": this.creationDate,
+        "expectedResolutionDate": this.expectedResolutionDate,
+        "user": { "id": authenticatedUserId }
+      },
+      "att": {
+        "type": this.attachmentType,
+        "data": this.data
+      }
+    };
+
+    this.http.put(`http://localhost:8090/pi/reclamation/${reclamationID}`, bodyData, { responseType: 'text' }).subscribe(
+    (resultData: any) => {
+      console.log(resultData);
+      alert("reclamation updated Successfully");
+      this.GetAllReclamation();
+      this.clearFormFields();
+    },
+      (error) => {
+        console.error("Error updating reclamation:", error);
+        // Handle error as needed
+      }
+  );
+  }
+
+  clearFormFields() {
+    this.subject = '';
+    this.description = '';
+    this.state = '';
+    this.category = '';
+    this.userImpact = 0;
+    this.priority = 0;
+    this.creationDate = '';
+    this.expectedResolutionDate = '';
+  }
+
   deleteReclamation(reclamationID: string) {
     this.http.delete(`http://localhost:8090/pi/reclamations/delete/${reclamationID}`)
   .subscribe((resultData: any) => {
@@ -220,4 +261,8 @@ export class ReclamationComponent implements OnInit{
     };
   }
 
+  openUpdatePage(reclamation: any) {
+    // Assuming you have a route named '/user-update/:id' where ':id' is the user ID
+    this.router.navigate(['rec-update/'+reclamation.id]);
+  }
 }

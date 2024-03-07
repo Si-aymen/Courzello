@@ -19,11 +19,16 @@ export const navItems: INavData[] = [
     title: true,
     name: 'Managment'
   },
-  
+
   {
     name: 'Users',
     url: '/user',
     iconComponent: { name: 'cil-people' }
+  },
+  {
+    name: 'Departments',
+    url: 'departments',
+    iconComponent: { name: 'cil-building' }
   },
 
   {
@@ -59,7 +64,7 @@ export const navItems: INavData[] = [
     name: 'Forum',
     url: 'forum',
     iconComponent: { name: 'cil-notes' }
-  },  
+  },
   {
     name: 'GPT',
     url: 'GPT',

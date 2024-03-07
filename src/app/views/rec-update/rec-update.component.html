@@ -1,0 +1,163 @@
+<!-- Formulaire -->
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Reclamation Form</c-card-header>
+      <c-card-body>
+        <div *ngIf="reclamation">
+
+          <form cForm (submit)="updateReclamation()">
+            <div class="mb-3">
+              <label>reclamationID</label>
+              <input
+                type="text"
+                [(ngModel)]="reclamation.reclamationID"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="reclamationID"
+                name="reclamationID"
+                placeholder="Enter reclamationID here "
+              />
+            </div>
+            <div class="mb-3">
+              <label>Subject</label>
+              <input
+                type="text"
+                [(ngModel)]="reclamation.subject"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="subject"
+                name="subject"
+                placeholder="Enter subject here "
+              />
+            </div>
+
+            <div class="mb-3">
+              <label>Description</label>
+              <input
+                [(ngModel)]="reclamation.description"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="description"
+                name="description"
+                placeholder="Enter description here "
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="state">Reclamation state</label>
+              <select
+                [(ngModel)]="reclamation.state"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="state"
+                name="state"
+              >
+                <option value="EN_ATTENTE">EN_ATTENTE</option>
+                <option value="EN_COURS">EN_COURS</option>
+                <option value="RESOLUE">RESOLUE</option>
+                <option value="REJETEE">REJETEE</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="category">Reclamation category</label>
+              <select
+                [(ngModel)]="reclamation.category"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="category"
+                name="category"
+              >
+                <option value="TECHNICAL">TECHNICAL</option>
+                <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                <option value="SUGGESTION">SUGGESTION</option>
+                <option value="OTHER">OTHER</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label>User Impact</label>
+              <input
+                type="number"
+                [(ngModel)]="reclamation.userImpact"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="userImpact"
+                name="userImpact"
+                placeholder="Enter userImpact here "
+              />
+            </div>
+
+
+
+            <div class="mb-3">
+              <label>Creation Date</label>
+              <input
+                type="text"
+                [(ngModel)]="reclamation.creationDate"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="creationDate"
+                name="creationDate"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label>Expected Resolution Date</label>
+              <input
+                type="text"
+                [(ngModel)]="reclamation.expectedResolutionDate"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="expectedResolutionDate"
+                name="expectedResolutionDate"
+              />
+            </div>
+            <div class="mb-3">
+              <label>AttachmentData</label>
+              <input
+                [(ngModel)]="reclamation.data"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="data"
+                name="data"
+                placeholder="Enter here "
+              />
+            </div>
+            <div class="mb-3">
+              <label>AttachmentType</label>
+              <input
+                [(ngModel)]="reclamation.attachmentType"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="attachmentType"
+                name="attachmentType"
+                placeholder="Enter here "
+              />
+            </div>
+            <div class="mb-3">
+              <label>User</label>
+              <input
+                [(ngModel)]="reclamation.your_authenticated_user_id"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="your_authenticated_user_id"
+                name="your_authenticated_user_id"
+                placeholder="Enter here "
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary mt-4"
+            >
+              update Reclamation
+            </button>
+          </form>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

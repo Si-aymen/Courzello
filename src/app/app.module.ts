@@ -57,6 +57,10 @@ import { UserComponent } from '../app/views/user/user.component';
 import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
 import { CourseDetailsComponent  } from './views/course-details/course-details.component';
 import {UserUpdateComponent} from './views/user-update/user-update.component';
+import {LoginComponent} from "./views/pages/login/login.component";
+import {DepartmentsComponent} from "./views/departments/departments.component";
+import {DepartmentsUpdateComponent} from "./views/departments-update/departments-update.component";
+import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
 
 
 
@@ -72,6 +76,8 @@ const APP_CONTAINERS = [
 
 @NgModule({
   declarations: [
+    LoginComponent,
+    DepartmentsComponent,
     UserComponent,
     ConversationComponent,
     AppComponent,
@@ -84,7 +90,8 @@ const APP_CONTAINERS = [
     ClassroomDetailsComponent,
     CourseDetailsComponent,
     UserUpdateComponent,
-
+    DepartmentsUpdateComponent,
+    RecUpdateComponent
 
   ],
   imports: [
@@ -121,17 +128,14 @@ const APP_CONTAINERS = [
     HttpClientModule
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    },
+
     IconSetService,
     Title
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
-
+    LoginComponent,
     UserUpdateComponent,
     ReclamationComponent,
     ConversationComponent,
@@ -141,8 +145,11 @@ const APP_CONTAINERS = [
     UserComponent,
     ForumComponent,
     ClassroomDetailsComponent,
-    CourseDetailsComponent
-]
+    CourseDetailsComponent,
+    DepartmentsComponent,
+    DepartmentsUpdateComponent,
+    RecUpdateComponent
+  ]
 })
 export class AppModule {
 }

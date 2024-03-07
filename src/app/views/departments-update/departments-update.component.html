@@ -1,0 +1,24 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>Update Department</c-card-header>
+      <c-card-body>
+        <div *ngIf="department">
+          <form cForm (submit)="updateDepartment()">
+            <div class="mb-3">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="department.name" />
+            </div>
+
+            <div class="mb-3">
+              <label for="contactInformation">Contact Information:</label>
+              <input type="text" class="form-control" id="contactInformation" name="contactInformation" [(ngModel)]="department.contactInformation" />
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Update Department</button>
+          </form>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

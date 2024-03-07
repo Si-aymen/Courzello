@@ -17,6 +17,9 @@ import { UserComponent } from './views/user/user.component';
 import { ClassroomDetailsComponent  } from './views/classroom-details/classroom-details.component';
 import { CourseDetailsComponent  } from './views/course-details/course-details.component';
 import {UserUpdateComponent} from "./views/user-update/user-update.component";
+import {DepartmentsComponent} from "./views/departments/departments.component";
+import {DepartmentsUpdateComponent} from "./views/departments-update/departments-update.component";
+import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
 
 
 
@@ -55,6 +58,10 @@ const routes: Routes = [
         component:ClassroomComponent ,
       },
       {
+        path: 'rec-update/:id',
+        component: RecUpdateComponent,
+      },
+      {
         path: 'course',
         component:CourseComponent ,
       },
@@ -63,12 +70,20 @@ const routes: Routes = [
         component: UserUpdateComponent,
       },
       {
+        path: 'department-update/:id',
+        component: DepartmentsUpdateComponent
+      },
+      {
         path: 'chapter',
         component:ChapterComponent ,
       },
       {
         path: 'reclamations',
         component:ReclamationComponent ,
+      },
+      {
+        path: 'departments',
+        component:DepartmentsComponent ,
       },
 
       {
@@ -162,6 +177,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
+
+
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking'

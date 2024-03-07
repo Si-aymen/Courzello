@@ -38,7 +38,6 @@ export class UserUpdateComponent implements OnInit {
       },
       (error) => {
         console.error("Error updating user:", error);
-        // Handle error as needed
       }
     );
   }
