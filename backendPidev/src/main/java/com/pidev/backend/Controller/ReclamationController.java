@@ -68,11 +68,24 @@ public class ReclamationController {
         // Utilisez votre service de notification pour envoyer la notification
         notificationService.sendNotification(userId, new Notification(message));
     }
+
+
     @PutMapping("/put/{id}")
-    public Reclamation updateReclamation(@PathVariable String id, @RequestBody Reclamation reclamation) {
-        reclamation.setReclamationID(id);
-        return reclamationService.updateReclamation(reclamation);
+    public ResponseEntity<Reclamation> updateReclamation(@PathVariable String id, @RequestBody Reclamation updatedReclamation) {
+
+        // Perform input validation to check if the provided ID is valid
+        Reclamation existingReclamation = reclamationService.getReclamationById(id);
+
+
+        // Update the Reclamation
+        Reclamation updatedRec = reclamationService.updateReclamation(updatedReclamation);
+
+        return ResponseEntity.ok(updatedRec);
+
     }
+
+
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteReclamation(@PathVariable String id) {
         try {
@@ -104,6 +117,8 @@ public class ReclamationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting Reclamation");
         }
     }
+
+
 
     @DeleteMapping("/delete_all")
     public void deleteAllReclamation() {
