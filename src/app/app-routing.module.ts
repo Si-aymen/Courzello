@@ -20,6 +20,10 @@ import {UserUpdateComponent} from "./views/user-update/user-update.component";
 import {DepartmentsComponent} from "./views/departments/departments.component";
 import {DepartmentsUpdateComponent} from "./views/departments-update/departments-update.component";
 import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
+import {MainComponent} from './chat/main/main.component';
+import { UserChatComponent } from './chat/user-chat/user-chat.component';
+import { ChatComponent } from './chat/chat/chat.component';
+
 
 
 
@@ -94,7 +98,18 @@ const routes: Routes = [
         path: 'Course/Details/:id',
         component: CourseDetailsComponent,
       },
-
+      {
+        path: 'GPT',
+        component: MainComponent,
+      },
+      {
+        path: 'GPT/user',
+        component: UserChatComponent,
+      },
+      {
+        path: 'GPT/chat',
+        component: ChatComponent,
+      },
       {
         path: 'theme',
         loadChildren: () =>
@@ -177,8 +192,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-
-
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking'

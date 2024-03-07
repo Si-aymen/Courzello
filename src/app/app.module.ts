@@ -61,6 +61,10 @@ import {LoginComponent} from "./views/pages/login/login.component";
 import {DepartmentsComponent} from "./views/departments/departments.component";
 import {DepartmentsUpdateComponent} from "./views/departments-update/departments-update.component";
 import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
+import {UserChatComponent} from './chat/user-chat/user-chat.component';
+import {ChatComponent} from './chat/chat/chat.component';
+import {MainComponent} from './chat/main/main.component';
+
 
 
 
@@ -91,7 +95,11 @@ const APP_CONTAINERS = [
     CourseDetailsComponent,
     UserUpdateComponent,
     DepartmentsUpdateComponent,
-    RecUpdateComponent
+    RecUpdateComponent,
+    UserChatComponent,
+    ChatComponent,
+    MainComponent
+
 
   ],
   imports: [
