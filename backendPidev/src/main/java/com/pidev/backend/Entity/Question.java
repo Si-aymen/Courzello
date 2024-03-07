@@ -26,6 +26,7 @@ public class Question {
     private String contenue;
     private List<Technologie> tech;
     @DBRef
+
     private List<Hashtag> hashtag;
     @DBRef
 
