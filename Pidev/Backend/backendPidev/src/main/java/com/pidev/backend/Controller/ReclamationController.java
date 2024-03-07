@@ -71,10 +71,21 @@ public class ReclamationController {
 
 
     @PutMapping("/put/{id}")
-    public Reclamation updateReclamation(@PathVariable String id, @RequestBody Reclamation reclamation) {
-        reclamation.setReclamationID(id);
-        return reclamationService.updateReclamation(reclamation);
+    public ResponseEntity<Reclamation> updateReclamation(@PathVariable String id, @RequestBody Reclamation updatedReclamation) {
+
+            // Perform input validation to check if the provided ID is valid
+            Reclamation existingReclamation = reclamationService.getReclamationById(id);
+
+
+            // Update the Reclamation
+            Reclamation updatedRec = reclamationService.updateReclamation(updatedReclamation);
+
+            return ResponseEntity.ok(updatedRec);
+
     }
+
+
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteReclamation(@PathVariable String id) {
         try {
