@@ -1,32 +1,82 @@
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Controller\VoteController.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Service\QuestionServiceImpl.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Service\VoteServiceImpl.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\BackendPidevApplication.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Repository\UserRepository.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\config\DevCorsConfiguration.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Service\UserSErviceImpl.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Entity\Vote.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Iservice\ISignalBadWordService.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Entity\Reponse.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Repository\VoteRepository.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Iservice\IQuestionService.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Entity\User.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Service\HAshtagServiceImpl.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Entity\Hashtag.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Entity\Question.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Iservice\IVoteService.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Controller\ReponseController.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Controller\QuestionController.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Service\SignalBadWordServImpl.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Repository\QuestionRepository.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Repository\ReponseRepository.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Iservice\IHashtagService.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Entity\Technologie.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Iservice\IReponseService.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Controller\USerController.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\response\MessageResponse.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Service\ReponseServiceImpl.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Repository\HashtagRepository.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Repository\SignaBAdWordRepository.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Iservice\IUserService.java
-C:\Users\omnia\Downloads\pidev\backendPidev\backendPidev\src\main\java\com\pidev\backend\Entity\SignalBadword.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Recommendation.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\ReponseRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\AttachementService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\ConversationRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Theme.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\PostReclamationRequestModel.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Department.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\config\DevCorsConfiguration.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Course.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\IVoteService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\QuestionRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Question.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\CourseServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\ChapterController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\ReclamationService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\QuestionController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\SignalBadword.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Speciality.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\ISignalBadWordService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\ReponseServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\WebSocketConfig.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Forum.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\AttachmentType.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\ClassroomServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\ConversationController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Exam.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\UserServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\SignalBadWordServImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Vote.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\AttachementController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Classroom.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\CourseService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Reponse.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\IQuestionService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\AttachmentServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\ReclamationCategory.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\ChapterRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Conversation.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Hashtag.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\CourseController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\ReclamationController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\IUserService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\CourseRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\ConversationServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\ReclamationServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\ChapterServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\ClassroomService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\ConversationService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\ReclamtionState.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\ReclamationRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\UserController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\HashtagRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\UserRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\ClassroomLvl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\ReclamationType.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\IReponseService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Technologie.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\VoteController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Attachment.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\response\MessageResponse.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\AttachRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\VoteServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\UserService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\ClassroomRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\NotificationServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\ReponseController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\NotificationRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\IHashtagService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Controller\ClassroomController.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\VoteRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Role.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Reclamation.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Test.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Repository\SignaBAdWordRepository.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\NotificationService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\User.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Service\ChapterService.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\HAshtagServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\ServiceImpl\QuestionServiceImpl.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\BackendPidevApplication.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Chapter.java
+C:\Users\manou\Desktop\pidev All\backendPidev\src\main\java\com\pidev\backend\Entity\Notification.java

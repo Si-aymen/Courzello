@@ -10,14 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
+@CrossOrigin(origins = "*" ,exposedHeaders="Access-Control-Allow-Origin" )
 @RestController
 @AllArgsConstructor
 @RequestMapping("/courses")
 public class CourseController {
     @Autowired
     CourseService courseService ;
-
 
     @PostMapping("/add-course")
     public Course addCourse(@RequestBody Course c) {
@@ -48,8 +47,6 @@ courseService.deleteCourse(courseId);
     public void uploadPDF(@PathVariable("course-id") String courseId, @RequestParam("file") MultipartFile file) {
         courseService.uploadPdf(file, courseId);
     }
-
-
     @GetMapping("/classroom/{classroomId}")
     public List<Course> getCoursesByClassroom(@PathVariable String classroomId) {
         List<Course> courses = courseService.getCoursessByClassroom(classroomId);
