@@ -3,8 +3,11 @@ package com.pidev.backend.Controller;
 import com.pidev.backend.Entity.Course;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Service.CourseService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,9 +52,21 @@ courseService.deleteCourse(courseId);
     }
     @GetMapping("/classroom/{classroomId}")
     public List<Course> getCoursesByClassroom(@PathVariable String classroomId) {
-        List<Course> courses = courseService.getCoursessByClassroom(classroomId);
-        return  courses ;
+        return courseService.getCoursessByClassroom(classroomId);
     }
+
+    @PutMapping("/enroll/{courseId}/{studentId}")
+    public ResponseEntity<?> enrollCourse(@PathVariable("courseId") String courseId, @PathVariable("studentId") String studentId) {
+        try {
+            courseService.courseEnroll(studentId, courseId);
+            return ResponseEntity.ok().build();  // 200 OK
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();  // 404 Not Found
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred: " + e.getMessage());  // 500 Internal Server Error
+        }
+    }
+
 
 
 }

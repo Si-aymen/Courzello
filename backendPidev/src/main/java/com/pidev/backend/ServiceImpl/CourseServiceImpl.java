@@ -4,7 +4,9 @@ import com.pidev.backend.Entity.Classroom;
 import com.pidev.backend.Entity.Course;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.CourseRepository;
+import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.CourseService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,10 +17,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
 @AllArgsConstructor
 public class CourseServiceImpl implements CourseService {
-    private final CourseRepository courseRepository; // Added final keyword
+    private final CourseRepository courseRepository;
+    private  final UserRepository userRepository ;
 
     @Override
     public Course addCourse(Course course) {
@@ -104,6 +111,27 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course getCourseById(String courseId) {
         return courseRepository.findById(courseId).get() ;
+    }
+
+    @Override
+    @Transactional
+    public void courseEnroll(String idStudent, String idCourse) {
+        Optional<User> userOptional = userRepository.findById(idStudent);
+        Optional<Course> courseOptional = courseRepository.findById(idCourse);
+
+        if (userOptional.isPresent() && courseOptional.isPresent()) {
+            User u = userOptional.get();
+            Course c = courseOptional.get();
+
+            c.getStudentEnroling().add(u);
+            u.getCoursesEnrolled().add(c) ;
+            userRepository.save(u);
+            courseRepository.save(c) ;
+        } else {
+            throw new EntityNotFoundException("User or Course not found");
+        }
+
+
     }
 
 

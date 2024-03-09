@@ -1,4 +1,7 @@
 package com.pidev.backend.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,9 +11,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -32,6 +33,10 @@ public class Course {
     //upload course
     private String pdfUrl;
     private String videoUrl;
+
+    //Enrol
+    @DBRef
+    private Set<User> studentEnroling = new HashSet<>();
 
     @DBRef
     private Set<Chapter> chapters = new HashSet<>();

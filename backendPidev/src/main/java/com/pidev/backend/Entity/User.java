@@ -1,5 +1,7 @@
 package com.pidev.backend.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -60,6 +62,11 @@ public class User {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Speciality speciality =null;
 
+    //Courses if user = student
+    @DBRef
+    private Set<Course> CoursesEnrolled = new HashSet<>() ;
+
+
     // Association classroom
     @DBRef
     private Set<Classroom> classrooms = new HashSet<>();
@@ -74,5 +81,4 @@ public class User {
 
     @DBRef
     private List<Conversation> conversations = new ArrayList<>();
-    // Getters and setters
 }

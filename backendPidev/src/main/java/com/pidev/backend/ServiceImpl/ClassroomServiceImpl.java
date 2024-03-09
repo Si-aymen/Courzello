@@ -48,14 +48,6 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     }
 
-//    @Override
-//    public Classroom AddNewTeachersToClassroom(Long IdClassroom , List<User> ListeTeacher) {
-//
-//        Classroom classroom = classroomRepository.findById(IdClassroom).get() ;
-//        Set<User> teachers = new HashSet<>(ListeTeacher) ;
-//        classroom.setTeachers(teachers);
-//        return classroom ;
-//    }
 
 
     @Override

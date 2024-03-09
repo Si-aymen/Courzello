@@ -17,4 +17,6 @@ public interface CourseService {
     public List<Course> getCoursessByClassroom(String classroomId) ;
 
     Course getCourseById(String courseId) ;
+
+    void courseEnroll(String IdStudnet , String IDCourse);
 }
