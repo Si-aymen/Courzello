@@ -25,7 +25,7 @@ public class Course {
     private String id;
     private String courseName;
     private String courseLevel;
-    private String courseDomain;
+    private Speciality courseDomain;
     private Long courseDuration;
     private Date dateAdded;
     private float coursePrice ;

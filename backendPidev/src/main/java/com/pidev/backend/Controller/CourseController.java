@@ -1,6 +1,7 @@
 package com.pidev.backend.Controller;
 
 import com.pidev.backend.Entity.Course;
+import com.pidev.backend.Entity.Speciality;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Service.CourseService;
 import jakarta.persistence.EntityNotFoundException;
@@ -66,6 +67,12 @@ courseService.deleteCourse(courseId);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred: " + e.getMessage());  // 500 Internal Server Error
         }
     }
+
+    @GetMapping("/retrieve-courses-by-domain/{Speciality}")
+    public List<Course> getAllCoursesBydomain(@PathVariable("Speciality") Speciality speciality) {
+        return courseService.getCourseByCourseDomain(speciality);
+    }
+
 
 
 

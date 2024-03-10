@@ -2,6 +2,7 @@ package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Classroom;
 import com.pidev.backend.Entity.Course;
+import com.pidev.backend.Entity.Speciality;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Repository.UserRepository;
@@ -132,6 +133,11 @@ public class CourseServiceImpl implements CourseService {
         }
 
 
+    }
+
+    @Override
+    public  List<Course> getCourseByCourseDomain(Speciality speciality) {
+        return courseRepository.getCourseByCourseDomain(speciality);
     }
 
 

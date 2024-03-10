@@ -1,6 +1,7 @@
 package com.pidev.backend.Service;
 
 import com.pidev.backend.Entity.Course;
+import com.pidev.backend.Entity.Speciality;
 import com.pidev.backend.Entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,4 +20,5 @@ public interface CourseService {
     Course getCourseById(String courseId) ;
 
     void courseEnroll(String IdStudnet , String IDCourse);
+    List<Course> getCourseByCourseDomain(Speciality speciality) ;
 }
