@@ -29,6 +29,7 @@ public interface ClassroomService {
 
     void deleteTeacherFromClassroom(String teacherId, String classroomId) ;
     List<Classroom> GetClassroomsByTeacher(String IdTeacher) ;
+    List<Classroom> GetClassroomsByStudent(String IdStudent) ;
 
 
 

@@ -147,5 +147,11 @@ public class ClassroomServiceImpl implements ClassroomService {
         return classroomRepository.getClassroomByTeachersContains(teacher);
     }
 
+    @Override
+    public List<Classroom> GetClassroomsByStudent(String IdStudent) {
+        User student = userRepository.findById(IdStudent).get();
+        return classroomRepository.getClassroomByStudnetsContains(student)  ;
+    }
+
 
 }

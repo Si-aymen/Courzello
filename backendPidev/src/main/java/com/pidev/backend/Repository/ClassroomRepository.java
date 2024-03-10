@@ -13,4 +13,6 @@ public interface ClassroomRepository extends MongoRepository<Classroom, String> 
     Classroom getClassroomById(String id) ;
 
     List<Classroom> getClassroomByTeachersContains(User teacher);
+    List<Classroom> getClassroomByStudnetsContains(User student);
+
 }
