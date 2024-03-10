@@ -65,6 +65,11 @@ public class ClassroomController {
         classroomService.AddCoursesToClassroom(id, coursesID);
     }
 
+    @PutMapping("/DeleteTeacher/{IDClassroom}/{IDTeacher}")
+    public void DeleteTeacherFromClassroom(@PathVariable("IDClassroom") String idClass,@PathVariable("IDTeacher") String IdTeacher) {
+        classroomService.deleteTeacherFromClassroom(IdTeacher,idClass);
+    }
+
 
 
 

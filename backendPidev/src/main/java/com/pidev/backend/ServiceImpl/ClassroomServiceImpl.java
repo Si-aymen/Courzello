@@ -8,11 +8,13 @@ import com.pidev.backend.Repository.ClassroomRepository;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.ClassroomService;
+import com.pidev.backend.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -113,6 +115,30 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public void DeleteClassroomById(String ClassroomId) {
         classroomRepository.deleteById(ClassroomId);
+    }
+
+    @Override
+    public void deleteTeacherFromClassroom(String teacherId, String classroomId) {
+        Optional<Classroom> classroomOptional = classroomRepository.findById(classroomId);
+        Optional<User> teacherOptional = userRepository.findById(teacherId);
+
+        if (classroomOptional.isPresent() && teacherOptional.isPresent()) {
+            Classroom classroom = classroomOptional.get();
+            User teacher = teacherOptional.get();
+
+            if (classroom.getTeachers().contains(teacher)) {
+                classroom.getTeachers().remove(teacher);
+                classroomRepository.save(classroom);
+            }
+
+            if (teacher.getClassrooms().contains(classroom)) {
+                teacher.getClassrooms().remove(classroom);
+                userRepository.save(teacher);
+            }
+        } else {
+            // Handle the case where either the teacher or classroom doesn't exist
+            // This could be logging an error, throwing a custom exception, etc.
+        }
     }
 
 
