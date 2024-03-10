@@ -71,6 +71,11 @@ public class ClassroomController {
     }
 
 
+    @GetMapping("/GetByTeacher/{IDTeacher}")
+    public List<Classroom> GetByTeacher(@PathVariable("IDTeacher") String teacherID) {
+        return classroomService.GetClassroomsByTeacher(teacherID);
+    }
+
 
 
 }

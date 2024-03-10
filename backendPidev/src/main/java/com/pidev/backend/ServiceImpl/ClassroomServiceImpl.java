@@ -141,5 +141,11 @@ public class ClassroomServiceImpl implements ClassroomService {
         }
     }
 
+    @Override
+    public List<Classroom> GetClassroomsByTeacher(String IdTeacher) {
+        User teacher = userRepository.findById(IdTeacher).get();
+        return classroomRepository.getClassroomByTeachersContains(teacher);
+    }
+
 
 }

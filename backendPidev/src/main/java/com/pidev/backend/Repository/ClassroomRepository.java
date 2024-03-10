@@ -11,4 +11,6 @@ import java.util.List;
 public interface ClassroomRepository extends MongoRepository<Classroom, String> {
     Classroom getClassroomByClassroomName(String lvl );
     Classroom getClassroomById(String id) ;
+
+    List<Classroom> getClassroomByTeachersContains(User teacher);
 }
