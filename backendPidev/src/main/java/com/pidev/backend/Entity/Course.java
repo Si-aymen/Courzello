@@ -33,16 +33,25 @@ public class Course {
     //upload course
     private String pdfUrl;
     private String videoUrl;
+    private List<Float> ratingList = new ArrayList<>();
+    private float avRating ;
+
 
     //Enrol
     @DBRef
     private Set<User> studentEnroling = new HashSet<>();
 
+    //Chapters of course
     @DBRef
     private Set<Chapter> chapters = new HashSet<>();
 
+    //classroom of the course
     @DBRef
     private Set<Classroom> classrooms = new HashSet<>();
+
+    //User rate the course
+    @DBRef
+    private Set<User> UsersRated = new HashSet<>();
 
 
 

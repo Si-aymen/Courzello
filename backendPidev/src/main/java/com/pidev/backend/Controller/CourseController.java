@@ -73,6 +73,12 @@ courseService.deleteCourse(courseId);
         return courseService.getCourseByCourseDomain(speciality);
     }
 
+    @PutMapping("/course-Rating/{IdUser}/{IdCourse}/{Rating}")
+    public Course AddRating(@PathVariable("IdUser") String IdUser , @PathVariable("IdCourse") String IdCourse,@PathVariable("Rating") Float Rating) {
+       return   courseService.addRating(IdUser,IdCourse,Rating);
+    }
+
+
 
 
 

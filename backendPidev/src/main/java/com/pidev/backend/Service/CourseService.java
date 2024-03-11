@@ -21,4 +21,6 @@ public interface CourseService {
 
     void courseEnroll(String IdStudnet , String IDCourse);
     List<Course> getCourseByCourseDomain(Speciality speciality) ;
+
+     Course addRating(String IdUser , String IDcourse,Float Rating);
 }

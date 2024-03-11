@@ -140,5 +140,39 @@ public class CourseServiceImpl implements CourseService {
         return courseRepository.getCourseByCourseDomain(speciality);
     }
 
+    @Override
+    public Course addRating(String userId, String courseId, Float rating) {
+        Optional<Course> courseOptional = courseRepository.findById(courseId);
+        Optional<User> userOptional = userRepository.findById(userId);
+
+        if (!courseOptional.isPresent() || !userOptional.isPresent()) {
+            // Handle error: either the course or user doesn't exist
+            throw new EntityNotFoundException("Course or User not found");
+        }
+
+        Course course = courseOptional.get();
+        User user = userOptional.get();
+
+        if (course.getUsersRated().contains(user)) {
+            throw new IllegalStateException("User has already rated this course");
+        } else {
+            course.getUsersRated().add(user); // Add the user to the list of users who rated
+            List<Float> ratings = course.getRatingList(); // Assuming getRating() should be getRatings()
+            ratings.add(rating); // Add the new rating to the list
+
+            // Calculate the new average
+            double average = ratings.stream()
+                    .mapToDouble(Float::doubleValue)
+                    .average()
+                    .orElse(0.0);
+
+            // Assuming you have a method to update the average rating in Course
+            course.setAvRating((float) average);
+        }
+
+        // Assuming you're persisting the updated course entity
+        return courseRepository.save(course);
+    }
+
 
 }
