@@ -23,6 +23,8 @@ import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
 import {MainComponent} from './chat/main/main.component';
 import { UserChatComponent } from './chat/user-chat/user-chat.component';
 import { ChatComponent } from './chat/chat/chat.component';
+import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-teachers.component';
+
 
 
 
@@ -109,6 +111,10 @@ const routes: Routes = [
       {
         path: 'GPT/chat',
         component: ChatComponent,
+      },
+      {
+        path: 'AffectTeachers/:id',
+        component: AffectTeachersComponent,
       },
       {
         path: 'theme',

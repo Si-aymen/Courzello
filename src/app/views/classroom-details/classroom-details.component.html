@@ -61,6 +61,11 @@
           </button>
           &nbsp;
           <button  class="btn btn-danger"  (click)="deleteClassroom()">Delete Classroom</button>
+          &nbsp;
+          <button type="button" class="btn btn-primary" [routerLink]="'/AffectTeachers/' + classroom.id">
+            add Teacher
+          </button>
+          
         <br>
         <br>
         </div>
