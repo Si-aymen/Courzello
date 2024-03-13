@@ -156,7 +156,7 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public void AddTeacherToClass(String IdTeacher, String IdClassroom) {
 
-            Classroom c = classroomRepository.getClassroomByClassroomName(IdClassroom);
+            Classroom c = classroomRepository.findById(IdClassroom).get();
             User u = userRepository.findById(IdTeacher).get();
             System.out.println(u.getLogin());
             u.getClassrooms().add(c);
