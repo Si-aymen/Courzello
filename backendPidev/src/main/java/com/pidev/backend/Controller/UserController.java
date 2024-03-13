@@ -65,6 +65,10 @@ public class UserController {
         return  users ;
     }
 
+    @GetMapping("/GetTeachers")
+    public List<User> getTeachers() {
+        return userService.getTeachers();
+    }
 
 }
 

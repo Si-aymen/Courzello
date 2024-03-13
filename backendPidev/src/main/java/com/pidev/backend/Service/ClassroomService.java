@@ -31,6 +31,8 @@ public interface ClassroomService {
     List<Classroom> GetClassroomsByTeacher(String IdTeacher) ;
     List<Classroom> GetClassroomsByStudent(String IdStudent) ;
 
+    void AddTeacherToClass(String IdTeacher , String IdClassroom);
+
 
 
 

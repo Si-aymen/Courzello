@@ -81,6 +81,11 @@ public class ClassroomController {
         return classroomService.GetClassroomsByStudent(studentID);
     }
 
+    @PutMapping("/AddTeachers/{IDClassroom}/{IDTeacher}")
+    public void AddTeacherToClass(@PathVariable("IDClassroom") String id,@PathVariable("IDTeacher") String Idteacher) {
+        classroomService.AddTeacherToClass(Idteacher,id);
+    }
+
 
 
 

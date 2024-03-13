@@ -1,6 +1,7 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Classroom;
+import com.pidev.backend.Entity.Role;
 import com.pidev.backend.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,11 @@ public class UserServiceImpl implements UserService {
             }
         }
         return usersInClassroom;
+    }
+
+    @Override
+    public List<User> getTeachers() {
+        return userRepository.getUserByRole(Role.TEACHER);
     }
 
 

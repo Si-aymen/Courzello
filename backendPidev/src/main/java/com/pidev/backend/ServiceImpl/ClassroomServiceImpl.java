@@ -153,5 +153,20 @@ public class ClassroomServiceImpl implements ClassroomService {
         return classroomRepository.getClassroomByStudnetsContains(student)  ;
     }
 
+    @Override
+    public void AddTeacherToClass(String IdTeacher, String IdClassroom) {
+
+            Classroom c = classroomRepository.getClassroomByClassroomName(IdClassroom);
+            User u = userRepository.findById(IdTeacher).get();
+            System.out.println(u.getLogin());
+            u.getClassrooms().add(c);
+            userRepository.save(u);
+            c.getTeachers().add(u);
+            classroomRepository.save(c);
+
+
+
+    }
+
 
 }

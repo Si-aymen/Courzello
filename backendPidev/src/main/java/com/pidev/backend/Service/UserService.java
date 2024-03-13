@@ -10,4 +10,5 @@ public interface UserService {
     User updateUser(String login, User user);
     void deleteUser(String login);
     public List<User> getUsersByClassroom(String classroomId) ;
+    List<User> getTeachers();
 }
