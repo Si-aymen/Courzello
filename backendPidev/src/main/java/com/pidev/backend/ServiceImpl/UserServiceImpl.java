@@ -2,6 +2,7 @@ package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Classroom;
 import com.pidev.backend.Entity.Role;
+import com.pidev.backend.Repository.ClassroomRepository;
 import com.pidev.backend.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private ClassroomRepository classroomRepository ;
 
     @Override
     public List<User> getAllUsers() {
@@ -55,6 +57,9 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteUserByLogin(login);
     }
 
+
+
+    @Override
     public List<User> getUsersByClassroom(String classroomId) {
         List<User> users = userRepository.findAll();
         List<User> usersInClassroom = new ArrayList<>();
@@ -62,7 +67,7 @@ public class UserServiceImpl implements UserService {
             for (Classroom classroom : user.getClassrooms()) {
                 if (classroom.getId().equals(classroomId)) {
                     usersInClassroom.add(user);
-                    break; // No need to continue checking other classrooms for this user
+                    break;
                 }
             }
         }
@@ -73,6 +78,13 @@ public class UserServiceImpl implements UserService {
     public List<User> getTeachers() {
         return userRepository.getUserByRole(Role.TEACHER);
     }
+
+    @Override
+    public List<User> getTeachersOFClassroom(String IdClassroom) {
+        Classroom classroom = classroomRepository.findById(IdClassroom).get();
+        return userRepository.getUserByClassroomsAndRole(classroom , Role.TEACHER) ;
+    }
+
 
 
 }
