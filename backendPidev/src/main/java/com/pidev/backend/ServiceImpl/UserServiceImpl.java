@@ -85,6 +85,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.getUserByClassroomsAndRole(classroom , Role.TEACHER) ;
     }
 
+    @Override
+    public List<User> getStudentsOFClassroom(String IdClassroom) {
+        Classroom classroom = classroomRepository.findById(IdClassroom).get();
+        return userRepository.getUserByClassroomsAndRole(classroom , Role.STUDENT) ;
+    }
 
 
 }
