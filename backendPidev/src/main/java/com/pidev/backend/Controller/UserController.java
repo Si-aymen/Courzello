@@ -65,10 +65,16 @@ public class UserController {
         return  users ;
     }
 
-    @GetMapping("/GetTeachers")
+    @GetMapping("/GetTeachers/{classroomId}")
+    public List<User> getTeachersOfclassroom(@PathVariable String classroomId) {
+        return userService.getTeachersOFClassroom(classroomId);
+    }
+
+    @GetMapping("/GetTeachers/")
     public List<User> getTeachers() {
         return userService.getTeachers();
     }
+
 
 }
 
