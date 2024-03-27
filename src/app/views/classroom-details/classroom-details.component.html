@@ -135,6 +135,52 @@
 </div>
 
 
+<!-- Students  Table -->
+<div>
+  <c-row>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>Students  Table</c-card-header>
+        <c-card-body>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>speciality</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of StudentsArray; let i = index">
+                <td>{{ user.id }}</td>
+                <td>
+                  <div>{{ user.firstName }}</div>
+                  <div class="small text-medium-emphasis text-nowrap">
+                    <span>Login: {{ user.login }}</span>
+                  </div>
+                </td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.speciality }}</td>
+                <td>
+                  <button cButton>Delete from classroom</button> <!--(click)="deleteuser(user)" -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</div>
+
+
+
 <!-- Course  Table -->
 
 <div>
