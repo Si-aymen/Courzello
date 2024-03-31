@@ -55,14 +55,12 @@
         <div class="item-flex">
           <ul class="list">
             <li>
-              <i class="fas fa-phone"></i> Have any question? +216 99 999 xyz
+              <i class="fas fa-phone"></i> Have any question? +216 92554097
             </li>
             <li>
               <i class="fas fa-bullhorn"></i> <a href="#">Become an Instructor</a>
             </li>
-            <li>
-              <i class="fas fa-briefcase"></i> <a href="#">For Enterprise</a>
-            </li>
+
           </ul>
         </div>
       </div>
@@ -206,16 +204,19 @@
 <div class="breadcrumb-area bg-gray text-center shadow dark text-light bg-cover" style="background-image: url(/assets/img/banner/12.jpg);">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <h1>Courses</h1>
+      <div class="col-lg-8 offset-lg-2" >
+        <div *ngFor="let class of classroomArray; let i = index">
+        <h1> {{ class.classroomName }}</h1>
+        </div>
         <ul class="breadcrumb">
           <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-          <li class="active">Courses</li>
+          <li class="active">Classroom</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+
 <!-- End Breadcrumb -->
 <br>
 

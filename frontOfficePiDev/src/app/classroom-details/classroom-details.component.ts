@@ -20,6 +20,7 @@ export class ClassroomDetailsComponent implements OnInit {
   dateAdded: Date = new Date();
   coursePrice: number = 0;
   courseDescription: string="";
+  classroomArray : any ; 
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
   
@@ -39,6 +40,14 @@ export class ClassroomDetailsComponent implements OnInit {
     this.http.get( "http://localhost:8090/pi/courses/classroom/"+ this.classroomId ).subscribe((resultData: any) => {
       console.log(resultData);
       this.courseArray = resultData;
+      
+    });
+  }
+
+  GetClassroomById() {
+    this.http.get( "http://localhost:8090/pi/classrooms/GetClassroom/"+ this.classroomId ).subscribe((resultData: any) => {
+      console.log(resultData);
+      this.classroomArray = resultData;
       
     });
   }

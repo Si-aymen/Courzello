@@ -19,6 +19,8 @@ export class ClassroomComponent implements OnInit {
   chartPieData: any;
   chartDoughnutData: any;
 
+  
+
 
 
   constructor(private http: HttpClient, private changeDetectorRef: ChangeDetectorRef,private router: Router) {
@@ -32,7 +34,6 @@ export class ClassroomComponent implements OnInit {
     this.http.get("http://localhost:8090/pi/classrooms").subscribe((resultData: any) => {
       console.log(resultData);
       this.classroomArray = resultData;
-
     });
   }
 
