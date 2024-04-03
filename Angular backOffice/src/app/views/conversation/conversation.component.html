@@ -1,0 +1,125 @@
+<!-- title -->
+
+<c-col xs="12">
+  <app-docs-callout href="charts">
+    Stats 
+    <br>
+    <br>
+  </app-docs-callout>
+</c-col>
+<!-- Stats -->
+<c-row>
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - Theme</c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  
+</c-row>
+<!-- Formulaire -->
+
+<c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Conversation Form</c-card-header>
+        <c-card-body>
+          <form cForm>
+           
+  
+            <div class="mb-3">
+              <label>Message</label>
+              <input
+                type="text"
+                [(ngModel)]="message"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="message"
+                name="message"
+                placeholder="Enter message here "
+              />
+            </div>
+  
+            <div class="mb-3">
+              <label >Description </label>
+             <input
+                [(ngModel)]="description"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="description"
+                name="description"
+                placeholder="Enter description here "
+
+            
+               />
+             
+            </div>
+  
+            <div class="mb-3">
+              <label for="theme">Conversation theme </label>
+              <select
+                [(ngModel)]="theme"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="theme"
+                name="theme"
+              >
+                <option value="DARK">Dark</option>
+                <option value="LIGHT">Light</option>
+              </select>
+            </div>
+  
+            <button
+              type="submit"
+              class="btn btn-primary mt-4"
+              (click)="add()"
+            >
+              Submit
+            </button>
+          </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+
+
+<!-- Table -->
+
+<div>
+    <c-row>
+      <c-col xs>
+        <c-card class="mb-4">
+          <c-card-header>Conversation Table</c-card-header>
+          <c-card-body>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th>Conversation ID</th>
+                  <th>Message</th>
+                  <th>Theme</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let conversation of conversationArray ; index as i">
+                  <td >{{ conversation.id }}</td>
+                  <td>
+                    <div>{{ conversation.message}}</div>
+                      <div class="small text-medium-emphasis text-nowrap">
+                      <span>Description: {{ conversation.description }}</span>
+                    </div>
+                  </td>
+                  <td >{{ conversation.theme }}</td>
+                 
+  
+                </tr>
+              </tbody>
+            </table>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </div>
+  
+  

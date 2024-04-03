@@ -1,0 +1,115 @@
+<p>course-details works!</p>
+
+<c-row>
+
+ <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Course Details </c-card-header>
+      <c-card-body>
+        <div class="details-row">
+          <span class="details-label">Course ID:</span>
+          <span class="details-value">{{ course.id }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Course Name:</span>
+          <span class="details-value">{{ course.courseName }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">course Level:</span>
+          <span class="details-value">{{ course.courseLevel }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Course Duration :</span>
+          <span class="details-value">{{ course.courseDuration }}</span>
+        </div>       
+         <div class="details-row">
+          <span class="details-label">Course Rating :</span>
+          <span class="details-value">{{ course.avRating }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Course Price:</span>
+          <span class="details-value">{{ course.coursePrice }}</span>
+        </div>    
+        <div>
+            <button
+            type="button"
+            class="btn btn-primary"
+          >
+            delete  
+          </button>
+          &nbsp;
+          <button
+          type="button"
+          class="btn btn-primary"
+        >
+          edit  
+        </button>
+        <br>
+        <br>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+<!-- to change with number of chapters
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header>
+        Bar Chart Number of courses per month 
+      </c-card-header>
+      <c-card-body>
+        <c-chart type="bar" [data]="chartBarData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>   -->
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - chapter Duration</c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>
+
+
+
+
+<!-- chapter table  -->
+<div>
+  <c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>chapter Table</c-card-header>
+        <c-card-body>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>chapter ID</th>
+                <th>chapter Name</th>
+                <th>chapter Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let chapter of chapterArray ; index as i">
+                <td >{{ chapter.id }}</td>
+                <td>
+                  <div>{{ chapter.chapterName}}</div>
+                    <div class="small text-medium-emphasis text-nowrap">
+                    <span>Level: Static </span>
+                  </div>
+                </td>
+                <td >{{ chapter.duration }}</td>
+               
+
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</div>
+
