@@ -1,5 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router,ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -17,13 +19,21 @@ export class ChapterComponent implements OnInit {
   CurrentchapterID = "";
   chartDoughnutData :any ;
   chartDoughnutData2 :any ;
+  courseID : String ; 
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
     this.GetAllchapter();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+      this.courseID = params['id']; 
+      this.GetAllchapter();
+    });
+
+  }
 
   GetAllchapter() {
     this.http.get("http://localhost:8090/pi/chapters/retrieve-chapters").subscribe((resultData: any) => {
@@ -96,6 +106,15 @@ export class ChapterComponent implements OnInit {
       colors.push('#' + Math.floor(Math.random() * 16777215).toString(16));
     }
     return colors;
+  }
+
+
+  Affectchapter(chapterID : String ){
+    this.http.put("http://localhost:8090/pi/courses/AddChapter/" +this.courseID+ "/" +chapterID, {}).subscribe((resultData: any) => {
+      console.log(resultData);
+      alert("chapter added Successfully");
+
+    });
   }
 
 

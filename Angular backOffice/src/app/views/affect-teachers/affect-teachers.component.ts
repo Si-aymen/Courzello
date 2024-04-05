@@ -26,7 +26,7 @@ export class AffectTeachersComponent implements OnInit{
   }
 
   GetAlluser() {
-    this.http.get("http://localhost:8090/pi/users/GetTeachers").subscribe((resultData: any) => {
+    this.http.get("http://localhost:8090/pi/users/GetAllUsers").subscribe((resultData: any) => {
       console.log(resultData);
       this.userArray = resultData;
 
@@ -37,6 +37,8 @@ export class AffectTeachersComponent implements OnInit{
     this.http.put("http://localhost:8090/pi/classrooms/AddTeacher/" + userId + "/" + this.classroomId, {}).subscribe((resultData: any) => {
       console.log(resultData);
     });
+
+    
   }
   
 

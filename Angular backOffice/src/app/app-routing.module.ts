@@ -80,7 +80,7 @@ const routes: Routes = [
         component: DepartmentsUpdateComponent
       },
       {
-        path: 'chapter',
+        path: 'chapter/:id',
         component:ChapterComponent ,
       },
       {

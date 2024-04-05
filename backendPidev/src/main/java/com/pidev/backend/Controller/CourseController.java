@@ -78,6 +78,12 @@ courseService.deleteCourse(courseId);
        return   courseService.addRating(IdUser,IdCourse,Rating);
     }
 
+    @PutMapping("/AddChapter/{IdCourse}/{IDChapter}")
+    public void AddChapterToCourse(@PathVariable("IDChapter") String idChapter , @PathVariable("IdCourse") String IdCourse) {
+           courseService.AddChapterToCourse(IdCourse,idChapter);
+    }
+
+
 
 
 

@@ -1,9 +1,7 @@
 package com.pidev.backend.ServiceImpl;
 
-import com.pidev.backend.Entity.Classroom;
-import com.pidev.backend.Entity.Course;
-import com.pidev.backend.Entity.Speciality;
-import com.pidev.backend.Entity.User;
+import com.pidev.backend.Entity.*;
+import com.pidev.backend.Repository.ChapterRepository;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.CourseService;
@@ -27,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CourseServiceImpl implements CourseService {
     private final CourseRepository courseRepository;
     private  final UserRepository userRepository ;
+    private final ChapterRepository chapterRepository ;
 
     @Override
     public Course addCourse(Course course) {
@@ -172,6 +171,14 @@ public class CourseServiceImpl implements CourseService {
 
         // Assuming you're persisting the updated course entity
         return courseRepository.save(course);
+    }
+
+    @Override
+    public void AddChapterToCourse(String IDCourse, String IDChapter) {
+        Course course = courseRepository.findById(IDCourse).get();
+        Chapter chapter = chapterRepository.findById(IDChapter).get();
+        course.getChapters().add(chapter);
+        chapter.getCourses().add(course);
     }
 
 
