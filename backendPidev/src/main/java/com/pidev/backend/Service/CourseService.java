@@ -24,6 +24,6 @@ public interface CourseService {
 
      Course addRating(String IdUser , String IDcourse,Float Rating);
 
-     void AddChapterToCourse (String IDCourse , String IDChapter) ;
+     Course AddChapterToCourse (String IDCourse , String IDChapter) ;
 
 }

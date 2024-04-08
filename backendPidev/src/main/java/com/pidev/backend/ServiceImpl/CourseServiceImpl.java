@@ -174,11 +174,14 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void AddChapterToCourse(String IDCourse, String IDChapter) {
+    public Course AddChapterToCourse(String IDCourse, String IDChapter) {
         Course course = courseRepository.findById(IDCourse).get();
         Chapter chapter = chapterRepository.findById(IDChapter).get();
         course.getChapters().add(chapter);
         chapter.getCourses().add(course);
+        courseRepository.save(course) ;
+        chapterRepository.save(chapter) ;
+        return course;
     }
 
 

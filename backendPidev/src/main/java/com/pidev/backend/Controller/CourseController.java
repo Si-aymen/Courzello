@@ -79,8 +79,8 @@ courseService.deleteCourse(courseId);
     }
 
     @PutMapping("/AddChapter/{IdCourse}/{IDChapter}")
-    public void AddChapterToCourse(@PathVariable("IDChapter") String idChapter , @PathVariable("IdCourse") String IdCourse) {
-           courseService.AddChapterToCourse(IdCourse,idChapter);
+    public Course AddChapterToCourse(@PathVariable("IDChapter") String idChapter , @PathVariable("IdCourse") String IdCourse) {
+            return courseService.AddChapterToCourse(IdCourse,idChapter);
     }
 
 
