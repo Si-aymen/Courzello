@@ -9,7 +9,11 @@ import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.ClassroomService;
 import com.pidev.backend.Service.UserService;
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -20,6 +24,10 @@ import java.util.Set;
 @Service
 @AllArgsConstructor
 public class ClassroomServiceImpl implements ClassroomService {
+
+    @Autowired
+    private EmailSenderService senderService;
+
 
     ClassroomRepository classroomRepository ;
     UserRepository userRepository ;
@@ -35,6 +43,17 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     @Override
     public Classroom AddClassroom(Classroom classroom) {
+
+
+        senderService.sendSimpleEmail("rahali.aymen2001@gmail.com",
+                "Courzello Classrooms ",
+                "A new Classroom was added \n" +
+                        "Classroom ID:" + classroom.getId()+"\n"+
+                        "Classroom name:" + classroom.getClassroomName()+"\n"+
+                        "Classroom capacity  :" + classroom.getClassroomCapacity()+"\n"+
+                        "Classroom teachers:" + classroom.getTeachers()+"\n"+
+                        "Classroom :" + classroom.getClassroomLvl()+"\n"
+                        );
         return classroomRepository.save(classroom) ;
     }
 
@@ -178,6 +197,8 @@ public class ClassroomServiceImpl implements ClassroomService {
         c.getStudnets().add(u);
         classroomRepository.save(c);
     }
+
+
 
 
 }

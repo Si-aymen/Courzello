@@ -5,6 +5,7 @@ import com.pidev.backend.Repository.ChapterRepository;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Service.ChapterService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,10 +17,22 @@ import java.util.Set;
 @AllArgsConstructor
 public class ChapterServiceImpl implements ChapterService {
 
+    @Autowired
+    private EmailSenderService senderService;
+
     ChapterRepository chapterRepository ;
     CourseRepository courseRepository ;
     @Override
     public Chapter addChapter(Chapter chapter) {
+
+        senderService.sendSimpleEmail("rahali.aymen2001@gmail.com",
+                "Courzello Classrooms ",
+                "A new Classroom was added \n" +
+                        "chapter ID:" + chapter.getId()+"\n"+
+                        "chapter Name:" + chapter.getChapterName()+"\n"+
+                        "chapter Duration  :" + chapter.getDuration()+"\n"+
+                        "chapter Courses:" + chapter.getCourses()+"\n"
+        );
         return chapterRepository.save(chapter);
     }
 
