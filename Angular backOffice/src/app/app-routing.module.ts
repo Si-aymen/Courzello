@@ -21,6 +21,8 @@ import {DepartmentsComponent} from "./views/departments/departments.component";
 import {DepartmentsUpdateComponent} from "./views/departments-update/departments-update.component";
 import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
 import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-teachers.component';
+import { ChatComponent } from './chat/chat.component';
+
 
 
 
@@ -56,6 +58,9 @@ const routes: Routes = [
         path: 'forum',
         component:ForumComponent ,
       },
+      {path: 'chat/:userId', component: ChatComponent}
+      ,
+
       {
         path: 'Classroom/all',
         component:ClassroomComponent ,

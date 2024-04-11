@@ -65,6 +65,9 @@ import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
 import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-teachers.component';
 
 
+import { ChatComponent } from './chat/chat.component';
+
+
 
 
 
@@ -80,6 +83,7 @@ const APP_CONTAINERS = [
 
 @NgModule({
   declarations: [
+    ChatComponent,
     LoginComponent,
     DepartmentsComponent,
     UserComponent,
