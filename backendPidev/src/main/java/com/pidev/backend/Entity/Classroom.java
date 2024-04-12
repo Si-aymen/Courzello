@@ -31,6 +31,8 @@ public class Classroom {
     @Enumerated(EnumType.STRING)
     private Speciality speciality ;
 
+    private float classroomRating  ;// to be contunied
+
 
     // association User Teachers
     @DBRef
