@@ -258,29 +258,29 @@
                 <ul>
                   <li>
                     <img src="/assets/img/advisor/2.jpg" alt="Advisor">
-                    <a href="#">{{classroom.teachers. }}</a> in <a href="#">Programming</a>
+                    <a href="#">{{ classroom.teachers[0].name }}</a> in <a href="#">{{classroom.speciality}}</a>
                   </li>
                 </ul>
               </div>
               <h4>
-                <a href="#">{{classroom.classroomName}}</a>
+                <a href="#">{{ classroom.classroomName }}</a>
               </h4>
-
               <div class="bottom-info">
                 <div class="course-info">
                   <ul>
-                    <li><i class="fas fa-clock"></i>Capacity : {{ classroom.classroomCapacity}} </li> <br>
-                    <li><i class="fas fa-list-ul"></i> level : {{classroom.classroomLvl}} </li><br>
-                    <li><i class="fas fa-user"></i> speciality : {{classroom.speciality}}</li>
+                    <li><i class="fas fa-clock"></i> Capacity: {{ classroom.classroomCapacity }}</li>
+                    <li><i class="fas fa-list-ul"></i> Level: {{ classroom.classroomLvl }}</li>
+                    <li><i class="fas fa-user"></i> Specialty: {{ classroom.speciality }}</li>
                   </ul>
                 </div>
                 <div class="enroll">
-                  <a class="btn btn-theme effect btn-sm" [routerLink]="'/Classroom/Details/'+ classroom.id" > View All details</a>
+                  <a class="btn btn-theme effect btn-sm" [routerLink]="'/Classroom/Details/' + classroom.id">View All Details</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
         <!-- End Single item -->
      
       </div>

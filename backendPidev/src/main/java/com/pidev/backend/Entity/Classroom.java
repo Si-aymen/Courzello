@@ -27,9 +27,9 @@ public class Classroom {
     private int classroomCapacity;
     private String classroomName;
     @Enumerated(EnumType.STRING)
-    private  ClassroomLvl classroomLvl ;
+    private ClassroomLvl classroomLvl ;
     @Enumerated(EnumType.STRING)
-    private Speciality  speciality ;
+    private Speciality speciality ;
 
 
     // association User Teachers

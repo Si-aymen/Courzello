@@ -34,7 +34,8 @@ export class ClassroomComponent implements OnInit {
     let bodyData = {
       "classroomCapacity": this.classroomCapacity,
       "classroomName": this.classroomName,
-      "classroomLvl": this.classroomLvl
+      "classroomLvl": this.classroomLvl,
+      "speciality":this.speciality
     };
 
     this.http.post("http://localhost:8090/pi/classrooms/Save", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
@@ -44,6 +45,7 @@ export class ClassroomComponent implements OnInit {
       this.classroomCapacity = 0;
       this.classroomName = '';
       this.classroomLvl = '';
+      this.speciality = ''; 
     });
   }
 
