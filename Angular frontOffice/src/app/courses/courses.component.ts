@@ -19,6 +19,8 @@ export class CoursesComponent {
   coursePrice : number =0; 
   courseDescription : string ="";
   CurrentcourseID = "";
+  
+  starIndices = Array(5).fill(0).map((x, i) => i);
 
 
 

@@ -245,13 +245,14 @@
             <div class="info">
               <div class="top-info">
                 <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <span>4.8 (867)</span>
+                  <ng-container *ngFor="let i of starIndices">
+                    <i *ngIf="course.avRating > i + 0.75" class="fas fa-star"></i> <!-- Full star -->
+                    <i *ngIf="course.avRating > i && course.avRating <= i + 0.75" class="fas fa-star-half-alt"></i> <!-- Half star -->
+                    <i *ngIf="course.avRating <= i" class="far fa-star"></i> <!-- Empty star -->
+                  </ng-container>
+                  <span>{{course.avRating}} (867)</span>
                 </div>
+                
                 <div class="price">
                   ${{course.coursePrice}}
                 </div>
