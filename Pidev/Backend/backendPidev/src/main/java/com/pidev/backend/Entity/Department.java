@@ -5,12 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,14 +18,17 @@ import java.util.List;
 @Document(collection = "Departments")
 public class Department {
 
-    @Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     @MongoId
-    private Long departmentId;
+    private String departmentId;
+
     private String name;
     private String contactInformation;
-
-    @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @DBRef
     private List<User> teachers;
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
 
 }

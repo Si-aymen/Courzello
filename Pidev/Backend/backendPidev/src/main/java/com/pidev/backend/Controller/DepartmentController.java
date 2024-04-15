@@ -1,48 +1,51 @@
 package com.pidev.backend.Controller;
 
 import com.pidev.backend.Entity.Department;
+import com.pidev.backend.Repository.DepartmentRepository;
 import com.pidev.backend.Service.DepartmentService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/departments")
+@AllArgsConstructor
+@CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
+@RequestMapping("/Departments")
 public class DepartmentController {
-
-
-    @Autowired
+    private DepartmentRepository departmentRepository;
     private DepartmentService departmentService;
 
-    @GetMapping
-    public List<Department> getAllDepartments() {
+
+    @GetMapping("/GetAllDepartments")
+    public List<Department> getAllDepartments(){
         return departmentService.getAllDepartments();
     }
 
     @GetMapping("/{id}")
-    public Department getDepartmentById(@PathVariable Long id) {
+    public Department getDepartmentbyId(@PathVariable String id){
         return departmentService.getDepartmentById(id);
     }
 
-    @PostMapping
-    public Department createDepartment(@RequestBody Department department) {
+    @PostMapping("/Save/department")
+    public Department createDepartment(@RequestBody Department department){
         return departmentService.createDepartment(department);
     }
-
-    @PutMapping("/{id}")
-    public Department updateDepartment(@PathVariable Long id, @RequestBody Department department) {
-        return departmentService.updateDepartment(id, department);
+    @PutMapping("{id}")
+    public Department updateDepartment(@PathVariable String id,@RequestBody Department dep)
+    {
+        return departmentService.updateDepartment(id,dep);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteDepartment(@PathVariable Long id) {
+    public void deleteDep(@PathVariable String id){
         departmentService.deleteDepartment(id);
     }
 
-    @PutMapping("add-teacher-to-department/{login}/{depId}")
-    public Department addTeacherToDepartment(@PathVariable String login, @PathVariable Long depId){
-        return departmentService.addTeacherToDepartment(login,depId);
+
+    @PostMapping("/{id}/{login}")
+    public Department addteachertodep(@PathVariable String id,@PathVariable String login ){
+        return departmentService.affectTeacherToDep(login,id);
     }
 
 }

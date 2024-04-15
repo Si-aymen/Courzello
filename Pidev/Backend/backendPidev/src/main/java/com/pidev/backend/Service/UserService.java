@@ -9,4 +9,11 @@ public interface UserService {
     User createUser(User user);
     User updateUser(String login, User user);
     void deleteUser(String login);
+    public List<User> getUsersByClassroom(String classroomId) ;
+    List<User> getTeachers();
+    List<User> getTeachersOFClassroom(String IdClassroom) ;
+    List<User> getStudentsOFClassroom(String IdClassroom) ;
+
+    User getUserById(String id);
+
 }

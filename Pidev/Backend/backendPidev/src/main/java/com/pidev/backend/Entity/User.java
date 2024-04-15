@@ -1,18 +1,28 @@
 package com.pidev.backend.Entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
-
-import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,18 +31,67 @@ import java.util.Date;
 
 public class User {
 
-    @Id
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Login must only contain alphanumeric characters.")
+    public static User CONNECTEDUSER;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", role=" + role +
+                ", speciality=" + speciality +
+                '}';
+    }
+
     @MongoId
-    private String login;
+    private String id;
+    @Indexed(unique = true)
+    @Id
+    private String login ;
     private String password;
     private String firstName;
     private String lastName;
+    @Indexed(unique = true)
     private String email;
     private Date dateOfBirth;
+    @Enumerated(EnumType.STRING)
     private Role role;
+    @Enumerated(EnumType.STRING)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Speciality speciality =null;
+
+    //Courses if user = student
+    @DBRef
+    private Set<Course> CoursesEnrolled = new HashSet<>() ;
+
+    //teachers if user.role = teacher
+    @DBRef
+    private Set<User> Teachers = new HashSet<>();
 
 
-    @ManyToOne
-    private Department department;
+    // Association classroom
+    @DBRef
+    private Set<Classroom> classrooms = new HashSet<>();
+    @DBRef
+    private List<Vote> votes = new ArrayList<Vote>();
+    @DBRef
+    @JsonIgnore
+    private List<Question> questions;
+    @DBRef
+    @JsonIgnore
+    private List<Reponse> reponses;
+
+    @DBRef
+    private List<Conversation> conversations = new ArrayList<>();
+
+    @DBRef
+    private List<User> followers= new ArrayList<User>();
+
+    @DBRef
+    private List<User> following = new ArrayList<User>();
+
 }

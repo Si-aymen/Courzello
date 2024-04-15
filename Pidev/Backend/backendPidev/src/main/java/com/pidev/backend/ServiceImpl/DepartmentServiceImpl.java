@@ -1,12 +1,10 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Department;
-import com.pidev.backend.Entity.Role;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.DepartmentRepository;
 import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.DepartmentService;
-import com.pidev.backend.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,59 +15,63 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
-
     private DepartmentRepository departmentRepository;
     private UserRepository userRepository;
+
     @Override
     public List<Department> getAllDepartments() {
         return departmentRepository.findAll();
     }
 
     @Override
-    public Department getDepartmentById(Long id) {
-        Optional<Department> optionalDepartment = departmentRepository.findById(id);
-        return optionalDepartment.orElse(null);
+    public Department getDepartmentById(String departmentId) {
+        Optional<Department> department= departmentRepository.findById(departmentId);
+        return department.orElse(null);
     }
 
     @Override
     public Department createDepartment(Department department) {
+        if(departmentRepository.findDepartmentByDepartmentId(department.getDepartmentId())!=null)
+        {
+            throw new IllegalArgumentException("already exists");
+        }
+
+
         return departmentRepository.save(department);
     }
 
     @Override
-    public Department updateDepartment(Long id, Department department) {
-        if (departmentRepository.existsById(id)) {
-            department.setDepartmentId(id);
+    public void deleteDepartment(String departmentId) {
+        departmentRepository.deleteById(departmentId);
+
+    }
+
+    @Override
+    public Department updateDepartment(String id, Department department) {
+       Department department1 = departmentRepository.findDepartmentByDepartmentId(id);
+       if(department1!=null){
+           department.setDepartmentId(department1.getDepartmentId());
             return departmentRepository.save(department);
-        }
+       }
         return null;
     }
 
     @Override
-    public void deleteDepartment(Long id) {
-        departmentRepository.deleteDepartmentByDepartmentId(id);
-    }
+    public Department affectTeacherToDep(String login, String id) {
+        User u = userRepository.findUserByLogin(login);
+        Department d = departmentRepository.findDepartmentByDepartmentId(id);
 
-    @Override
-    public Department addTeacherToDepartment(String login, Long departmentId) {
-        User teacher = userRepository.findUserByLogin(login);
-        Department department = departmentRepository.findDepartmentByDepartmentId(departmentId);
-        if(teacher.getRole()== Role.TEACHER){
-            if(department.getTeachers()==null){
-                List<User> teachers = new ArrayList<>();
-                department.setTeachers(teachers);
-            }else {
-                department.getTeachers().add(teacher);
-
-
-            }
-            departmentRepository.save(department);
-            return department;
-
+        if(d.getTeachers()==null)
+        {
+            List<User> teachers = new ArrayList<>();
+            teachers.add(u);
+            d.setTeachers(teachers);
         }
-        return null;
+        else {
+            d.getTeachers().add(u);
+        }
 
+
+        return departmentRepository.save(d);
     }
-
-
 }
