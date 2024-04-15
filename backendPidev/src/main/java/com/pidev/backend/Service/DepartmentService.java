@@ -9,4 +9,6 @@ public interface DepartmentService {
     Department createDepartment(Department user);
     void deleteDepartment(String departmentId);
     Department updateDepartment(String id, Department department);
+
+    Department affectTeacherToDep(String login, String id);
 }

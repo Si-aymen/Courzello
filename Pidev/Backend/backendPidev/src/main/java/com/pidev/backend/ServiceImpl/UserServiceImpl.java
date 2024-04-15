@@ -28,9 +28,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByLogin(String login) {
-        Optional<User> optionalUser = userRepository.findById(login);
-        return optionalUser.orElse(null);
+        return userRepository.findUserByLogin(login);
     }
+
 
     @Override
     public User createUser(User user) {
@@ -42,7 +42,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(String login, User user) {
-        User userToUpdate = userRepository.findUserByLogin(login);
+        User userToUpdate = userRepository.getUserByLogin(login);
+        System.out.println(userToUpdate);
         if (userToUpdate != null) {
             user.setLogin(userToUpdate.getLogin());
             user.setId(userToUpdate.getId());
@@ -76,7 +77,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getTeachers() {
-        return userRepository.getUsersByRole(Role.TEACHER);
+        return userRepository.getUserByRole(Role.TEACHER);
     }
 
     @Override
@@ -93,7 +94,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(String id) {
-        return userRepository.findById(id).get();
+        return userRepository.getUserById(id);
     }
 
 

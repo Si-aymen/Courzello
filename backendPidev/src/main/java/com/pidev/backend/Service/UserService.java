@@ -13,4 +13,7 @@ public interface UserService {
     List<User> getTeachers();
     List<User> getTeachersOFClassroom(String IdClassroom) ;
     List<User> getStudentsOFClassroom(String IdClassroom) ;
+
+    User getUserById(String id);
+
 }

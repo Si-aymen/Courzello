@@ -1,11 +1,14 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Department;
+import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.DepartmentRepository;
+import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.DepartmentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentRepository departmentRepository;
+    private UserRepository userRepository;
 
     @Override
     public List<Department> getAllDepartments() {
@@ -54,6 +58,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department affectTeacherToDep(String login, String id) {
-        return null;
+        User u = userRepository.findUserByLogin(login);
+        Department d = departmentRepository.findDepartmentByDepartmentId(id);
+
+        if(d.getTeachers()==null)
+        {
+            List<User> teachers = new ArrayList<>();
+            teachers.add(u);
+            d.setTeachers(teachers);
+        }
+        else {
+            d.getTeachers().add(u);
+        }
+
+
+        return departmentRepository.save(d);
     }
 }
