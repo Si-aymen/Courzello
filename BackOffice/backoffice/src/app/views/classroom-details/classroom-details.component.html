@@ -1,0 +1,183 @@
+<p>classroom-details works!</p>
+
+<c-row>
+
+
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - Course Doamian  </c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - Teacher speciality  </c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData2"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Classroom Details </c-card-header>
+      <c-card-body>
+        <div class="details-row">
+          <span class="details-label">Classroom ID:</span>
+          <span class="details-value">{{ classroom.id }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Classroom Name:</span>
+          <span class="details-value">{{ classroom.classroomName }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Classroom Level:</span>
+          <span class="details-value">{{ classroom.classroomLvl }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Speciality:</span>
+          <span class="details-value">{{ classroom.speciality }}</span>
+        </div>
+        <div class="details-row">
+          <span class="details-label">Capacity:</span>
+          <span class="details-value">{{ classroom.classroomCapacity }}</span>
+        </div>    
+        <div class="details-row">
+          <span class="details-label">Teachers :</span>
+          <span class="details-value">{{ classroom.classroomCapacity }}</span>
+        </div>
+        <div>
+            <button
+            type="button"
+            class="btn btn-primary"
+          >
+            edit  
+          </button>
+          &nbsp;
+          <button  class="btn btn-danger"  (click)="deleteClassroom()">Delete Classroom</button>
+        <br>
+        <br>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+
+  
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header>
+        Bar Chart Number of courses per month 
+      </c-card-header>
+      <c-card-body>
+        <c-chart type="bar" [data]="chartBarData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>
+
+
+
+<!-- Teachers  Table -->
+<div>
+  <c-row>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>Teachers  Table</c-card-header>
+        <c-card-body>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th> speciality</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of userArray; let i = index">
+                <td>{{ user.id }}</td>
+                <td>
+                  <div>{{ user.firstName }}</div>
+                  <div class="small text-medium-emphasis text-nowrap">
+                    <span>Login: {{ user.login }}</span>
+                  </div>
+                </td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.speciality }}</td>
+                <td>
+                  <button cButton>Delete from classroom</button> <!--(click)="deleteuser(user)" -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</div>
+
+
+<!-- Course  Table -->
+
+<div>
+  <c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Course Table</c-card-header>
+        <c-card-body>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Course Duration</th>
+                <th>Course domain</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let course of courseArray; let i = index">
+                <td>{{ course.id }}</td>
+                <td>
+                  <div>{{ course.courseName }}</div>
+                  <div class="small text-medium-emphasis text-nowrap">
+                    <span>Level: {{ course.courseLevel }}</span>
+                  </div>
+                </td>
+                <td>{{ course.courseDuration }}</td>
+                <td>{{ course.courseDomain }}</td>
+                <td>
+                  <button cButton >Delete from classroom </button> &nbsp; <!--(click)="deleteCourse(course)" -->
+                  <button
+                  type="button"
+                  class="btn btn-primary"
+                  [routerLink]="'/Course/Details/'+ course.id"
+                >
+                  Details 
+                </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</div>
+
+
+
