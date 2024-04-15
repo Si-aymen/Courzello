@@ -1,0 +1,34 @@
+<!-- form qiestion-->
+<div>
+    <c-row>
+      <c-col xs>
+        <c-card class="mb-4">
+          <c-card-header>Forum Table</c-card-header>
+          <c-card-body>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th> ID</th>
+                  <th>Contenue</th>
+                  <th>tech</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let q of QuestionArray; let i = index">
+                  <td>{{ q.id }}</td>
+                  <td>{{ q.contenue }}</td>
+                  <td>{{ q.tech }}</td>
+                  <td>
+                    <button cButton>Edit</button> <!-- (click)="editForum(forum)"-->
+                    <button cButton>Delete</button> <!--(click)="deleteForum(forum)" -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </div>
+  
