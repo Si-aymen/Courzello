@@ -55,7 +55,7 @@ export class CourseComponent implements OnInit {
       "dateAdded": this.dateAdded,
       "courseDuration": this.courseDuration,
       "imgURL": this.imgURL, 
-      "imagePath" : this.imagePath
+      "imagePath" : this.imagePath,
     };
 
     this.http.post("http://localhost:8090/pi/courses/add-course", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
@@ -191,6 +191,7 @@ export class CourseComponent implements OnInit {
      
       
     }
+
 
 
 }

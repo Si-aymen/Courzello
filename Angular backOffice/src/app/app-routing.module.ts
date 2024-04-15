@@ -24,6 +24,9 @@ import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-tea
 import { ChatComponent } from './chat/chat.component';
 
 
+import {MainComponent} from './chat/main/main.component';
+import { UserChatComponent } from './chat/user-chat/user-chat.component';
+import {UserProfileComponent} from "./views/user-profile/user-profile.component";
 
 
 
@@ -60,7 +63,6 @@ const routes: Routes = [
       },
       {path: 'chat/:userId', component: ChatComponent}
       ,
-
       {
         path: 'Classroom/all',
         component:ClassroomComponent ,
@@ -76,6 +78,10 @@ const routes: Routes = [
       {
         path: 'user-update/:id',
         component: UserUpdateComponent,
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent,
       },
       {
         path: 'department-update/:id',
@@ -105,6 +111,18 @@ const routes: Routes = [
       {
         path: 'AffectTeachers/:id',
         component: AffectTeachersComponent,
+      },
+      {
+        path: 'GPT',
+        component: MainComponent,
+      },
+      {
+        path: 'GPT/user',
+        component: UserChatComponent,
+      },
+      {
+        path: 'GPT/chat',
+        component: ChatComponent,
       },
       {
         path: 'theme',

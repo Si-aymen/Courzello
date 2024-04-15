@@ -67,6 +67,10 @@ import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-tea
 
 import { ChatComponent } from './chat/chat.component';
 
+import {UserChatComponent} from './chat/user-chat/user-chat.component';
+import {MainComponent} from './chat/main/main.component';
+import {RegisterComponent} from "./views/pages/register/register.component";
+import {UserProfileComponent} from "./views/user-profile/user-profile.component";
 
 
 
@@ -87,6 +91,10 @@ const APP_CONTAINERS = [
     LoginComponent,
     DepartmentsComponent,
     UserComponent,
+    LoginComponent,
+    DepartmentsComponent,
+    UserComponent,
+    RegisterComponent,
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,
@@ -101,7 +109,13 @@ const APP_CONTAINERS = [
     DepartmentsUpdateComponent,
     RecUpdateComponent,
 
-    AffectTeachersComponent
+    AffectTeachersComponent,
+    UserProfileComponent,
+    DepartmentsUpdateComponent,
+    RecUpdateComponent,
+    UserChatComponent,
+    ChatComponent,
+    MainComponent
 
 
   ],
@@ -148,12 +162,14 @@ const APP_CONTAINERS = [
   exports: [
     LoginComponent,
     UserUpdateComponent,
+    UserProfileComponent,
     ReclamationComponent,
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,
     ClassroomComponent,
     UserComponent,
+    RegisterComponent,
     ForumComponent,
     ClassroomDetailsComponent,
     CourseDetailsComponent,

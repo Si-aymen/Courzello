@@ -12,7 +12,6 @@ import { IconModule } from '@coreui/icons-angular';
 
 @NgModule({
   declarations: [
-    RegisterComponent,
     Page404Component,
     Page500Component
   ],
@@ -26,6 +25,7 @@ import { IconModule } from '@coreui/icons-angular';
     FormModule
   ],
   exports: [
+
 ]
 })
 export class PagesModule {
