@@ -87,19 +87,15 @@ public class ReclamationServiceImpl implements ReclamationService {
     }
 
     private int calculatePriority(Reclamation reclamation) {
-        // Constantes pour ajuster l'algorithme
         int basePriority = 50;
         double weightResolutionTime = 0.2;
         double weightUserImpact = 0.8;
 
-        // Récupérer les données nécessaires
         int resolutionTimeInHours = calculateResolutionTimeInHours(reclamation);
         int userImpact = reclamation.getUserImpact();
 
-        // Calculer la nouvelle priorité
         int newPriority = basePriority + (int) (weightResolutionTime * resolutionTimeInHours + weightUserImpact * userImpact);
 
-        // Limiter la priorité à une plage spécifique si nécessaire
         return Math.min(Math.max(newPriority, 0), 1000);
     }
 
