@@ -67,10 +67,13 @@ import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-tea
 
 import { ChatComponent } from './chat/chat.component';
 
+<<<<<<< HEAD
 import {UserChatComponent} from './chat/user-chat/user-chat.component';
 import {MainComponent} from './chat/main/main.component';
 import {RegisterComponent} from "./views/pages/register/register.component";
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
 
 
@@ -91,10 +94,13 @@ const APP_CONTAINERS = [
     LoginComponent,
     DepartmentsComponent,
     UserComponent,
+<<<<<<< HEAD
     LoginComponent,
     DepartmentsComponent,
     UserComponent,
     RegisterComponent,
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,
@@ -109,6 +115,7 @@ const APP_CONTAINERS = [
     DepartmentsUpdateComponent,
     RecUpdateComponent,
 
+<<<<<<< HEAD
     AffectTeachersComponent,
     UserProfileComponent,
     DepartmentsUpdateComponent,
@@ -116,6 +123,9 @@ const APP_CONTAINERS = [
     UserChatComponent,
     ChatComponent,
     MainComponent
+=======
+    AffectTeachersComponent
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
 
   ],
@@ -162,14 +172,20 @@ const APP_CONTAINERS = [
   exports: [
     LoginComponent,
     UserUpdateComponent,
+<<<<<<< HEAD
     UserProfileComponent,
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     ReclamationComponent,
     ConversationComponent,
     AppComponent,
     APP_CONTAINERS,
     ClassroomComponent,
     UserComponent,
+<<<<<<< HEAD
     RegisterComponent,
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     ForumComponent,
     ClassroomDetailsComponent,
     CourseDetailsComponent,

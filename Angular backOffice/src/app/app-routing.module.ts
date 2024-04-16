@@ -24,9 +24,12 @@ import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-tea
 import { ChatComponent } from './chat/chat.component';
 
 
+<<<<<<< HEAD
 import {MainComponent} from './chat/main/main.component';
 import { UserChatComponent } from './chat/user-chat/user-chat.component';
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
 
 
@@ -63,6 +66,10 @@ const routes: Routes = [
       },
       {path: 'chat/:userId', component: ChatComponent}
       ,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
       {
         path: 'Classroom/all',
         component:ClassroomComponent ,
@@ -80,10 +87,13 @@ const routes: Routes = [
         component: UserUpdateComponent,
       },
       {
+<<<<<<< HEAD
         path: 'profile',
         component: UserProfileComponent,
       },
       {
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
         path: 'department-update/:id',
         component: DepartmentsUpdateComponent
       },
@@ -113,6 +123,7 @@ const routes: Routes = [
         component: AffectTeachersComponent,
       },
       {
+<<<<<<< HEAD
         path: 'GPT',
         component: MainComponent,
       },
@@ -125,6 +136,8 @@ const routes: Routes = [
         component: ChatComponent,
       },
       {
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
         path: 'theme',
         loadChildren: () =>
           import('./views/theme/theme.module').then((m) => m.ThemeModule)

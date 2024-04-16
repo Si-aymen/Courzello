@@ -13,7 +13,10 @@ public interface UserService {
     List<User> getTeachers();
     List<User> getTeachersOFClassroom(String IdClassroom) ;
     List<User> getStudentsOFClassroom(String IdClassroom) ;
+<<<<<<< HEAD
 
     User getUserById(String id);
 
+=======
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 }

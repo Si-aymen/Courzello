@@ -1,12 +1,17 @@
+<<<<<<< HEAD
 import { Component,OnInit  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+=======
+import { Component } from '@angular/core';
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+<<<<<<< HEAD
 export class RegisterComponent implements OnInit {
 
   username: string = '';
@@ -50,3 +55,10 @@ interface UserData {
   role: string;
   speciality?: string; // Make speciality field optional
 }
+=======
+export class RegisterComponent {
+
+  constructor() { }
+
+}
+>>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
