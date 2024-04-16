@@ -1,15 +1,14 @@
 package com.pidev.backend.ServiceImpl;
 
-import com.pidev.backend.Entity.Chapter;
-import com.pidev.backend.Entity.Course;
-import com.pidev.backend.Entity.Role;
-import com.pidev.backend.Entity.User;
+import com.pidev.backend.Entity.*;
 import com.pidev.backend.Repository.ChapterRepository;
 import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Service.ChapterService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,10 +17,22 @@ import java.util.Set;
 @AllArgsConstructor
 public class ChapterServiceImpl implements ChapterService {
 
+    @Autowired
+    private EmailSenderService senderService;
+
     ChapterRepository chapterRepository ;
     CourseRepository courseRepository ;
     @Override
     public Chapter addChapter(Chapter chapter) {
+
+        senderService.sendSimpleEmail("rahali.aymen2001@gmail.com",
+                "Courzello Classrooms ",
+                "A new Classroom was added \n" +
+                        "chapter ID:" + chapter.getId()+"\n"+
+                        "chapter Name:" + chapter.getChapterName()+"\n"+
+                        "chapter Duration  :" + chapter.getDuration()+"\n"+
+                        "chapter Courses:" + chapter.getCourses()+"\n"
+        );
         return chapterRepository.save(chapter);
     }
 
@@ -55,5 +66,24 @@ public class ChapterServiceImpl implements ChapterService {
             courseRepository.save(course);
 
         }
+    }
+
+
+
+    public List<Chapter> GetChapterByCourse(String classroomId) {
+
+        List<Chapter> Chapter = chapterRepository.findAll();
+        List<Chapter> ChapterInClassroom = new ArrayList<>();
+        for (Chapter chapter : Chapter) {
+            for (Course course : chapter.getCourses()) {
+                if (course.getId().equals(classroomId)) {
+                    ChapterInClassroom.add(chapter);
+                    break;
+                }
+            }
+        }
+        return ChapterInClassroom;
+
+
     }
 }

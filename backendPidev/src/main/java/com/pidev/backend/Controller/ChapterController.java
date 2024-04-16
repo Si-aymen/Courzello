@@ -2,6 +2,7 @@ package com.pidev.backend.Controller;
 
 import com.pidev.backend.Entity.Conversation;
 import com.pidev.backend.Entity.Chapter;
+import com.pidev.backend.Entity.Course;
 import com.pidev.backend.Service.ChapterService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,19 @@ public class ChapterController {
         chapterService.deleteChapter(chapterId);
     }
 
-
     @PutMapping ("/assign-chapters/{course-id}")
     public void assignChaptersToCourse (@RequestBody List<Chapter> chapterList , @PathVariable("course-id") String id){
         chapterService.assignChapterToCourse(chapterList,id);
     }
+
+
+    @GetMapping("/Course/{CourseId}")
+    public List<Chapter> getChaptersByCourse(@PathVariable String CourseId) {
+        List<Chapter> chapterList = chapterService.GetChapterByCourse(CourseId);
+        return  chapterList ;
+    }
+
+
+
+
 }

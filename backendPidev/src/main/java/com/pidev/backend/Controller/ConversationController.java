@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ConversationController {
 
+    @Autowired
     ConversationService conversationService;
 
     @PostMapping("/add-conversation")

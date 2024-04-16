@@ -27,9 +27,11 @@ public class Classroom {
     private int classroomCapacity;
     private String classroomName;
     @Enumerated(EnumType.STRING)
-    private  ClassroomLvl classroomLvl ;
+    private ClassroomLvl classroomLvl ;
     @Enumerated(EnumType.STRING)
-    private Speciality  speciality ;
+    private Speciality speciality ;
+
+    private float classroomRating  ;// to be contunied
 
 
     // association User Teachers
@@ -42,5 +44,10 @@ public class Classroom {
     @DBRef
     @JsonIgnore
     private Set<User> studnets  =new HashSet<>();
+
+    // association User courses
+    @DBRef
+    @JsonIgnore
+    private Set<Course> courses  =new HashSet<>();
 
 }

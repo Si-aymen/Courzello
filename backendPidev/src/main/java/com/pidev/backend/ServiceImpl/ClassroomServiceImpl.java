@@ -1,24 +1,37 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Classroom;
+import com.pidev.backend.Entity.Course;
 import com.pidev.backend.Entity.Role;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Repository.ClassroomRepository;
+import com.pidev.backend.Repository.CourseRepository;
 import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.ClassroomService;
+import com.pidev.backend.Service.UserService;
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 @AllArgsConstructor
 public class ClassroomServiceImpl implements ClassroomService {
 
+    @Autowired
+    private EmailSenderService senderService;
+
+
     ClassroomRepository classroomRepository ;
     UserRepository userRepository ;
+    CourseRepository courseRepository ;
     @Override
     public List<Classroom> GetAllClassrooms() {
         return classroomRepository.findAll() ;     }
@@ -30,6 +43,17 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     @Override
     public Classroom AddClassroom(Classroom classroom) {
+
+
+        senderService.sendSimpleEmail("rahali.aymen2001@gmail.com",
+                "Courzello Classrooms ",
+                "A new Classroom was added \n" +
+                        "Classroom ID:" + classroom.getId()+"\n"+
+                        "Classroom name:" + classroom.getClassroomName()+"\n"+
+                        "Classroom capacity  :" + classroom.getClassroomCapacity()+"\n"+
+                        "Classroom teachers:" + classroom.getTeachers()+"\n"+
+                        "Classroom :" + classroom.getClassroomLvl()+"\n"
+                        );
         return classroomRepository.save(classroom) ;
     }
 
@@ -45,14 +69,6 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     }
 
-    @Override
-    public Classroom AddNewTeachersToClassroom(Long IdClassroom , List<User> ListeTeacher) {
-
-        Classroom classroom = classroomRepository.findById(IdClassroom).get() ;
-        Set<User> teachers = new HashSet<>(ListeTeacher) ;
-        classroom.setTeachers(teachers);
-        return classroom ;
-    }
 
 
     @Override
@@ -92,6 +108,97 @@ public class ClassroomServiceImpl implements ClassroomService {
         }
 
     }
+
+    @Override
+    public void AddCoursesToClassroom(String IdClassroom, List<String> ListeCourseesID) {
+        Classroom c = classroomRepository.getClassroomByClassroomName(IdClassroom);
+        System.out.println(c.getId());
+
+        for (String s : ListeCourseesID) {
+            Course course = courseRepository.findById(s).get();
+            System.out.println(course.getCourseName());
+            course.getClassrooms().add(c);
+            courseRepository.save(course);
+            c.getCourses().add(course);
+            classroomRepository.save(c);
+
+        }
+
+    }
+
+    @Override
+    public Classroom GetById(String ClassroomId) {
+        return classroomRepository.findById(ClassroomId).get();
+    }
+
+    @Override
+    public void DeleteClassroomById(String ClassroomId) {
+        classroomRepository.deleteById(ClassroomId);
+    }
+
+    @Override
+    public void deleteTeacherFromClassroom(String teacherId, String classroomId) {
+        Optional<Classroom> classroomOptional = classroomRepository.findById(classroomId);
+        Optional<User> teacherOptional = userRepository.findById(teacherId);
+
+        if (classroomOptional.isPresent() && teacherOptional.isPresent()) {
+            Classroom classroom = classroomOptional.get();
+            User teacher = teacherOptional.get();
+
+            if (classroom.getTeachers().contains(teacher)) {
+                classroom.getTeachers().remove(teacher);
+                classroomRepository.save(classroom);
+            }
+
+            if (teacher.getClassrooms().contains(classroom)) {
+                teacher.getClassrooms().remove(classroom);
+                userRepository.save(teacher);
+            }
+        } else {
+            // Handle the case where either the teacher or classroom doesn't exist
+            // This could be logging an error, throwing a custom exception, etc.
+        }
+    }
+
+    @Override
+    public List<Classroom> GetClassroomsByTeacher(String IdTeacher) {
+        User teacher = userRepository.findById(IdTeacher).get();
+        return classroomRepository.getClassroomByTeachersContains(teacher);
+    }
+
+    @Override
+    public List<Classroom> GetClassroomsByStudent(String IdStudent) {
+        User student = userRepository.findById(IdStudent).get();
+        return classroomRepository.getClassroomByStudnetsContains(student)  ;
+    }
+
+    @Override
+    public void AddTeacherToClass(String IdTeacher, String IdClassroom) {
+
+            Classroom c = classroomRepository.findById(IdClassroom).get();
+            User u = userRepository.findById(IdTeacher).get();
+            System.out.println(u.getLogin());
+            u.getClassrooms().add(c);
+            userRepository.save(u);
+            c.getTeachers().add(u);
+            classroomRepository.save(c);
+
+
+
+    }
+
+    @Override
+    public void AddStudentToClass(String idStudent, String IdClassroom) {
+        Classroom c = classroomRepository.findById(IdClassroom).get();
+        User u = userRepository.findById(idStudent).get();
+        System.out.println(u.getLogin());
+        u.getClassrooms().add(c);
+        userRepository.save(u);
+        c.getStudnets().add(u);
+        classroomRepository.save(c);
+    }
+
+
 
 
 }

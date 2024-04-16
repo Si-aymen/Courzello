@@ -1,6 +1,8 @@
 package com.pidev.backend.Service;
 
 import com.pidev.backend.Entity.Course;
+import com.pidev.backend.Entity.Speciality;
+import com.pidev.backend.Entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -12,4 +14,16 @@ public interface CourseService {
     public void deleteCourse(String CourseId);
 
     public void uploadPdf(MultipartFile file, String courseId) ;
+
+    public List<Course> getCoursessByClassroom(String classroomId) ;
+
+    Course getCourseById(String courseId) ;
+
+    void courseEnroll(String IdStudnet , String IDCourse);
+    List<Course> getCourseByCourseDomain(Speciality speciality) ;
+
+     Course addRating(String IdUser , String IDcourse,Float Rating);
+
+     Course AddChapterToCourse (String IDCourse , String IDChapter) ;
+
 }

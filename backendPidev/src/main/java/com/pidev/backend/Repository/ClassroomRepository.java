@@ -8,7 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClassroomRepository extends MongoRepository<Classroom, Long> {
+public interface ClassroomRepository extends MongoRepository<Classroom, String> {
     Classroom getClassroomByClassroomName(String lvl );
     Classroom getClassroomById(String id) ;
+
+    List<Classroom> getClassroomByTeachersContains(User teacher);
+    List<Classroom> getClassroomByStudnetsContains(User student);
+
 }
