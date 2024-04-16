@@ -30,6 +30,8 @@ import jakarta.persistence.Id;
 @Document(collection = "users")
 
 public class User {
+
+    public static User CONNECTEDUSER;
     @Override
     public String toString() {
         return "User{" +
@@ -66,6 +68,10 @@ public class User {
     @DBRef
     private Set<Course> CoursesEnrolled = new HashSet<>() ;
 
+    //teachers if user.role = teacher
+    @DBRef
+    private Set<User> Teachers = new HashSet<>();
+
 
     // Association classroom
     @DBRef
@@ -81,4 +87,11 @@ public class User {
 
     @DBRef
     private List<Conversation> conversations = new ArrayList<>();
+
+    @DBRef
+    private List<User> followers= new ArrayList<User>();
+
+    @DBRef
+    private List<User> following = new ArrayList<User>();
+
 }

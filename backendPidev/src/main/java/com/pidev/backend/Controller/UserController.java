@@ -7,12 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Service.UserService;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @RestController
 @AllArgsConstructor
-
 @CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
 @RequestMapping("/users")
 public class UserController {
@@ -24,15 +25,28 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+    @GetMapping("/teachers")
+    public  List<User> getTeachers()
+    {
+        List<User> teachers = new ArrayList<>();
+        for (User u: userService.getAllUsers()
+        ) {
+            if(u.getRole()==Role.TEACHER){
+                teachers.add(u);
+            }
+
+        }
+        return teachers;
+    }
 
     @GetMapping("/{login}")
     public User getUserByLogin(@PathVariable String login) {
         return userService.getUserByLogin(login);
     }
 
-    @GetMapping("/get-id/{id}")
+    @GetMapping("/id/{id}")
     public User getUserById(@PathVariable String id) {
-        return userService.getUserByLogin(id);
+        return userService.getUserById(id);
     }
 
 
@@ -55,9 +69,22 @@ public class UserController {
     @PostMapping("signin/{login}/{pwd}")
     public boolean signinAdmin(@PathVariable String login, @PathVariable String pwd){
         User user=userRepository.findUserByLogin(login);
-        return Objects.equals(user.getPassword(), pwd) && user.getRole()== Role.ADMIN;
+        if(user!=null){
+            User.CONNECTEDUSER=user;
+        }
+        return (user!=null) && (Objects.equals(user.getPassword(), pwd) && user.getRole()== Role.ADMIN || user.getRole()==Role.TEACHER);
     }
 
+
+
+    @GetMapping("/connectedUser")
+    public User getConnectedUser()
+    {
+        if(User.CONNECTEDUSER!=null){
+            return User.CONNECTEDUSER;
+        }
+        return null;
+    }
 
     @GetMapping("/classroom/{classroomId}")
     public List<User> getUsersByClassroom(@PathVariable String classroomId) {
@@ -70,10 +97,6 @@ public class UserController {
         return userService.getTeachersOFClassroom(classroomId);
     }
 
-    @GetMapping("/GetTeachers/")
-    public List<User> getTeachers() {
-        return userService.getTeachers();
-    }
 
     @GetMapping("/GetStudents/{classroomId}")
     public List<User> getStudentsOfclassroom(@PathVariable String classroomId) {
@@ -81,5 +104,19 @@ public class UserController {
     }
 
 
-}
+    @PostMapping("/follow/{id}")
+    public void followUser(@PathVariable String id){
+        User user = userService.getUserById(id);
+        User connectedUser = userRepository.getUserById(User.CONNECTEDUSER.getId());
 
+        if(User.CONNECTEDUSER.getFollowers().isEmpty()){
+            List<User> users = new ArrayList<User>();
+            users.add(user);
+            connectedUser.setFollowers(users);
+        }
+        else {
+            connectedUser.getFollowers().add(user);
+        }
+    }
+
+}
