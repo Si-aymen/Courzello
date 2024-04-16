@@ -9,6 +9,6 @@ public interface ConversationService {
     Conversation addConversation (Conversation conversation);
     List<Conversation> getALLConversations();
     Conversation modifyConversation (Conversation conversation);
-    public void deleteConversation(Long ConversationId);
+    public void deleteConversation(String ConversationId);
 
 }

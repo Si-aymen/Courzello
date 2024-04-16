@@ -31,10 +31,9 @@ public class ConversationServiceImpl implements ConversationService {
     }
 
     @Override
-    public void deleteConversation(Long conversationId) {
-
-        conversationRepository.deleteById(conversationId);
-        System.out.println("siprimééééé");
+    public void deleteConversation(String conversationId) {
+         Conversation c  = conversationRepository.findById(conversationId).get();
+        conversationRepository.delete(c);
 
     }
 
