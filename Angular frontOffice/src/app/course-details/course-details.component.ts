@@ -12,6 +12,9 @@ export class CourseDetailsComponent {
   course:any ;
   imgNumber:any;
 
+  avRating: any ; 
+  
+
 
 
   starIndices = Array(5).fill(0).map((x, i) => i);
@@ -48,6 +51,22 @@ export class CourseDetailsComponent {
   getRandomImageNumber(): number {
     // Generate a random number between 1 and 9
     return Math.floor(Math.random() * 6) + 1;
+  }
+
+
+  Rate(course:any) {
+    let bodyData = {
+      "avRating":this.avRating 
+    };
+
+    this.http.put("http://localhost:8090/pi/courses/course-Rating/65e340822ebe9815a8fb05d6/"+ course +"/"+this.avRating , bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
+      console.log(resultData);
+      alert("course rating  added Successfully");
+      this.avRating = 0;
+
+      
+
+    });
   }
 
 }
