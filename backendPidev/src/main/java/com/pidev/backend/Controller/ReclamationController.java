@@ -28,7 +28,9 @@ import java.util.Map;
 public class ReclamationController {
     private ReclamationService reclamationService;
     private AttachementService attachment_service;
-    private UserService userService;
+
+    UserService userService ;
+
     private NotificationService notificationService;
 
     @GetMapping("/get_all")

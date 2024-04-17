@@ -1,11 +1,11 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.*;
-import com.pidev.backend.Service.IQuestionService;
 import com.pidev.backend.Repository.HashtagRepository;
 import com.pidev.backend.Repository.QuestionRepository;
 import com.pidev.backend.Repository.SignaBAdWordRepository;
 import com.pidev.backend.Repository.UserRepository;
+import com.pidev.backend.Service.IQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +43,7 @@ public class QuestionServiceImpl implements IQuestionService {
             Hashtag hashtag =new Hashtag();
             hashtag.setTechnologie(t);
             boolean  etat=hashserv.ajouthashtag(hashtag);
-            if(etat){
+            if(etat){ //Si le hashtag a été ajouté avec succès, l'ajoute à la question
                 if(q.getHashtag()!=null){
                     q.getHashtag().add(hashtag);
                 }else{
@@ -51,7 +51,7 @@ public class QuestionServiceImpl implements IQuestionService {
                     hashtags.add(hashtag);
                     q.setHashtag(hashtags);
                 }
-            }else{
+            }else{// Si le hashtag existe déjà, le récupère et l'ajoute à la question
                 for(Hashtag h:hashrepo.findAll()){
                     if(h.getTechnologie().equals(t)) {
                         if(q.getHashtag()!=null){
@@ -70,15 +70,49 @@ public class QuestionServiceImpl implements IQuestionService {
         return questionrepo.save(q);
     }
 
-    @Override
     public Question updateQuestion(String idq, Question q) {
-        Question qu =questionrepo.findById(idq).orElse(null);
+        Question qu = questionrepo.findById(idq).orElse(null);
         if (qu != null) {
-            qu.setContenue(q.getContenue());
+            qu.setContenue(this.hashbadword(q.getContenue(), qu.getId(), qu.getUser().getId()));
+
+            // Mise à jour des technologies si elles sont fournies
+            if (q.getTech() != null && !q.getTech().isEmpty()) {
+                qu.setTech(q.getTech());
+                qu.setHashtag(null); // Supprimer les hashtags existants car les technologies sont mises à jour
+                for (Technologie t : q.getTech()) {
+                    Hashtag hashtag = new Hashtag();
+                    hashtag.setTechnologie(t);
+                    boolean etat = hashserv.ajouthashtag(hashtag);
+                    if (etat) {
+                        if (qu.getHashtag() != null) {
+                            qu.getHashtag().add(hashtag);
+                        } else {
+                            List<Hashtag> hashtags = new ArrayList<>();
+                            hashtags.add(hashtag);
+                            qu.setHashtag(hashtags);
+                        }
+                    } else {
+                        for (Hashtag h : hashrepo.findAll()) {
+                            if (h.getTechnologie().equals(t)) {
+                                if (qu.getHashtag() != null) {
+                                    qu.getHashtag().add(h);
+                                } else {
+                                    List<Hashtag> hashtags = new ArrayList<>();
+                                    hashtags.add(h);
+                                    qu.setHashtag(hashtags);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Sauvegarde de la question une seule fois après avoir terminé toutes les opérations de mise à jour
             return questionrepo.save(qu);
         }
         return qu;
     }
+
 
     @Override
     public void deleteQuestion(String idq) {
@@ -119,12 +153,26 @@ public class QuestionServiceImpl implements IQuestionService {
             }
         }
 
-        // Reconstruct the paragraph with replaced words
+        // Reconstruit le texte modifié en rejoignant les mots du tableau avec des espaces
         String modifiedParagraph = String.join(" ", words);
 
-        // Output the modified paragraph
+        // Retourne la version modifiée du texte avec les mots interdits remplacés par "***"
         return modifiedParagraph;
     }
+
+    @Override
+    public List<Question> getQuestionsByContenue(String name) {
+        List<Question> search =new ArrayList<Question>();
+        // TODO Auto-generated method stub
+        List<Question> questions=questionrepo.findAll();
+        for(Question a : questions) {
+            if(a.getContenue().contains(name)) {
+                search.add(a);
+            }
+        }
+        return search;
+    }
+
     public SignalBadword ajouterbadword(String idq,String idu,String s) {
         SignalBadword sbw=new SignalBadword();
         Question q = this.affichDetailQuestion(idq);

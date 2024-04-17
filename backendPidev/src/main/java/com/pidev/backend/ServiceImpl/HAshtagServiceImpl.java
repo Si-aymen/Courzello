@@ -1,8 +1,8 @@
 package com.pidev.backend.ServiceImpl;
 
 import com.pidev.backend.Entity.Hashtag;
-import com.pidev.backend.Service.IHashtagService;
 import com.pidev.backend.Repository.HashtagRepository;
+import com.pidev.backend.Service.IHashtagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class HAshtagServiceImpl implements IHashtagService {
     HashtagRepository hashrepo;
     @Override
     public boolean ajouthashtag(Hashtag hashtag) {
-
+//contrainte non duplication
             for(Hashtag h:hashrepo.findAll()){
                 if(h.getTechnologie().equals(hashtag.getTechnologie())) {
                     return false;
