@@ -11,7 +11,7 @@ export class ChatService {
 
 
   baseUrl = "http://localhost:8095";
-  private baseUrl2 = 'http://localhost:8095/pi/chats';
+  private baseUrl2 = 'http://localhost:8095/chats';
 
   constructor(private httpClient: HttpClient) { }
 

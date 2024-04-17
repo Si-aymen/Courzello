@@ -115,7 +115,7 @@
 
 
       <!-- ========================Right Body========================= -->
-      <div class="col-md-4 col-xl-2 chat order-md-2 order-lg-5">
+      <div class="col-md-4 col-xl-3 chat order-md-2 order-lg-5">
         <div class="card mb-sm-3 mb-md-0 contacts_card">
           <div class="card-header">
             <h1 class="chat-list-title">Chat List</h1>
@@ -137,10 +137,14 @@
                   <div class="user_info">
                     <div *ngIf="chats.secondUserName!=senderCheck" style="margin-top: 1rem;">
                       {{chats.secondUserName}}</div>
+
                     <div *ngIf="chats.secondUserName==senderCheck" style="margin-top: 1rem;">
                       {{chats.firstUserName}}</div>
-                    <br>
-                  </div>
+                  </div> 
+
+                 
+                  <button class="btn btn-danger mr-sm-5 my-2 my-sm-0" type="submit" (click)="deleteChat()">Delete chat </button>
+
                 </div>
               </li>
             </ul>
