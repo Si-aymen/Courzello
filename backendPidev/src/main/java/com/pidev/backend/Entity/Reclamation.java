@@ -1,11 +1,10 @@
 package com.pidev.backend.Entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDateTime;
 

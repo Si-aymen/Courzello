@@ -28,9 +28,7 @@ import java.util.Map;
 public class ReclamationController {
     private ReclamationService reclamationService;
     private AttachementService attachment_service;
-
-    UserService userService ;
-
+    private UserService userService;
     private NotificationService notificationService;
 
     @GetMapping("/get_all")
@@ -75,14 +73,14 @@ public class ReclamationController {
     @PutMapping("/put/{id}")
     public ResponseEntity<Reclamation> updateReclamation(@PathVariable String id, @RequestBody Reclamation updatedReclamation) {
 
-        // Perform input validation to check if the provided ID is valid
-        Reclamation existingReclamation = reclamationService.getReclamationById(id);
+            // Perform input validation to check if the provided ID is valid
+            Reclamation existingReclamation = reclamationService.getReclamationById(id);
 
 
-        // Update the Reclamation
-        Reclamation updatedRec = reclamationService.updateReclamation(updatedReclamation);
+            // Update the Reclamation
+            Reclamation updatedRec = reclamationService.updateReclamation(updatedReclamation);
 
-        return ResponseEntity.ok(updatedRec);
+            return ResponseEntity.ok(updatedRec);
 
     }
 
