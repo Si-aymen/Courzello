@@ -1,0 +1,63 @@
+<p>user-profile works!</p>
+<c-row>
+  <c-col xs="5">
+    <c-card class="mb-4">
+      <c-card-header>User Table</c-card-header>
+      <c-card-body>
+        <table class="table">
+          <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <td>{{ userData?.id }}</td>
+          </tr>
+          <tr>
+            <th>Login</th>
+            <td>{{userData?.login}}</td>
+          </tr>
+          <tr>
+            <th>First Name</th>
+              <td>{{userData?.firstName}}</td>
+            </tr>
+          <tr>
+            <th>Last Name</th>
+            <td>{{userData?.lastName}}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{userData?.email}}</td>
+          </tr>
+          <tr>
+            <th>Date of Birth</th>
+            <td>{{ userData?.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
+          </tr>
+          <tr>
+            <th>Role</th>
+            <td>{{userData?.role}}</td>
+          </tr>
+          <tr *ngIf="userData?.role === 'TEACHER'">
+            <th>Speciality</th>
+            <td>{{ userData?.speciality }}</td>
+          </tr>
+          </thead>
+
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+
+  <c-col xs="5">
+    <c-card class="mb-4">
+      <c-card-header>User Table</c-card-header>
+      <c-card-body>
+        <table class="table">
+
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+
+
+
+</c-row>
