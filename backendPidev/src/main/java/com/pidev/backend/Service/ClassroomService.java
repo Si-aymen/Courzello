@@ -35,6 +35,9 @@ public interface ClassroomService {
     void AddStudentToClass(String idStudent , String IdClassroom);
 
 
+    public void AddCourseToClassroom (String IdClassroom , String CourseesID) ;
+
+
 
 
 }

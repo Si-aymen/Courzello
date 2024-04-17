@@ -55,12 +55,14 @@
         <div class="item-flex">
           <ul class="list">
             <li>
-              <i class="fas fa-phone"></i> Have any question? +216 92554097
+              <i class="fas fa-phone"></i> Have any question? +216 99 999 xyz
             </li>
             <li>
               <i class="fas fa-bullhorn"></i> <a href="#">Become an Instructor</a>
             </li>
-
+            <li>
+              <i class="fas fa-briefcase"></i> <a href="#">For Enterprise</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -204,26 +206,21 @@
 <div class="breadcrumb-area bg-gray text-center shadow dark text-light bg-cover" style="background-image: url(/assets/img/banner/12.jpg);">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 offset-lg-2" >
-        <div >
-        <h1> {{classroomArray.classroomName }}</h1>
-        </div>
+      <div class="col-lg-8 offset-lg-2">
+        <h1>Courses</h1>
         <ul class="breadcrumb">
           <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-          <li class="active">Classroom</li>
+          <li class="active">Courses</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
-
 <!-- End Breadcrumb -->
 <br>
 
-
-
-<div class="enroll" style="display: flex; justify-content: center;" >
-  <a class="btn btn-theme effect btn-sm"  [routerLink]="'/selectCourse/'+ classroomArray.id">Add Course to classroom </a>
+<div class="enroll" style="display: flex; justify-content: center;">
+  <a class="btn btn-theme effect btn-sm" href="/addcourse">Add Course</a>
 </div>
 
 
@@ -242,19 +239,20 @@
           <div class="item">
             <div class="thumb">
               <a href="#">
-                <img src="/assets/img/courses/1.jpg" alt="Thumb">
+                <img [src]="'/assets/img/courses/'+ getRandomNumber(1,6) + '.jpg'" alt="Thumb">
               </a>
             </div>
             <div class="info">
               <div class="top-info">
                 <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                  <span>4.8 (867)</span>
+                  <ng-container *ngFor="let i of starIndices">
+                    <i *ngIf="course.avRating > i + 0.75" class="fas fa-star"></i> <!-- Full star -->
+                    <i *ngIf="course.avRating > i && course.avRating <= i + 0.75" class="fas fa-star-half-alt"></i> <!-- Half star -->
+                    <i *ngIf="course.avRating <= i" class="far fa-star"></i> <!-- Empty star -->
+                  </ng-container>
+                  <span>{{course.avRating}} (867)</span>
                 </div>
+                
                 <div class="price">
                   ${{course.coursePrice}}
                 </div>
@@ -263,7 +261,7 @@
                 <ul>
                   <li>
                     <img src="/assets/img/advisor/1.jpg" alt="Advisor">
-                    <a href="#"></a> in <a href="#">Programming</a>
+                    <a href="#">{{course}}</a> in <a href="#">Programming</a>
                   </li>
                 </ul>
               </div>
@@ -280,7 +278,7 @@
                   </ul>
                 </div>
                 <div class="enroll">
-                  <a class="btn btn-theme effect btn-sm" [routerLink]="'/courseDetails/'+ course.id">Details</a>
+                  <a class="btn btn-theme effect btn-sm" (click)="addToClass(course.id)">Add to classroom</a>
                 </div>
               </div>
             </div>
