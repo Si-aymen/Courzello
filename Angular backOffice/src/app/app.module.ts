@@ -83,6 +83,7 @@ import {ProfileComponent} from "./views/profile/profile.component";
 
 
 
+import { GlossaryComponent } from './views/glossary/glossary.component';
 
 
 
@@ -130,6 +131,7 @@ const APP_CONTAINERS = [
     StatComponent,
     AjoutQuestionComponent,
     ForumComponent,
+    GlossaryComponent,
     
     MainComponent
 
@@ -196,6 +198,7 @@ const APP_CONTAINERS = [
     EditQuestionComponent,
     StatComponent,
     AjoutQuestionComponent,
+    GlossaryComponent,
     RecUpdateComponent
   ]
 })

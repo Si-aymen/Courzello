@@ -36,6 +36,9 @@ import { StatComponent } from './views/forum/stat/stat.component';
 import { AjoutQuestionComponent } from './views/forum/ajout-question/ajout-question.component';
 
 
+
+import { GlossaryComponent } from './views/glossary/glossary.component';
+
 const routes: Routes = [
   { path: 'front-office', loadChildren: () => import('./containers/user-layout/user-layout.module').then(m => m.UserLayoutModule) },
 
@@ -108,6 +111,10 @@ const routes: Routes = [
       {
         path: 'reclamations',
         component:ReclamationComponent ,
+      },
+      {
+        path: 'glossary',
+        component:GlossaryComponent,
       },
       {
         path: 'departments',
