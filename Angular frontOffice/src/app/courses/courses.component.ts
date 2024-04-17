@@ -19,13 +19,6 @@ export class CoursesComponent {
   coursePrice : number =0; 
   courseDescription : string ="";
   CurrentcourseID = "";
-
-  imgNumber:any;
-
-
-  avRating:any ; 
-
-
   
   starIndices = Array(5).fill(0).map((x, i) => i);
 
@@ -33,8 +26,6 @@ export class CoursesComponent {
 
   constructor(private http: HttpClient) {
     this.GetAllcourse();
-    this.imgNumber = this.getRandomImageNumber();
-
   }
 
   ngOnInit(): void {}
@@ -69,17 +60,6 @@ export class CoursesComponent {
 
     });
   }
-
-  getRandomImageNumber(): number {
-    // Generate a random number between 1 and 9
-    return Math.floor(Math.random() * 6) + 1;
-  }
-
-  getRandomNumber(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-
 
 
 }
