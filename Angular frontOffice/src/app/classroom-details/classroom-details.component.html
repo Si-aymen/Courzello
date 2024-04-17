@@ -205,8 +205,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 offset-lg-2" >
-        <div *ngFor="let class of classroomArray; let i = index">
-        <h1> {{ class.classroomName }}</h1>
+        <div >
+        <h1> {{classroomArray.classroomName }}</h1>
         </div>
         <ul class="breadcrumb">
           <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
@@ -220,8 +220,10 @@
 <!-- End Breadcrumb -->
 <br>
 
-<div class="enroll" style="display: flex; justify-content: center;">
-  <a class="btn btn-theme effect btn-sm" href="/addcourse">Add Course</a>
+
+
+<div class="enroll" style="display: flex; justify-content: center;" >
+  <a class="btn btn-theme effect btn-sm"  [routerLink]="'/selectCourse/'+ classroomArray.id">Add Course to classroom </a>
 </div>
 
 
@@ -278,7 +280,7 @@
                   </ul>
                 </div>
                 <div class="enroll">
-                  <a class="btn btn-theme effect btn-sm" href="/courseDetails">Enroll Now</a>
+                  <a class="btn btn-theme effect btn-sm" [routerLink]="'/courseDetails/'+ course.id">Details</a>
                 </div>
               </div>
             </div>

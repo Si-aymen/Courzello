@@ -198,7 +198,17 @@ public class ClassroomServiceImpl implements ClassroomService {
         classroomRepository.save(c);
     }
 
+    @Override
+    public void AddCourseToClassroom(String IdClassroom, String CourseesID) {
+        Classroom c = classroomRepository.findById(IdClassroom).get();
+        Course course = courseRepository.findById(CourseesID).get();
+        c.getCourses().add(course) ;
+        course.getClassrooms().add(c);
+        classroomRepository.save(c);
+        courseRepository.save(course);
 
+
+    }
 
 
 }

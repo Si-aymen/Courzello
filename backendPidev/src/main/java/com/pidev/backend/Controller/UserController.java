@@ -1,12 +1,11 @@
 package com.pidev.backend.Controller;
 
 import com.pidev.backend.Entity.Role;
-import com.pidev.backend.Repository.UserRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import com.pidev.backend.Entity.User;
+import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.UserService;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +84,6 @@ public class UserController {
         }
         return null;
     }
-
     @GetMapping("/classroom/{classroomId}")
     public List<User> getUsersByClassroom(@PathVariable String classroomId) {
         List<User> users = userService.getUsersByClassroom(classroomId);
@@ -105,18 +103,33 @@ public class UserController {
 
 
     @PostMapping("/follow/{id}")
-    public void followUser(@PathVariable String id){
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void followUser(@PathVariable String id) {
         User user = userService.getUserById(id);
         User connectedUser = userRepository.getUserById(User.CONNECTEDUSER.getId());
+        System.out.println(connectedUser.getFollowing().contains(user));
+        if (!connectedUser.getFollowing().contains(user)) {
+            if (User.CONNECTEDUSER.getFollowing().isEmpty()) {
+                List<User> users = new ArrayList<User>();
+                users.add(user);
+                connectedUser.setFollowing(users);
+                userService.updateUser(connectedUser.getLogin(), connectedUser);
+            } else {
+                connectedUser.getFollowing().add(user);
+                userService.updateUser(connectedUser.getLogin(), connectedUser);
+            }
+            if (user.getFollowers().isEmpty()) {
+                List<User> followers = new ArrayList<User>();
+                followers.add(connectedUser);
+                user.setFollowers(followers);
+                userService.updateUser(user.getLogin(), user);
+            } else {
+                user.getFollowers().add(connectedUser);
+                userService.updateUser(user.getLogin(), user);
+            }
 
-        if(User.CONNECTEDUSER.getFollowers().isEmpty()){
-            List<User> users = new ArrayList<User>();
-            users.add(user);
-            connectedUser.setFollowers(users);
-        }
-        else {
-            connectedUser.getFollowers().add(user);
         }
     }
+
 
 }

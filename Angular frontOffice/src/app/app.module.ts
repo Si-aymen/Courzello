@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomDetailsComponent } from './classroom-details/classroom-details.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { SelectCourseComponent } from './select-course/select-course.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     CourseformComponent,
     ClassroomComponent,
     ClassroomDetailsComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    SelectCourseComponent
   ],
   imports: [
     BrowserModule,

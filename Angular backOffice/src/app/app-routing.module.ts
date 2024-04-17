@@ -28,13 +28,15 @@ import {MainComponent} from './chat/main/main.component';
 import { UserChatComponent } from './chat/user-chat/user-chat.component';
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
 
+import {ProfileComponent} from "./views/profile/profile.component";
+
 
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login', 
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -106,7 +108,10 @@ const routes: Routes = [
         path: 'departments',
         component:DepartmentsComponent ,
       },
-
+      {
+        path: 'profile/:id',
+        component: ProfileComponent
+      },
       {
         path: 'Classroom/Details/:id',
         component: ClassroomDetailsComponent,
@@ -193,6 +198,7 @@ const routes: Routes = [
       title: 'Page 500'
     }
   },
+
   {
     path: 'login',
     component: LoginComponent,
