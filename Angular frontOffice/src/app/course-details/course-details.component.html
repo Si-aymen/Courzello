@@ -141,7 +141,6 @@
             </ul>
           </li>
           <li class="dropdown">
-
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Pages</a>
             <ul class="dropdown-menu">
               <li><a href="/assets/about-us.html">About Us</a></li>
@@ -272,46 +271,6 @@
                                         <li>Have a huge advantage when it comes to sticking to your diet</li>
                                         <li>Meeting your fitness goals, and leading a healthier lifestyle.</li>
                                     </ul>
-                                    <br>
-                                    <br>
-
-
-
-
-                                </div>
-                                <br>
-                                <br><br>
-                                <h4>Course Rating </h4>
-
-                                <div class="rating">
-                                  <ng-container *ngFor="let i of starIndices">
-                                    <i *ngIf="course.avRating > i + 0.75" class="fas fa-star"></i> <!-- Full star -->
-                                    <i *ngIf="course.avRating > i && course.avRating <= i + 0.75" class="fas fa-star-half-alt"></i> <!-- Half star -->
-                                    <i *ngIf="course.avRating <= i" class="far fa-star"></i> <!-- Empty star -->
-                                  </ng-container>
-                                  <span>{{course.avRating}} (867)</span>
-
-                                  <div class="details-row">
-                                    <span class="details-label">Course Rating :</span>
-                                    <br>
-                          
-                                    <input
-                                    type="number"
-                                    [(ngModel)]="avRating"
-                                    [ngModelOptions]="{ standalone: true }"
-                                    class="form-control"
-                                    id="avRating"
-                                    name="avRating"
-                                    placeholder="Enter avRating here"
-                                    min="0"  
-                                    max="5"  
-                                  />
-                                  
-                                  <button type="submit" class="btn btn-primary mt-4" (click)="Rate(course.id)" >
-                                    Submit
-                                  </button>
-                          
-                                  </div>   
                                 </div>
                                 <div id="tab2" class="tab-pane curriculum fade">
                                     <p>
