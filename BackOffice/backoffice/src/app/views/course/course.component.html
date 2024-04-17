@@ -1,3 +1,167 @@
+<app-widgets-dropdown></app-widgets-dropdown>
+
+<c-col xs="12">
+  <app-docs-callout href="charts">
+    Stats
+    <br />
+    <br />
+  </app-docs-callout>
+</c-col>
+<!-- Stats -->
+<c-row>
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - Course Level</c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - Course Duration</c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData2"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Bar Chart Number of courses per month </c-card-header>
+      <c-card-body>
+        <c-chart type="bar" [data]="chartBarData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+<!-- Formulaire -->
+
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>course Form</c-card-header>
+      <c-card-body>
+        <form cForm>
+          <div class="mb-3">
+            <label>Course Name</label>
+            <input
+              type="text"
+              [(ngModel)]="courseName"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="courseName"
+              name="courseName"
+              placeholder="Enter courseName here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Course Level </label>
+            <input
+              type="text"
+              [(ngModel)]="courseLevel"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="courseLevel"
+              name="courseLevel"
+              placeholder="Enter courseLevel here "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Course Duration </label>
+            <input
+              type="number"
+              [(ngModel)]="courseDuration"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control"
+              id="courseDuration"
+              name="courseDuration"
+              placeholder="Enter courseDuration here "
+            />
+          </div>
+
+          <div class="form-group">
+            <label>File Upload </label>
+            <input
+              type="file"
+              accept="image/*"
+              (change)="onSelectFile($event)"
+            />
+            <img [src]="imgURL" height="200" *ngIf="imgURL" />
+          </div>
+
+          <!-- upload PDF -->
+          <div class="mb-3">
+            <label cLabel for="formFileMultiple">Upload Course PDF</label>
+            <input cFormControl id="formFileMultiple" multiple type="file" />
+          </div>
+          <!-- Upload Video-->
+
+          <div class="mb-3">
+            <label cLabel for="formFileMultiple">Upload Course Video</label>
+            <input cFormControl id="formFileMultiple" multiple type="file" />
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-4" (click)="add()">
+            Submit
+          </button>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<!-- Table -->
+
+<div>
+  <c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Course Table</c-card-header>
+        <c-card-body>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Course Duration</th>
+                <th>Course Rating</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let course of courseArray; let i = index">
+                <td>{{ course.id }}</td>
+                <td>
+                  <div>{{ course.courseName }}</div>
+                  <div class="small text-medium-emphasis text-nowrap">
+                    <span>Level: {{ course.courseLevel }}</span>
+                  </div>
+                </td>
+                <td>{{ course.courseDuration }}</td>
+                <td>{{ course.avRating }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    [routerLink]="'/Course/Details/' + course.id"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</div>
+
+<app-widgets-brand [withCharts]="true"></app-widgets-brand>
 
 <app-widgets-dropdown></app-widgets-dropdown>
 

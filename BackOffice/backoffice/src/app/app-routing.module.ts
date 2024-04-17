@@ -20,10 +20,14 @@ import {UserUpdateComponent} from "./views/user-update/user-update.component";
 import {DepartmentsComponent} from "./views/departments/departments.component";
 import {DepartmentsUpdateComponent} from "./views/departments-update/departments-update.component";
 import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
+import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-teachers.component';
+import { ChatComponent } from './chat/chat.component';
+
+
 import {MainComponent} from './chat/main/main.component';
 import { UserChatComponent } from './chat/user-chat/user-chat.component';
-import { ChatComponent } from './chat/chat/chat.component';
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+import {ProfileComponent} from "./views/profile/profile.component";
 
 
 
@@ -31,8 +35,15 @@ import {UserProfileComponent} from "./views/user-profile/user-profile.component"
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
   },
   {
     path: '',
@@ -58,6 +69,8 @@ const routes: Routes = [
         path: 'forum',
         component:ForumComponent ,
       },
+      {path: 'chat/:userId', component: ChatComponent}
+      ,
       {
         path: 'Classroom/all',
         component:ClassroomComponent ,
@@ -83,7 +96,7 @@ const routes: Routes = [
         component: DepartmentsUpdateComponent
       },
       {
-        path: 'chapter',
+        path: 'chapter/:id',
         component:ChapterComponent ,
       },
       {
@@ -94,7 +107,10 @@ const routes: Routes = [
         path: 'departments',
         component:DepartmentsComponent ,
       },
-
+      {
+        path: 'profile/:id',
+        component: ProfileComponent
+      },
       {
         path: 'Classroom/Details/:id',
         component: ClassroomDetailsComponent,
@@ -102,6 +118,10 @@ const routes: Routes = [
       {
         path: 'Course/Details/:id',
         component: CourseDetailsComponent,
+      },
+      {
+        path: 'AffectTeachers/:id',
+        component: AffectTeachersComponent,
       },
       {
         path: 'GPT',
@@ -177,6 +197,7 @@ const routes: Routes = [
       title: 'Page 500'
     }
   },
+
   {
     path: 'login',
     component: LoginComponent,

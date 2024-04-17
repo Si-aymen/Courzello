@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpResponse, HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -21,6 +22,11 @@ export class CourseComponent implements OnInit {
   chartDoughnutData2 :any ;
   chartBarData: any;
 
+
+  public imagePath : any ;
+  imgURL: any;
+  public message: string;
+  userFile : any ; 
 
   constructor(private http: HttpClient) {
     this.GetAllcourse();
@@ -47,7 +53,9 @@ export class CourseComponent implements OnInit {
       "courseName": this.courseName,
       "courseLevel": this.courseLevel,
       "dateAdded": this.dateAdded,
-      "courseDuration": this.courseDuration
+      "courseDuration": this.courseDuration,
+      "imgURL": this.imgURL, 
+      "imagePath" : this.imagePath,
     };
 
     this.http.post("http://localhost:8090/pi/courses/add-course", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
@@ -56,6 +64,8 @@ export class CourseComponent implements OnInit {
       this.GetAllcourse();
       this.courseName = '';
       this.courseLevel = '';
+      this.imagePath = '';
+      this.imgURL='', 
       this.courseDuration = 0;
       
 
@@ -155,6 +165,33 @@ export class CourseComponent implements OnInit {
       ]
     };
   }
+
+
+  onSelectFile(event:any ) {
+    if (event.target.files.length > 0)
+    {
+      const file = event.target.files[0];
+      this.userFile = file;
+     // this.f['profile'].setValue(file);
+ 
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+ 
+    var reader = new FileReader();
+    
+    this.imagePath = file;
+    reader.readAsDataURL(file); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
+  }
+     
+      
+    }
+
 
 
 }

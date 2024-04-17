@@ -25,6 +25,7 @@ import { IconModule } from '@coreui/icons-angular';
     FormModule
   ],
   exports: [
+
 ]
 })
 export class PagesModule {

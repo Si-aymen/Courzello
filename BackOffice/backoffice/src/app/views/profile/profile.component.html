@@ -3,60 +3,49 @@
     <c-card class="mb-4">
       <c-card-header>User Table</c-card-header>
       <c-card-body>
+        <form (ngSubmit)="followUser(user?.id)">
         <table class="table">
           <thead class="thead-light">
           <tr>
             <th>ID</th>
-            <td>{{ userData?.id }}</td>
+            <td>{{ user?.id }}</td>
           </tr>
           <tr>
             <th>Login</th>
-            <td>{{userData?.login}}</td>
+            <td>{{user?.login}}</td>
           </tr>
           <tr>
             <th>First Name</th>
-              <td>{{userData?.firstName}}</td>
-            </tr>
+            <td>{{user?.firstName}}</td>
+          </tr>
           <tr>
             <th>Last Name</th>
-            <td>{{userData?.lastName}}</td>
+            <td>{{user?.lastName}}</td>
           </tr>
           <tr>
             <th>Email</th>
-            <td>{{userData?.email}}</td>
+            <td>{{user?.email}}</td>
           </tr>
           <tr>
             <th>Date of Birth</th>
-            <td>{{ userData?.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ user?.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
           </tr>
           <tr>
             <th>Role</th>
-            <td>{{userData?.role}}</td>
+            <td>{{user?.role}}</td>
           </tr>
-          <tr *ngIf="userData?.role === 'TEACHER'">
+          <tr *ngIf="user?.role === 'TEACHER'">
             <th>Speciality</th>
-            <td>{{ userData?.speciality }}</td>
+            <td>{{ user?.speciality }}</td>
           </tr>
           </thead>
 
         </table>
+        <button type="submit"  class="btn btn-primary">
+          Follow
+        </button>
+        </form>
       </c-card-body>
     </c-card>
   </c-col>
-
-
-  <c-col xs="5">
-    <c-card class="mb-4">
-      <c-card-header>User Table</c-card-header>
-      <c-card-body>
-        <table class="table">
-
-        </table>
-      </c-card-body>
-    </c-card>
-  </c-col>
-
-
-
-
 </c-row>

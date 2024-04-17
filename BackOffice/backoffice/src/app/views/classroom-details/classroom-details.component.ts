@@ -20,6 +20,7 @@ export class ClassroomDetailsComponent implements OnInit {
   chartDoughnutData: any;
   chartDoughnutData2 : any ; 
   userArray :any ; 
+  StudentsArray :any ; 
   courseArray : any ;
   chartBarData :any ; 
 
@@ -32,6 +33,7 @@ export class ClassroomDetailsComponent implements OnInit {
       this.GetClassroom(); 
       this.GetAllTeachers();
       this.GetAllcourse();
+      this.GetAllStudents();
     });
   }
 
@@ -49,14 +51,22 @@ export class ClassroomDetailsComponent implements OnInit {
   }
 
   GetAllTeachers() {
-    this.http.get("http://localhost:8090/pi/users/classroom/"+ this.classroomId ).subscribe((resultData: any) => {
+    this.http.get("http://localhost:8090/pi/users/GetTeachers/"+ this.classroomId ).subscribe((resultData: any) => {
       console.log(resultData);
       this.userArray = resultData;
       this.generateChartDoughnutData2();
 
     
     });
+  }  
+  GetAllStudents() {
+    this.http.get("http://localhost:8090/pi/users/GetStudents/"+ this.classroomId ).subscribe((resultData: any) => {
+      console.log(resultData);
+      this.StudentsArray = resultData;
+    
+    });
   }
+
   GetAllcourse() {
     this.http.get("http://localhost:8090/pi/courses/classroom/" + this.classroomId).subscribe((resultData: any) => {
       console.log(resultData);

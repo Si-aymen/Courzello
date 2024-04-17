@@ -66,14 +66,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-notes' }
   },
   {
-    name: 'GPT',
-    url: 'GPT',
+    name: 'Chat',
+    url: `chat/${getRandomNumberBetween1And10()}`,
     iconComponent: { name: 'cil-notes' }
   },
-  {
-    title: true,
-    name: 'Theme'
-  },
+  
   {
     name: 'Colors',
     url: '/theme/colors',
@@ -322,4 +319,12 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-layers' },
     attributes: { target: '_blank' }
   }
+
+
+
+
 ];
+
+function getRandomNumberBetween1And10(): number {
+  return Math.floor(Math.random() * 10) + 1;
+}

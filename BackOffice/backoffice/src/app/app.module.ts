@@ -61,11 +61,17 @@ import {LoginComponent} from "./views/pages/login/login.component";
 import {DepartmentsComponent} from "./views/departments/departments.component";
 import {DepartmentsUpdateComponent} from "./views/departments-update/departments-update.component";
 import {RecUpdateComponent} from "./views/rec-update/rec-update.component";
+
+import { AffectTeachersComponent } from '../app/views/affect-teachers/affect-teachers.component';
+
+
+import { ChatComponent } from './chat/chat.component';
+
 import {UserChatComponent} from './chat/user-chat/user-chat.component';
-import {ChatComponent} from './chat/chat/chat.component';
 import {MainComponent} from './chat/main/main.component';
 import {RegisterComponent} from "./views/pages/register/register.component";
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+import {ProfileComponent} from "./views/profile/profile.component";
 
 
 
@@ -82,6 +88,10 @@ const APP_CONTAINERS = [
 
 @NgModule({
   declarations: [
+    ChatComponent,
+    LoginComponent,
+    DepartmentsComponent,
+    UserComponent,
     LoginComponent,
     DepartmentsComponent,
     UserComponent,
@@ -97,7 +107,11 @@ const APP_CONTAINERS = [
     ClassroomDetailsComponent,
     CourseDetailsComponent,
     UserUpdateComponent,
+    DepartmentsUpdateComponent,
+    RecUpdateComponent,
+    AffectTeachersComponent,
     UserProfileComponent,
+    ProfileComponent,
     DepartmentsUpdateComponent,
     RecUpdateComponent,
     UserChatComponent,
@@ -150,6 +164,7 @@ const APP_CONTAINERS = [
     LoginComponent,
     UserUpdateComponent,
     UserProfileComponent,
+    ProfileComponent,
     ReclamationComponent,
     ConversationComponent,
     AppComponent,
