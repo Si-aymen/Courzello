@@ -119,4 +119,33 @@ public class UserController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void followUser(@PathVariable String id) {
+        User user = userService.getUserById(id);
+        User connectedUser = userRepository.getUserById(User.CONNECTEDUSER.getId());
+        System.out.println(connectedUser.getFollowing().contains(user));
+        if (!connectedUser.getFollowing().contains(user)) {
+            if (User.CONNECTEDUSER.getFollowing().isEmpty()) {
+                List<User> users = new ArrayList<User>();
+                users.add(user);
+                connectedUser.setFollowing(users);
+                userService.updateUser(connectedUser.getLogin(), connectedUser);
+            } else {
+                connectedUser.getFollowing().add(user);
+                userService.updateUser(connectedUser.getLogin(), connectedUser);
+            }
+            if (user.getFollowers().isEmpty()) {
+                List<User> followers = new ArrayList<User>();
+                followers.add(connectedUser);
+                user.setFollowers(followers);
+                userService.updateUser(user.getLogin(), user);
+            } else {
+                user.getFollowers().add(connectedUser);
+                userService.updateUser(user.getLogin(), user);
+            }
+
+        }
+    }
+
+
 }

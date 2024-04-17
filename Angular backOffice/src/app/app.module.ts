@@ -71,6 +71,7 @@ import {UserChatComponent} from './chat/user-chat/user-chat.component';
 import {MainComponent} from './chat/main/main.component';
 import {RegisterComponent} from "./views/pages/register/register.component";
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+import {ProfileComponent} from "./views/profile/profile.component";
 
 
 
@@ -111,6 +112,9 @@ const APP_CONTAINERS = [
 
     AffectTeachersComponent,
     UserProfileComponent,
+    AffectTeachersComponent,
+    UserProfileComponent,
+    ProfileComponent,
     DepartmentsUpdateComponent,
     RecUpdateComponent,
     UserChatComponent,
@@ -163,6 +167,7 @@ const APP_CONTAINERS = [
     LoginComponent,
     UserUpdateComponent,
     UserProfileComponent,
+    ProfileComponent,
     ReclamationComponent,
     ConversationComponent,
     AppComponent,
