@@ -1,0 +1,24 @@
+<div *ngIf="isReady">
+  <c-row>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Nombre des votes par question
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Nombre de Reponse par question
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="pie" [data]="chartPieData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</div>

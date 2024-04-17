@@ -1,0 +1,27 @@
+<c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Forum Table</c-card-header>
+        <c-card-body>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th> ID</th>
+                <th> contenue</th>
+                <th>question Id</th>
+                <th>user Id</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let q of badword; let i = index">
+                <td>{{ q.id }}</td>
+                <td>{{ q.badword }}</td>
+                <td>{{ q?.question?.id }}</td>
+                <td>{{ q?.user?.id }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>

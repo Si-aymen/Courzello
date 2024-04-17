@@ -1,0 +1,53 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form cForm>
+              <h1>Register</h1>
+              <p class="text-medium-emphasis">Create your account</p>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="name" cFormControl placeholder="Username" name="username" [(ngModel)]="username" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="given-name" cFormControl placeholder="First Name" name="firstName" [(ngModel)]="firstName" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="family-name" cFormControl placeholder="Last Name" name="lastName" [(ngModel)]="lastName" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>&#64;</span>
+                <input autoComplete="email" cFormControl placeholder="Email" name="email" [(ngModel)]="email" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" name="password" [(ngModel)]="password" />
+              </c-input-group>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" name="repeatPassword" [(ngModel)]="repeatPassword" />
+              </c-input-group>
+              <div class="d-grid">
+                <button cButton color="success" (click)="registerUser()">Create Account</button>
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>
