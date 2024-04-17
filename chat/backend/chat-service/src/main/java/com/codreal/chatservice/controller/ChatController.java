@@ -105,5 +105,15 @@ public class ChatController {
     public ResponseEntity<Chat> addMessage(@RequestBody Message add , @PathVariable int chatId) throws ChatNotFoundException {
         return new ResponseEntity<Chat>(chatService.addMessage(add,chatId), org.springframework.http.HttpStatus.OK);
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteChat(@PathVariable int id) {
+        try {
+            chatService.deleteChat(id);
+            return new ResponseEntity<>("Chat deleted successfully", HttpStatus.OK);
+        } catch (ChatNotFoundException e) {
+            return new ResponseEntity<>("Chat not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }

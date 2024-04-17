@@ -113,5 +113,11 @@ public class ChatServiceImpl implements ChatService {
             return chatRepository.save(abc);
         }
     }
+    public void deleteChat(int id) throws ChatNotFoundException {
+        Chat chat = chatRepository.findById(id)
+                .orElseThrow(() -> new ChatNotFoundException());
+        chatRepository.delete(chat);
+    }
+
 
 }

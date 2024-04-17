@@ -11,6 +11,7 @@ export class ChatService {
 
 
   baseUrl = "http://localhost:8095";
+  private baseUrl2 = 'http://localhost:8095/pi/chats';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -33,6 +34,10 @@ export class ChatService {
 
   getChatByFirstUserNameOrSecondUserName(username: any) {
     return this.httpClient.get<Chat>(this.baseUrl + "/chats/getChatByFirstUserNameOrSecondUserName/" + username)
+  }
+  
+  deleteChat(chatId: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl2}/delete/${chatId}`);
   }
 
 }

@@ -168,5 +168,17 @@ export class ChatComponent implements OnInit {
       });
 
   }
+  deleteChat(chatId: number): void {
+    this.chatService.deleteChat(chatId).subscribe(
+      () => {
+        console.log('Chat deleted successfully');
+        // Optionally, perform any additional actions after deletion
+      },
+      (error) => {
+        console.error('Error deleting chat:', error);
+        // Handle error appropriately, e.g., show a message to the user
+      }
+    );
+  }
 
 }
