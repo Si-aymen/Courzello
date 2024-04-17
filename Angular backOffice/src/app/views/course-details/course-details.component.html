@@ -21,19 +21,10 @@
         <div class="details-row">
           <span class="details-label">Course Duration :</span>
           <span class="details-value">{{ course.courseDuration }}</span>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
         </div>       
          <div class="details-row">
           <span class="details-label">Course Rating :</span>
           <span class="details-value">{{ course.avRating }}</span>
-<<<<<<< HEAD
-=======
->>>>>>> origin/alaa
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
         </div>
         <div class="details-row">
           <span class="details-label">Course Price:</span>
@@ -53,26 +44,27 @@
         >
           edit  
         </button>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
         &nbsp;
         <br>
         <button type="button" class="btn btn-primary" [routerLink]="'/chapter/' + course.id">
           add chapter
         </button>
-<<<<<<< HEAD
-=======
->>>>>>> origin/alaa
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
         <br>
         <br>
+
+        </div>
+        <br> 
+        <div>
+          <button type="button" class="btn btn-primary" [routerLink]="'/chapter/' + course.id">
+            add chapter
+          </button>
         </div>
       </c-card-body>
     </c-card>
   </c-col>
+
+
+
 
 <!-- to change with number of chapters
   <c-col xs="12" lg="6">
@@ -91,6 +83,39 @@
       <c-card-header> Doughnut Chart - chapter Duration</c-card-header>
       <c-card-body>
         <c-chart type="doughnut" [data]="chartDoughnutData"> </c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+
+  <c-col xs="12" lg="6">
+    <c-card class="mb-4">
+      <c-card-header> Doughnut Chart - chapter Duration</c-card-header>
+      <c-card-body>
+
+        <div class="details-row">
+          <span class="details-label">Course Rating :</span>
+          <br>
+
+          <input
+          type="number"
+          [(ngModel)]="avRating"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="avRating"
+          name="avRating"
+          placeholder="Enter avRating here"
+          min="0"  
+          max="5"  
+        />
+        
+        <button type="submit" class="btn btn-primary mt-4" (click)="add(course.id)" >
+          Submit
+        </button>
+
+        </div>   
+
+
       </c-card-body>
     </c-card>
   </c-col>

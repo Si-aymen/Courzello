@@ -14,10 +14,6 @@ import java.util.Objects;
 
 @RestController
 @AllArgsConstructor
-<<<<<<< HEAD
-=======
-
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 @CrossOrigin(origins = "*",exposedHeaders="Access-Control-Allow-Origin" )
 @RequestMapping("/users")
 public class UserController {
@@ -48,15 +44,9 @@ public class UserController {
         return userService.getUserByLogin(login);
     }
 
-<<<<<<< HEAD
     @GetMapping("/id/{id}")
     public User getUserById(@PathVariable String id) {
         return userService.getUserById(id);
-=======
-    @GetMapping("/get-id/{id}")
-    public User getUserById(@PathVariable String id) {
-        return userService.getUserByLogin(id);
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     }
 
 
@@ -79,7 +69,6 @@ public class UserController {
     @PostMapping("signin/{login}/{pwd}")
     public boolean signinAdmin(@PathVariable String login, @PathVariable String pwd){
         User user=userRepository.findUserByLogin(login);
-<<<<<<< HEAD
         if(user!=null){
             User.CONNECTEDUSER=user;
         }
@@ -97,12 +86,6 @@ public class UserController {
         return null;
     }
 
-=======
-        return Objects.equals(user.getPassword(), pwd) && user.getRole()== Role.ADMIN;
-    }
-
-
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     @GetMapping("/classroom/{classroomId}")
     public List<User> getUsersByClassroom(@PathVariable String classroomId) {
         List<User> users = userService.getUsersByClassroom(classroomId);
@@ -114,13 +97,6 @@ public class UserController {
         return userService.getTeachersOFClassroom(classroomId);
     }
 
-<<<<<<< HEAD
-=======
-    @GetMapping("/GetTeachers/")
-    public List<User> getTeachers() {
-        return userService.getTeachers();
-    }
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
     @GetMapping("/GetStudents/{classroomId}")
     public List<User> getStudentsOfclassroom(@PathVariable String classroomId) {
@@ -128,7 +104,6 @@ public class UserController {
     }
 
 
-<<<<<<< HEAD
     @PostMapping("/follow/{id}")
     public void followUser(@PathVariable String id){
         User user = userService.getUserById(id);
@@ -144,7 +119,4 @@ public class UserController {
         }
     }
 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 }
-

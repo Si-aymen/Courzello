@@ -91,13 +91,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.getUserByClassroomsAndRole(classroom , Role.STUDENT) ;
     }
 
-<<<<<<< HEAD
     @Override
     public User getUserById(String id) {
         return userRepository.findById(id).get();
     }
 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
 }

@@ -30,22 +30,7 @@ import jakarta.persistence.Id;
 @Document(collection = "users")
 
 public class User {
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", role=" + role +
-                ", speciality=" + speciality +
-                '}';
-    }
 
-<<<<<<< HEAD
     public static User CONNECTEDUSER;
     @Override
     public String toString() {
@@ -62,8 +47,6 @@ public class User {
                 '}';
     }
 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     @MongoId
     private String id;
     @Indexed(unique = true)
@@ -85,13 +68,10 @@ public class User {
     @DBRef
     private Set<Course> CoursesEnrolled = new HashSet<>() ;
 
-<<<<<<< HEAD
     //teachers if user.role = teacher
     @DBRef
     private Set<User> Teachers = new HashSet<>();
 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
     // Association classroom
     @DBRef
@@ -107,7 +87,6 @@ public class User {
 
     @DBRef
     private List<Conversation> conversations = new ArrayList<>();
-<<<<<<< HEAD
 
     @DBRef
     private List<User> followers= new ArrayList<User>();
@@ -116,6 +95,3 @@ public class User {
     private List<User> following = new ArrayList<User>();
 
 }
-=======
-}
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98

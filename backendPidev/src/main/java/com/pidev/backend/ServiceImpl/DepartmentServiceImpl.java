@@ -51,12 +51,9 @@ public class DepartmentServiceImpl implements DepartmentService {
        }
         return null;
     }
-<<<<<<< HEAD
 
     @Override
     public Department affectTeacherToDep(String login, String id) {
         return null;
     }
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 }

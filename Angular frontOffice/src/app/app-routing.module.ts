@@ -24,11 +24,6 @@ const routes: Routes = [
     path: 'courseDetails/:id', 
     component: CourseDetailsComponent, 
   },
-  
-
-
-
-
 
   {path:"**", component:HomeComponent}
 

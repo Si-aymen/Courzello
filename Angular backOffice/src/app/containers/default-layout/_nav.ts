@@ -72,13 +72,6 @@ export const navItems: INavData[] = [
   },
   
   {
-<<<<<<< HEAD
-=======
-    title: true,
-    name: 'Theme'
-  },
-  {
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     name: 'Colors',
     url: '/theme/colors',
     iconComponent: { name: 'cil-drop' }
@@ -334,8 +327,4 @@ export const navItems: INavData[] = [
 
 function getRandomNumberBetween1And10(): number {
   return Math.floor(Math.random() * 10) + 1;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98

@@ -55,11 +55,7 @@ export class CourseComponent implements OnInit {
       "dateAdded": this.dateAdded,
       "courseDuration": this.courseDuration,
       "imgURL": this.imgURL, 
-<<<<<<< HEAD
       "imagePath" : this.imagePath,
-=======
-      "imagePath" : this.imagePath
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
     };
 
     this.http.post("http://localhost:8090/pi/courses/add-course", bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
@@ -197,8 +193,5 @@ export class CourseComponent implements OnInit {
     }
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 }

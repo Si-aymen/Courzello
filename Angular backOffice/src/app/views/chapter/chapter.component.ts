@@ -13,10 +13,7 @@ export class ChapterComponent implements OnInit {
   
 
   chapterArray: any[] = [];
-<<<<<<< HEAD
   id: String = "";
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
   chapterName: String = "";
   duration : number = 0 ; 
   CurrentchapterID = "";
@@ -38,12 +35,9 @@ export class ChapterComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
   GetAllchapter() {
     this.http.get("http://localhost:8090/pi/chapters/retrieve-chapters").subscribe((resultData: any) => {
       console.log(resultData);
@@ -56,10 +50,7 @@ export class ChapterComponent implements OnInit {
   }
   add() {
     let bodyData = {
-<<<<<<< HEAD
       "id" : this.id ,
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
       "chapterName": this.chapterName,
       "duration": this.duration
     };
@@ -68,10 +59,7 @@ export class ChapterComponent implements OnInit {
       console.log(resultData);
       alert("chapter added Successfully");
       this.GetAllchapter();
-<<<<<<< HEAD
       this.id='' ; 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
       this.chapterName = '';
       this.duration = 0;
       

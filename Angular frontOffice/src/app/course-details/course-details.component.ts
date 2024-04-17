@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute,Router } from '@angular/router';
-
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.component.html',

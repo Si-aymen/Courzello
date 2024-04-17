@@ -19,10 +19,6 @@ export class DefaultHeaderComponent extends HeaderComponent {
   }
   navigateToOtherProject(): void {
     // Replace 'other-project-url' with the actual URL of the other project
-<<<<<<< HEAD
     window.location.href = 'http://localhost:59148/';
-=======
-    window.location.href = 'http://localhost:55681/chat';
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
   }
 }

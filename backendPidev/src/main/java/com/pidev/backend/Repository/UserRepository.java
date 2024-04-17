@@ -27,9 +27,6 @@ public interface UserRepository extends MongoRepository<User, String> {
 
 
    // List<User> findAllByClassrooms(String Classrooms) ;
-<<<<<<< HEAD
    User getUserById(String id);
 
-=======
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 }

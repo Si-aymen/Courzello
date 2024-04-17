@@ -27,19 +27,12 @@ public class Classroom {
     private int classroomCapacity;
     private String classroomName;
     @Enumerated(EnumType.STRING)
-<<<<<<< HEAD
     private ClassroomLvl classroomLvl ;
     @Enumerated(EnumType.STRING)
     private Speciality speciality ;
 
     private float classroomRating  ;// to be contunied
 
-=======
-    private  ClassroomLvl classroomLvl ;
-    @Enumerated(EnumType.STRING)
-    private Speciality  speciality ;
-
->>>>>>> 9c94761f2eb0aa9a853227c20cfce771558f1a98
 
     // association User Teachers
     @DBRef
