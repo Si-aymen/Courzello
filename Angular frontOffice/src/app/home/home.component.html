@@ -53,7 +53,7 @@
       <div class="col-lg-4 left-info">
         <ul class="list">
           <li>
-            Have any question ?
+            Have any question? +216 99 999 xyz
           </li>
         </ul>
       </div>
@@ -134,23 +134,38 @@
                   <li><a href="404.html">Error Page</a></li>
                 </ul>
               </li>
-              <li >
-                <a href="courses" >Courses</a>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Courses</a>
+                <ul class="dropdown-menu">
+                  <li><a href="courses.html">Course One</a></li>
+                  <li><a href="courses-2.html">Course Two</a></li>
+                  <li><a href="courses-3.html">Course Three</a></li>
+                  <li><a href="courses-4.html">Course Four</a></li>
+                  <li><a href="courses-5.html">Course Five</a></li>
+                  <li><a href="course-details.html">Course Details</a></li>
+                </ul>
               </li>
-              <li>
-                <a href="teachers"  >Teachers</a>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Teachers</a>
+                <ul class="dropdown-menu">
+                  <li><a href="advisors.html">Teachers One</a></li>
+                  <li><a href="advisors-2.html">Teachers Two</a></li>
+                  <li><a href="advisor-single.html">Teacher Single</a></li>
+                </ul>
               </li>
-              <li >
-                <a href="classroom" class="dropdown-toggle"  >Classrooms</a>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Blog</a>
+                <ul class="dropdown-menu">
+                  <li><a href="blog-standard.html">Blog Standard</a></li>
+                  <li><a href="blog-with-sidebar.html">Blog With Sidebar</a></li>
+                  <li><a href="blog-2-colum.html">Blog Grid Two Colum</a></li>
+                  <li><a href="blog-3-colum.html">Blog Grid Three Colum</a></li>
+                  <li><a href="blog-single.html">Blog Single</a></li>
+                  <li><a href="blog-single-with-sidebar.html">Blog Single With Sidebar</a></li>
+                </ul>
               </li>
               <li>
                 <a href="contact.html">Contact</a>
-              </li>
-
-              <li>
-                <a (click)="navigateToOtherProject()" >Chat</a>
-              </li>   <li>
-                <a (click)="navigateToOtherProject2()">Chat Room</a>
               </li>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -285,7 +300,6 @@
       </div>
     </div>
   </div>
-
   <div class="container">
     <div class="courses-box">
       <div class="row">
@@ -558,154 +572,6 @@
   </div>
 </div>
 <!-- End Courses Area -->
-
-
-<footer class="bg-dark text-light">
-  <div class="container">
-    <div class="f-items default-padding">
-      <h2>Reclamation</h2>
-        <form cForm>
-          <div class="mb-3">
-            <label>Subject</label>
-            <input
-              type="text"
-              [(ngModel)]="subject"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="subject"
-              name="subject"
-              placeholder="Enter subject here "
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Description</label>
-            <input
-              [(ngModel)]="description"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="description"
-              name="description"
-              placeholder="Enter description here "
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="state">Reclamation state</label>
-            <select
-              [(ngModel)]="state"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="state"
-              name="state"
-            >
-              <option value="EN_ATTENTE">EN_ATTENTE</option>
-              <option value="EN_COURS">EN_COURS</option>
-              <option value="RESOLUE">RESOLUE</option>
-              <option value="REJETEE">REJETEE</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="category">Reclamation category</label>
-            <select
-              [(ngModel)]="category"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="category"
-              name="category"
-            >
-              <option value="TECHNICAL">TECHNICAL</option>
-              <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
-              <option value="SUGGESTION">SUGGESTION</option>
-              <option value="OTHER">OTHER</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label>User Impact</label>
-            <input
-              type="number"
-              [(ngModel)]="userImpact"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="userImpact"
-              name="userImpact"
-              placeholder="Enter userImpact here "
-            />
-          </div>
-
-          
-
-          <div class="mb-3">
-            <label>Creation Date</label>
-            <input
-              type="text"
-              [(ngModel)]="creationDate"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="creationDate"
-              name="creationDate"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Expected Resolution Date</label>
-            <input
-              type="text"
-              [(ngModel)]="expectedResolutionDate"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="expectedResolutionDate"
-              name="expectedResolutionDate"
-            />
-          </div>
-          <div class="mb-3">
-            <label>AttachmentData</label>
-            <input
-              [(ngModel)]="data"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="data"
-              name="data"
-              placeholder="Enter here "
-            />
-          </div>
-          <div class="mb-3">
-            <label>AttachmentType</label>
-            <input
-              [(ngModel)]="attachmentType"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="attachmentType"
-              name="attachmentType"
-              placeholder="Enter here "
-            />
-          </div>
-          <div class="mb-3">
-            <label>User</label>
-            <input
-              [(ngModel)]="your_authenticated_user_id"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control"
-              id="your_authenticated_user_id"
-              name="your_authenticated_user_id"
-              placeholder="Enter here "
-            />
-          </div>
-
-          <button
-            type="submit"
-            class="btn btn-md btn-gradient"         
-           (click)="addReclamation()"
-            >
-            Submit
-          </button>
-        </form>
-      </div>
-    </div>
-
-      </footer>
 
 <!-- Start Fun Factor Area
 ============================================= -->
@@ -1128,7 +994,7 @@
             <h4 class="widget-title">Usefull Links</h4>
             <ul>
               <li>
-                <a href="courses">Courses</a>
+                <a href="courses.html">Courses</a>
               </li>
               <li>
                 <a href="events.html">Event</a>
@@ -1181,8 +1047,7 @@
             <div class="address">
               <ul>
                 <li>
-                  <strong>Email:</strong> Alaa.rezigui@esprit.tn
-                  <strong>Email:</strong> Aymen.rahali@esprit.tn
+                  <strong>Email:</strong> example@email.com
                 </li>
                 <li>
                   <strong>Contact:</strong> +216 99 999 xyz
@@ -1213,7 +1078,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <p>&copy; Copyright 2021. All Rights Reserved by <a href="#">Complexus</a></p>
+          <p>&copy; Copyright 2021. All Rights Reserved by <a href="#">validthemes</a></p>
         </div>
         <div class="col-lg-6 text-right link">
           <ul>

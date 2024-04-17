@@ -25,6 +25,7 @@
   <link href="/assets/css/owl.theme.default.min.css" rel="stylesheet" />
   <link href="/assets/css/animate.css" rel="stylesheet" />
   <link href="/assets/css/bootsnav.css" rel="stylesheet" />
+  <link href="courses.component.css" rel="stylesheet">
   <link href="/assets/css/responsive.css" rel="stylesheet" />
   <!-- ========== End Stylesheet ========== -->
 
@@ -158,7 +159,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="/courses" class="dropdown-toggle" data-toggle="dropdown" >Courses</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Courses</a>
             <ul class="dropdown-menu">
               <li><a href="/assets/courses.html">Course One</a></li>
               <li><a href="/assets/courses-2.html">Course Two</a></li>
@@ -217,12 +218,6 @@
   </div>
 </div>
 <!-- End Breadcrumb -->
-<br>
-
-<div class="enroll" style="display: flex; justify-content: center;">
-  <a class="btn btn-theme effect btn-sm" href="/addcourse">Add Course</a>
-</div>
-
 
 <!-- Star Courses Area
 ============================================= -->
@@ -230,12 +225,8 @@
   <div class="container">
     <div class="courses-items">
       <div class="row">
-
-
-
-
         <!-- Single item -->
-        <div class="single-item col-lg-4 col-md-6" *ngFor="let course of courseArray; let i = index">
+        <div class="single-item col-lg-4 col-md-6">
           <div class="item">
             <div class="thumb">
               <a href="#">
@@ -245,47 +236,307 @@
             <div class="info">
               <div class="top-info">
                 <div class="rating">
-                  <ng-container *ngFor="let i of starIndices">
-                    <i *ngIf="course.avRating > i + 0.75" class="fas fa-star"></i> <!-- Full star -->
-                    <i *ngIf="course.avRating > i && course.avRating <= i + 0.75" class="fas fa-star-half-alt"></i> <!-- Half star -->
-                    <i *ngIf="course.avRating <= i" class="far fa-star"></i> <!-- Empty star -->
-                  </ng-container>
-                  <span>{{course.avRating}} (867)</span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>4.8 (867)</span>
                 </div>
-                
                 <div class="price">
-                  ${{course.coursePrice}}
+                  $15.00
                 </div>
               </div>
               <div class="meta">
                 <ul>
                   <li>
                     <img src="/assets/img/advisor/1.jpg" alt="Advisor">
-                    <a href="#">{{course}}</a> in <a href="#">Programming</a>
+                    <a href="#">Busel park</a> in <a href="#">Programming</a>
                   </li>
                 </ul>
               </div>
               <h4>
-                <a href="#">{{ course.courseName}}</a>
+                <a href="#">Social Science & Humanities</a>
               </h4>
-
+              <p>
+                Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new.
+              </p>
               <div class="bottom-info">
                 <div class="course-info">
                   <ul>
-                    <li><i class="fas fa-clock"></i> {{course.courseDuration}} Hours</li>
+                    <li><i class="fas fa-clock"></i> 08:27:00</li>
                     <li><i class="fas fa-list-ul"></i> 65</li>
                     <li><i class="fas fa-user"></i> 6K</li>
                   </ul>
                 </div>
                 <div class="enroll">
-                  <a class="btn btn-theme effect btn-sm" [routerLink]="'/courseDetails/'+ course.id">Details</a>
+                  <a class="btn btn-theme effect btn-sm" href="#">Enroll Now</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <!-- End Single item -->
-     
+        <!-- Single item -->
+        <div class="single-item col-lg-4 col-md-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="#">
+                <img src="/assets/img/courses/2.jpg" alt="Thumb">
+              </a>
+            </div>
+            <div class="info">
+              <div class="top-info">
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span>5 (256)</span>
+                </div>
+                <div class="price">
+                  $30.00
+                </div>
+              </div>
+              <div class="meta">
+                <ul>
+                  <li>
+                    <img src="/assets/img/advisor/2.jpg" alt="Advisor">
+                    <a href="#">Busel park</a> in <a href="#">Tech</a>
+                  </li>
+                </ul>
+              </div>
+              <h4>
+                <a href="#">Data science and software</a>
+              </h4>
+              <p>
+                Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new.
+              </p>
+              <div class="bottom-info">
+                <div class="course-info">
+                  <ul>
+                    <li><i class="fas fa-clock"></i> 06:12:40</li>
+                    <li><i class="fas fa-list-ul"></i> 345</li>
+                    <li><i class="fas fa-user"></i> 8K</li>
+                  </ul>
+                </div>
+                <div class="enroll">
+                  <a class="btn btn-theme effect btn-sm" href="#">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single item -->
+        <!-- Single item -->
+        <div class="single-item col-lg-4 col-md-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="#">
+                <img src="/assets/img/courses/3.jpg" alt="Thumb">
+              </a>
+            </div>
+            <div class="info">
+              <div class="top-info">
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>4.5 (489)</span>
+                </div>
+                <div class="price">
+                  $27.00
+                </div>
+              </div>
+              <div class="meta">
+                <ul>
+                  <li>
+                    <img src="/assets/img/advisor/3.jpg" alt="Advisor">
+                    <a href="#">Jonathom</a> In <a href="#">Course</a>
+                  </li>
+                </ul>
+              </div>
+              <h4>
+                <a href="#">Programming & Masterclass</a>
+              </h4>
+              <p>
+                Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new.
+              </p>
+              <div class="bottom-info">
+                <div class="course-info">
+                  <ul>
+                    <li><i class="fas fa-clock"></i> 04:36:00</li>
+                    <li><i class="fas fa-list-ul"></i> 123</li>
+                    <li><i class="fas fa-user"></i> 1.5K</li>
+                  </ul>
+                </div>
+                <div class="enroll">
+                  <a class="btn btn-theme effect btn-sm" href="#">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single item -->
+        <!-- Single item -->
+        <div class="single-item col-lg-4 col-md-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="#">
+                <img src="/assets/img/courses/4.jpg" alt="Thumb">
+              </a>
+            </div>
+            <div class="info">
+              <div class="top-info">
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>4.8 (867)</span>
+                </div>
+                <div class="price">
+                  $15.00
+                </div>
+              </div>
+              <div class="meta">
+                <ul>
+                  <li>
+                    <img src="/assets/img/advisor/4.jpg" alt="Advisor">
+                    <a href="#">Busel park</a> in <a href="#">Programming</a>
+                  </li>
+                </ul>
+              </div>
+              <h4>
+                <a href="#">Social Science & Humanities</a>
+              </h4>
+              <p>
+                Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new.
+              </p>
+              <div class="bottom-info">
+                <div class="course-info">
+                  <ul>
+                    <li><i class="fas fa-clock"></i> 08:27:00</li>
+                    <li><i class="fas fa-list-ul"></i> 65</li>
+                    <li><i class="fas fa-user"></i> 6K</li>
+                  </ul>
+                </div>
+                <div class="enroll">
+                  <a class="btn btn-theme effect btn-sm" href="#">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single item -->
+        <!-- Single item -->
+        <div class="single-item col-lg-4 col-md-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="#">
+                <img src="/assets/img/courses/5.jpg" alt="Thumb">
+              </a>
+            </div>
+            <div class="info">
+              <div class="top-info">
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span>5 (256)</span>
+                </div>
+                <div class="price">
+                  $30.00
+                </div>
+              </div>
+              <div class="meta">
+                <ul>
+                  <li>
+                    <img src="/assets/img/advisor/5.jpg" alt="Advisor">
+                    <a href="#">Busel park</a> in <a href="#">Tech</a>
+                  </li>
+                </ul>
+              </div>
+              <h4>
+                <a href="#">Data science and software</a>
+              </h4>
+              <p>
+                Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new.
+              </p>
+              <div class="bottom-info">
+                <div class="course-info">
+                  <ul>
+                    <li><i class="fas fa-clock"></i> 06:12:40</li>
+                    <li><i class="fas fa-list-ul"></i> 345</li>
+                    <li><i class="fas fa-user"></i> 8K</li>
+                  </ul>
+                </div>
+                <div class="enroll">
+                  <a class="btn btn-theme effect btn-sm" href="#">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single item -->
+        <!-- Single item -->
+        <div class="single-item col-lg-4 col-md-6">
+          <div class="item">
+            <div class="thumb">
+              <a href="#">
+                <img src="/assets/img/courses/6.jpg" alt="Thumb">
+              </a>
+            </div>
+            <div class="info">
+              <div class="top-info">
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>4.5 (489)</span>
+                </div>
+                <div class="price">
+                  $27.00
+                </div>
+              </div>
+              <div class="meta">
+                <ul>
+                  <li>
+                    <img src="/assets/img/advisor/6.jpg" alt="Advisor">
+                    <a href="#">Jonathom</a> In <a href="#">Course</a>
+                  </li>
+                </ul>
+              </div>
+              <h4>
+                <a href="#">Programming & Masterclass</a>
+              </h4>
+              <p>
+                Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new.
+              </p>
+              <div class="bottom-info">
+                <div class="course-info">
+                  <ul>
+                    <li><i class="fas fa-clock"></i> 04:36:00</li>
+                    <li><i class="fas fa-list-ul"></i> 123</li>
+                    <li><i class="fas fa-user"></i> 1.5K</li>
+                  </ul>
+                </div>
+                <div class="enroll">
+                  <a class="btn btn-theme effect btn-sm" href="#">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single item -->
       </div>
       <!-- Pagination -->
       <div class="row">
