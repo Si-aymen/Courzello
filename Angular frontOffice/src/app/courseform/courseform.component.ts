@@ -41,7 +41,6 @@ export class CourseformComponent {
   
   add() {
     let bodyData = {
-      "id" : this.id ,
       "courseName": this.courseName,
       "courseLevel": this.courseLevel,
       "dateAdded": this.dateAdded,
