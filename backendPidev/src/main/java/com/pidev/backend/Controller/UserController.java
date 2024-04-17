@@ -75,6 +75,14 @@ public class UserController {
     }
 
 
+    @PostMapping("login/{login}/{pwd}")
+    public boolean signin(@PathVariable String login, @PathVariable String pwd){
+        User user=userRepository.findUserByLogin(login);
+        if(user!=null){
+            User.CONNECTEDUSER=user;
+        }
+        return (user!=null) && (Objects.equals(user.getPassword(), pwd));
+    }
 
     @GetMapping("/connectedUser")
     public User getConnectedUser()
