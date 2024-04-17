@@ -91,6 +91,12 @@ public class ClassroomController {
         classroomService.AddStudentToClass(IDStudent,id);
     }
 
+    @PutMapping("/AddCourse/{IDClassroom}/{coursesID}")
+    public void addCoursesToClassroom(@PathVariable("IDClassroom") String id,@PathVariable("coursesID") String courseID) {
+        classroomService.AddCourseToClassroom(id, courseID);
+    }
+
+
 
 
 

@@ -30,17 +30,9 @@ export class ClassroomDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.classroomId = params['id']; 
       console.log(this.classroomId);
+      this.GetClassroomById();
       this.GetAllcourse();
 
-
-
-    });
-  }
-  GetAllcourse() {
-    this.http.get( "http://localhost:8090/pi/courses/classroom/"+ this.classroomId ).subscribe((resultData: any) => {
-      console.log(resultData);
-      this.courseArray = resultData;
-      
     });
   }
 
@@ -51,6 +43,16 @@ export class ClassroomDetailsComponent implements OnInit {
       
     });
   }
+  
+  GetAllcourse() {
+    this.http.get( "http://localhost:8090/pi/courses/classroom/"+ this.classroomId ).subscribe((resultData: any) => {
+      console.log(resultData);
+      this.courseArray = resultData;
+      
+    });
+  }
+
+
 
   
 
