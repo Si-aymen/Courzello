@@ -1,5 +1,7 @@
 <!-- form qiestion-->
+
 <div>
+  <button cButton routerLink="/ajoutquestion">Ajouter question</button> <!-- (click)="editForum(forum)"-->
     <c-row>
       <c-col xs>
         <c-card class="mb-4">
@@ -20,8 +22,8 @@
                   <td>{{ q.contenue }}</td>
                   <td>{{ q.tech }}</td>
                   <td>
-                    <button cButton>Edit</button> <!-- (click)="editForum(forum)"-->
-                    <button cButton>Delete</button> <!--(click)="deleteForum(forum)" -->
+                    <button cButton [routerLink]="['/Question-Details',q.id]">Edit</button> <!-- (click)="editForum(forum)"-->
+                    <button cButton (click)="supprimer(q)">Delete</button> <!--(click)="deleteForum(forum)" -->
                   </td>
                 </tr>
               </tbody>

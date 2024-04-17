@@ -1,6 +1,10 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppModule } from 'src/app/app.module';
+import { Question } from 'src/app/model/question';
+import { QuestionServiceService } from 'src/app/service/question-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +23,7 @@ export class ForumComponent implements OnInit {
 
   CurrentforumID = "";
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private ps: QuestionServiceService,private toastrService: ToastrService,private route: Router) {
     this.GetAllForums();
   }
 
@@ -30,5 +34,15 @@ export class ForumComponent implements OnInit {
       console.log(resultData);
       this.QuestionArray = resultData;
     });
+  }
+  supprimer(item:Question){
+    this.ps.deletePost(item.id).subscribe(
+      data=>{
+        this.toastrService.success("Question supprimé avec succés");
+        this.GetAllForums()
+        this.route.navigate(['forum'])
+      }
+      
+    )
   }
 }
