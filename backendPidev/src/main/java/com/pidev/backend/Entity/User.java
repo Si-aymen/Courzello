@@ -1,9 +1,10 @@
 package com.pidev.backend.Entity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,15 +13,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.List;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import java.util.*;
 
 
 @Getter
@@ -89,10 +83,6 @@ public class User {
     private List<Conversation> conversations = new ArrayList<>();
 
     @DBRef
-    private List<User> followers= new ArrayList<User>();
-
-    @DBRef
-    private List<User> following = new ArrayList<User>();
     @JsonIgnore
     private List<User> followers = new ArrayList<>();
 
