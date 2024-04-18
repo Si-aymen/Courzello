@@ -14,6 +14,7 @@ import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomDetailsComponent } from './classroom-details/classroom-details.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { SelectCourseComponent } from './select-course/select-course.component';
+import { GlossaryComponent } from './glossary/glossary.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SelectCourseComponent } from './select-course/select-course.component';
     ClassroomComponent,
     ClassroomDetailsComponent,
     CourseDetailsComponent,
-    SelectCourseComponent
+    SelectCourseComponent,
+    GlossaryComponent
   ],
   imports: [
     BrowserModule,
