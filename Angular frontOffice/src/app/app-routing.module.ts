@@ -7,6 +7,10 @@ import { CourseformComponent } from './courseform/courseform.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomDetailsComponent } from './classroom-details/classroom-details.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { SelectCourseComponent } from './select-course/select-course.component';
+import { GlossaryComponent } from './glossary/glossary.component';
+
+
 
 const routes: Routes = [
   {path:"", redirectTo:"home", pathMatch:"full"},
@@ -15,6 +19,8 @@ const routes: Routes = [
   {path: "teachers", component:TeachersComponent},
   {path: "addcourse", component:CourseformComponent},
   {path: "classroom", component:ClassroomComponent},
+  {path: "glossary", component:GlossaryComponent},
+
   {
     path: 'Classroom/Details/:id', 
     component: ClassroomDetailsComponent, 
@@ -24,6 +30,14 @@ const routes: Routes = [
     path: 'courseDetails/:id', 
     component: CourseDetailsComponent, 
   },
+
+  {
+    path: 'selectCourse/:id', 
+    component: SelectCourseComponent, 
+  },
+
+
+
 
   {path:"**", component:HomeComponent}
 

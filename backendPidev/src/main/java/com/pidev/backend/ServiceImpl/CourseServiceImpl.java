@@ -7,6 +7,7 @@ import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Service.CourseService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,12 +24,28 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @AllArgsConstructor
 public class CourseServiceImpl implements CourseService {
+
+    @Autowired
+    private EmailSenderService senderService;
+
     private final CourseRepository courseRepository;
     private  final UserRepository userRepository ;
     private final ChapterRepository chapterRepository ;
 
     @Override
     public Course addCourse(Course course) {
+
+        senderService.sendSimpleEmail("rahali.aymen2001@gmail.com",
+                "Courzello Courses ",
+                "A new Course was added \n" +
+                        "Course ID :" + course.getId()+"\n"+
+                        "Course Name :" + course.getCourseName()+"\n"+
+                        "Course Level :" + course.getCourseLevel()+"\n"+
+                        "Course Domain :" + course.getCourseDomain()+"\n"+
+                        "Course AvRating :" + course.getAvRating()+"\n"
+        );
+
+
         return courseRepository.save(course);
     }
 

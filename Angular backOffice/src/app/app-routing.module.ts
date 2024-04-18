@@ -28,13 +28,23 @@ import {MainComponent} from './chat/main/main.component';
 import { UserChatComponent } from './chat/user-chat/user-chat.component';
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
 
+import {ProfileComponent} from "./views/profile/profile.component";
 
 
+import { EditQuestionComponent } from './views/forum/edit-question/edit-question.component';
+import { StatComponent } from './views/forum/stat/stat.component';
+import { AjoutQuestionComponent } from './views/forum/ajout-question/ajout-question.component';
+
+
+
+import { GlossaryComponent } from './views/glossary/glossary.component';
 
 const routes: Routes = [
+  { path: 'front-office', loadChildren: () => import('./containers/user-layout/user-layout.module').then(m => m.UserLayoutModule) },
+
   {
     path: '',
-    redirectTo: 'login', 
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -103,10 +113,17 @@ const routes: Routes = [
         component:ReclamationComponent ,
       },
       {
+        path: 'glossary',
+        component:GlossaryComponent,
+      },
+      {
         path: 'departments',
         component:DepartmentsComponent ,
       },
-
+      {
+        path: 'profile/:id',
+        component: ProfileComponent
+      },
       {
         path: 'Classroom/Details/:id',
         component: ClassroomDetailsComponent,
@@ -131,6 +148,23 @@ const routes: Routes = [
         path: 'GPT/chat',
         component: ChatComponent,
       },
+      {
+        path: 'forum',
+        component:ForumComponent ,
+      },
+      {
+        path: 'Question-Details/:id', 
+        component: EditQuestionComponent, 
+      },
+      {
+        path: 'stat', 
+        component: StatComponent, 
+      },
+      {
+        path: 'ajoutquestion', 
+        component: AjoutQuestionComponent, 
+      },
+
       {
         path: 'theme',
         loadChildren: () =>
@@ -193,6 +227,7 @@ const routes: Routes = [
       title: 'Page 500'
     }
   },
+
   {
     path: 'login',
     component: LoginComponent,

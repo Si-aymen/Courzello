@@ -72,7 +72,7 @@ public class AttachmentServiceImpl implements AttachementService {
     @Override
     public String save_image(String base64, String extension) {
         String image_name = UUID.randomUUID().toString();
-        String location = "C:\\Users\\seifa.AFI\\pi\\Git PI back\\backendPidev\\src\\main\\resources\\images\\post\\"+image_name+"."+extension;
+        String location = "C:\\Users\\seifa.AFI\\pi\\Courzello\\Pidev\\Backend\\backendPidev\\src\\main\\resources\\images\\post\\"+image_name+"."+extension;
         byte[] decodedBytes = Base64.getDecoder().decode(base64);
         try {
             Files.write(Paths.get(location), decodedBytes);

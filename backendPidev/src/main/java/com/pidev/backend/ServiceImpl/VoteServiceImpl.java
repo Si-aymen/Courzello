@@ -3,10 +3,10 @@ package com.pidev.backend.ServiceImpl;
 import com.pidev.backend.Entity.Question;
 import com.pidev.backend.Entity.User;
 import com.pidev.backend.Entity.Vote;
-import com.pidev.backend.Service.IVoteService;
 import com.pidev.backend.Repository.QuestionRepository;
 import com.pidev.backend.Repository.UserRepository;
 import com.pidev.backend.Repository.VoteRepository;
+import com.pidev.backend.Service.IVoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

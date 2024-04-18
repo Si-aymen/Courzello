@@ -1,7 +1,5 @@
 package com.pidev.backend.Service;
 
-import com.pidev.backend.Entity.Question;
-import com.pidev.backend.Entity.User;
 import com.pidev.backend.Entity.Vote;
 
 public interface IVoteService {

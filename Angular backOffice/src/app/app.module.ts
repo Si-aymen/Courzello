@@ -18,6 +18,14 @@ import { ReclamationComponent } from './views/reclamation/reclamation.component'
 
 
 
+
+import { EditQuestionComponent } from './views/forum/edit-question/edit-question.component';
+import { StatComponent } from './views/forum/stat/stat.component';
+import { AjoutQuestionComponent } from './views/forum/ajout-question/ajout-question.component';
+
+
+
+
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -50,7 +58,7 @@ import { FormsModule } from '@angular/forms';
 import { ClassroomComponent } from './views/classroom/classroom.component';
 import { ConversationComponent } from './views/conversation/conversation.component';
 import { ForumComponent } from './views/forum/forum.component';
-
+import { ToastrModule } from 'ngx-toastr';
 import { CourseComponent } from '../app/views/course/course.component';
 import { ChapterComponent } from '../app/views/chapter/chapter.component';
 import { UserComponent } from '../app/views/user/user.component';
@@ -71,9 +79,11 @@ import {UserChatComponent} from './chat/user-chat/user-chat.component';
 import {MainComponent} from './chat/main/main.component';
 import {RegisterComponent} from "./views/pages/register/register.component";
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+import {ProfileComponent} from "./views/profile/profile.component";
 
 
 
+import { GlossaryComponent } from './views/glossary/glossary.component';
 
 
 
@@ -101,7 +111,6 @@ const APP_CONTAINERS = [
     ClassroomComponent,
     CourseComponent,
     ChapterComponent,
-    ForumComponent,
     ReclamationComponent,
     ClassroomDetailsComponent,
     CourseDetailsComponent,
@@ -111,10 +120,19 @@ const APP_CONTAINERS = [
 
     AffectTeachersComponent,
     UserProfileComponent,
+    AffectTeachersComponent,
+    UserProfileComponent,
+    ProfileComponent,
     DepartmentsUpdateComponent,
     RecUpdateComponent,
     UserChatComponent,
     ChatComponent,
+    EditQuestionComponent,
+    StatComponent,
+    AjoutQuestionComponent,
+    ForumComponent,
+    GlossaryComponent,
+    
     MainComponent
 
 
@@ -150,7 +168,9 @@ const APP_CONTAINERS = [
     FormsModule,
     ChartsModule,
     ChartjsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [
 
@@ -163,6 +183,7 @@ const APP_CONTAINERS = [
     LoginComponent,
     UserUpdateComponent,
     UserProfileComponent,
+    ProfileComponent,
     ReclamationComponent,
     ConversationComponent,
     AppComponent,
@@ -170,11 +191,14 @@ const APP_CONTAINERS = [
     ClassroomComponent,
     UserComponent,
     RegisterComponent,
-    ForumComponent,
     ClassroomDetailsComponent,
     CourseDetailsComponent,
     DepartmentsComponent,
     DepartmentsUpdateComponent,
+    EditQuestionComponent,
+    StatComponent,
+    AjoutQuestionComponent,
+    GlossaryComponent,
     RecUpdateComponent
   ]
 })

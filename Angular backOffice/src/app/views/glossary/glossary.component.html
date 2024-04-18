@@ -1,0 +1,104 @@
+
+  
+  <!-- Formulaire -->
+  <c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Glossary Form</c-card-header>
+        <c-card-body>
+          <form cForm>
+            <div class="mb-3">
+              <label>Term</label>
+              <input
+                type="text"
+                [(ngModel)]="term"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="term"
+                name="term"
+                placeholder="Enter term here "
+              />
+            </div>
+  
+            <div class="mb-3">
+              <label>Definition</label>
+              <input
+                [(ngModel)]="definition"
+                [ngModelOptions]="{ standalone: true }"
+                class="form-control"
+                id="definition"
+                name="definition"
+                placeholder="Enter definition here "
+              />
+            </div>
+  
+           
+            <button
+              type="submit"
+              class="btn btn-primary mt-4" 
+              (click)="addGlossary()"
+              >
+              Submit
+            </button>
+          </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  
+  
+  
+  
+  <!-- Champ de recherche -->
+<div class="mb-3">
+  <label>Search Term</label>
+  <input
+    type="text"
+    [(ngModel)]="term"
+    class="form-control"
+    id="term"
+    name="term"
+    placeholder="Enter search term"
+    (input)="search()"
+  />
+</div>
+
+<!-- Tableau des résultats -->
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Glossary ID</th>
+      <th>Term</th>
+      <th>Definition</th>
+      <th>Actions</th>
+      <th>Favorite</th> <!-- Nouvelle colonne pour le favori -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let glossary of filteredGlossaryArray; index as i">
+      <td>{{ glossary.glossaryId }}</td>
+      <td>{{ glossary.term }}</td>
+      <td>{{ glossary.definition }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteGlossary(glossary.glossaryId)">Delete</button>
+      </td>
+      <td>
+        <button class="btn" [class.btn-outline-primary]="!glossary.favorite" [class.btn-primary]="glossary.favorite" (click)="toggleFavorite(glossary.glossaryId)">
+          <i class="fa" [class.fa-star]="glossary.favorite" [class.fa-star-o]="!glossary.favorite"></i>
+        </button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Section des termes favoris -->
+<div *ngIf="getFavoriteTerms().length > 0">
+  <h3>Favorite Terms</h3>
+  <ul>
+    <li *ngFor="let term of getFavoriteTerms()">
+      {{ term.term }}
+    </li>
+  </ul>
+</div>
+

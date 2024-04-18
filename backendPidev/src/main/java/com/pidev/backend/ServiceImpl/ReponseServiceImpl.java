@@ -3,10 +3,10 @@ package com.pidev.backend.ServiceImpl;
 import com.pidev.backend.Entity.Question;
 import com.pidev.backend.Entity.Reponse;
 import com.pidev.backend.Entity.User;
-import com.pidev.backend.Service.IReponseService;
 import com.pidev.backend.Repository.QuestionRepository;
 import com.pidev.backend.Repository.ReponseRepository;
 import com.pidev.backend.Repository.UserRepository;
+import com.pidev.backend.Service.IReponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +29,7 @@ public class ReponseServiceImpl implements IReponseService {
 
         Question qu =questionrepo.findById(idq).orElse(null);
         User u=userrepo.findById(iduse).orElse(null);
-        if(qu!=null&&u!=null){
+        if(qu!=null&&u!=null){//verifie existance u et q
             String contenu = questserv.hashbadword(q.getContenue(),qu.getId(),u.getId()) ;
             q.setContenue(contenu);
             q.setQuestion(qu);
@@ -61,12 +61,11 @@ public class ReponseServiceImpl implements IReponseService {
     public Reponse updateReponse(String idq, Reponse q) {
         Reponse qu =reponserepo.findById(idq).orElse(null);
         if (qu != null) {
-            qu.setContenue(q.getContenue());
-        }
-        if (qu != null) {
+            String contenu = questserv.hashbadword(q.getContenue(),qu.getId(),qu.getUser().getId()) ;
+            qu.setContenue(contenu);
             return reponserepo.save(qu);
         }
-        return qu;
+        return reponserepo.save(qu);
     }
 
     @Override

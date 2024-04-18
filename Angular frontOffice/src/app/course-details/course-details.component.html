@@ -271,6 +271,35 @@
                                         <li>Have a huge advantage when it comes to sticking to your diet</li>
                                         <li>Meeting your fitness goals, and leading a healthier lifestyle.</li>
                                     </ul>
+
+
+                                    <h4>Course Rating </h4>
+
+                                    <div class="rating">
+                                      <ng-container *ngFor="let i of starIndices">
+                                        <i *ngIf="course.avRating > i + 0.75" class="fas fa-star"></i> <!-- Full star -->
+                                        <i *ngIf="course.avRating > i && course.avRating <= i + 0.75" class="fas fa-star-half-alt"></i> <!-- Half star -->
+                                        <i *ngIf="course.avRating <= i" class="far fa-star"></i> <!-- Empty star -->
+                                      </ng-container>
+                                      <span>{{course.avRating}} (867)</span>
+                                    </div>
+
+                                    <input
+                                    type="number"
+                                    [(ngModel)]="avRating"
+                                    [ngModelOptions]="{ standalone: true }"
+                                    class="form-control"
+                                    id="avRating"
+                                    name="avRating"
+                                    placeholder="Enter avRating here"
+                                    min="0"  
+                                    max="5"  
+                                  />
+                                  
+                                  <button type="submit" class="btn btn-primary mt-4" (click)="addRating(course.id)" >
+                                    Submit
+                                  </button>
+
                                 </div>
                                 <div id="tab2" class="tab-pane curriculum fade">
                                     <p>

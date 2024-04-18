@@ -237,7 +237,7 @@
           <div class="item">
             <div class="thumb">
               <a href="#">
-                <img src="/assets/img/courses/2.jpg" alt="Thumb">
+                <img [src]="'/assets/img/courses/'+ getRandomNumber(1,6) + '.jpg'" alt="Thumb">
               </a>
             </div>
             <div class="info">
@@ -257,7 +257,8 @@
               <div class="meta">
                 <ul>
                   <li>
-                    <img src="/assets/img/advisor/2.jpg" alt="Advisor">
+                    <img [src]="'/assets/img/advisor/'+ getRandomNumber(1,6) + '.jpg'" alt="Advisor">
+
                     <a href="#"></a> in <a href="#">{{classroom.speciality}}</a>
                   </li>
                 </ul>

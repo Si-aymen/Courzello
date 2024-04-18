@@ -61,8 +61,23 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-description' }
   },
   {
+    name: 'Glossary',
+    url: '/glossary',
+    iconComponent: { name: 'cil-description' }
+  },
+  {
     name: 'Forum',
     url: 'forum',
+    iconComponent: { name: 'cil-notes' }
+  },  
+  {
+    name: 'Forum Home',
+    url: 'front-office/forum-v',
+    iconComponent: { name: 'cil-notes' }
+  },
+  {
+    name: 'stattistique forum',
+    url: 'stat',
     iconComponent: { name: 'cil-notes' }
   },
   {

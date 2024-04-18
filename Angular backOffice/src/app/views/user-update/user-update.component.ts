@@ -18,7 +18,7 @@ export class UserUpdateComponent implements OnInit {
       const id = params.get('id');
       if (id) {
         this.userId = id;
-        this.http.get<any>('http://localhost:8090/pi/users/get-id/' + this.userId).subscribe((data: any) => {
+        this.http.get<any>('http://localhost:8090/pi/users/id/' + this.userId).subscribe((data: any) => {
           this.user = data;
         });
       }
