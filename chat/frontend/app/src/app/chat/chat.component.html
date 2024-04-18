@@ -20,7 +20,7 @@
 
                   </div>
                   <div class="user_info" (click)="goToChat(presentation.userName)">
-                    <!-- {{chats.secondUserName}}  -->
+                    <!-- {{chats.seconduserName}}  -->
                     <div style="margin-top: 1rem;">
                       {{presentation.userName}}</div>
                     <br>
@@ -43,14 +43,14 @@
           <div class="card-header msg_head">
             <div class="d-flex bd-highlight">
               <div class="img_cont">
-                <div class="rounded-circle user_img text_inside_circle1" *ngIf="secondUserName!=senderCheck">
-                  {{secondUserName.substring(0,1)}}</div>
-                <div class="rounded-circle user_img text_inside_circle1" *ngIf="secondUserName==senderCheck">
-                  {{firstUserName.substring(0,1)}}</div>
+                <div class="rounded-circle user_img text_inside_circle1" *ngIf="seconduserName!=senderCheck">
+                  {{seconduserName.substring(0,1)}}</div>
+                <div class="rounded-circle user_img text_inside_circle1" *ngIf="seconduserName==senderCheck">
+                  {{firstuserName.substring(0,1)}}</div>
               </div>
               <div class="user_info">
-                <span *ngIf="secondUserName!=senderCheck">{{secondUserName}}</span>
-                <span *ngIf="secondUserName==senderCheck">{{firstUserName}}</span>
+                <span *ngIf="seconduserName!=senderCheck">{{seconduserName}}</span>
+                <span *ngIf="seconduserName==senderCheck">{{firstuserName}}</span>
                 <p>Message</p>
               </div>
               <div class="video_cam">
@@ -115,7 +115,7 @@
 
 
       <!-- ========================Right Body========================= -->
-      <div class="col-md-4 col-xl-3 chat order-md-2 order-lg-5">
+      <div class="col-md-4 col-xl-2 chat order-md-2 order-lg-5">
         <div class="card mb-sm-3 mb-md-0 contacts_card">
           <div class="card-header">
             <h1 class="chat-list-title">Chat List</h1>
@@ -123,28 +123,24 @@
           <div class="card-body contacts_body ">
             <ul class="contacts chatList" *ngFor="let chats of chatList">
               <li>
-                <div class="d-flex bd-highlight" (click)="loadChatByEmail(chats.secondUserName, chats.firstUserName)">
+                <div class="d-flex bd-highlight" (click)="loadChatByEmail(chats.seconduserName, chats.firstuserName)">
                   <div class="img_cont">
-                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.secondUserName!=senderCheck">
-                      {{chats.secondUserName.substring(0,1)}}
+                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.seconduserName!=senderCheck">
+                      {{chats.seconduserName.substring(0,1)}}
                     </div>
-                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.secondUserName==senderCheck">
-                      {{chats.firstUserName.substring(0,1)}}
+                    <div class="rounded-circle user_img text_inside_circle" *ngIf="chats.seconduserName==senderCheck">
+                      {{chats.firstuserName.substring(0,1)}}
                     </div>
                    
 
                   </div>
                   <div class="user_info">
-                    <div *ngIf="chats.secondUserName!=senderCheck" style="margin-top: 1rem;">
-                      {{chats.secondUserName}}</div>
-
-                    <div *ngIf="chats.secondUserName==senderCheck" style="margin-top: 1rem;">
-                      {{chats.firstUserName}}</div>
-                  </div> 
-
-                 
-                  <button class="btn btn-danger mr-sm-5 my-2 my-sm-0" type="submit" (click)="deleteChat()">Delete chat </button>
-
+                    <div *ngIf="chats.seconduserName!=senderCheck" style="margin-top: 1rem;">
+                      {{chats.seconduserName}}</div>
+                    <div *ngIf="chats.seconduserName==senderCheck" style="margin-top: 1rem;">
+                      {{chats.firstuserName}}</div>
+                    <br>
+                  </div>
                 </div>
               </li>
             </ul>

@@ -47,12 +47,14 @@ public class User {
                 '}';
     }
 
-    @MongoId
     private String id;
     @Indexed(unique = true)
     @Id
     private String login ;
+
     private String password;
+    @MongoId
+
     private String firstName;
     private String lastName;
     @Indexed(unique = true)

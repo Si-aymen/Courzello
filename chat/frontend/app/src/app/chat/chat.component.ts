@@ -24,16 +24,16 @@ export class ChatComponent implements OnInit {
   msg = "Good work";
   chatId: any = sessionStorage.getItem('chatId');
   color = "";
-  secondUserName = "";
+  seconduserName = "";
   public alluser: any = [];
-  check = sessionStorage.getItem('username');
+  check = sessionStorage.getItem('userName');
   timesRun = 0;
   timesRun2 = 0;
 
 
-  firstUserName = sessionStorage.getItem('username');
-  senderEmail = sessionStorage.getItem('username');
-  senderCheck = sessionStorage.getItem('username');
+  firstuserName = sessionStorage.getItem('userName');
+  senderEmail = sessionStorage.getItem('userName');
+  senderCheck = sessionStorage.getItem('userName');
 
   constructor(private chatService: ChatService, private router: Router, private userService: UserService) {
     this.chatForm = new FormGroup({
@@ -47,15 +47,15 @@ export class ChatComponent implements OnInit {
       this.chatService.getChatById(sessionStorage.getItem('chatId')).subscribe(data => {
         this.chatData = data;
         this.messageList = this.chatData.messageList;
-        this.secondUserName = this.chatData.secondUserName;
-        this.firstUserName = this.chatData.firstUserName;
+        this.seconduserName = this.chatData.seconduserName;
+        this.firstuserName = this.chatData.firstuserName;
       });
     }, 1000);
 
 
     let getByname = setInterval(() => {
       // For getting all the chat list whose ever is logged in.
-      this.chatService.getChatByFirstUserNameOrSecondUserName(sessionStorage.getItem('username')).subscribe(data => {
+      this.chatService.getChatByFirstuserNameOrSeconduserName(sessionStorage.getItem('userName')).subscribe(data => {
         // console.log(data);
         this.chatData = data;
         this.chatList = this.chatData;
@@ -90,7 +90,7 @@ export class ChatComponent implements OnInit {
     sessionStorage.removeItem("chatId");
 
     // For checking the chat room by both the emails , if there is present then it will give the chat Id in sessionStorage
-    this.chatService.getChatByFirstUserNameAndSecondUserName(event, event1).subscribe(data => {
+    this.chatService.getChatByFirstuserNameAndSeconduserName(event, event1).subscribe(data => {
       // console.log(data);
       this.chatData = data;
       this.chatId = this.chatData[0].chatId;
@@ -102,8 +102,8 @@ export class ChatComponent implements OnInit {
         this.chatService.getChatById(this.chatId).subscribe(data => {
           this.chatData = data;
           this.messageList = this.chatData.messageList;
-          this.secondUserName = this.chatData.secondUserName;
-          this.firstUserName = this.chatData.firstUserName;
+          this.seconduserName = this.chatData.seconduserName;
+          this.firstuserName = this.chatData.firstuserName;
         });
       }, 1000)
 
@@ -127,8 +127,8 @@ export class ChatComponent implements OnInit {
         this.chatData = data;
         // console.log(this.chatData.messageList);console.log(JSON.stringify(this.chatData.messageList));
         this.messageList = this.chatData.messageList;
-        this.secondUserName = this.chatData.secondUserName;
-        this.firstUserName = this.chatData.firstUserName;
+        this.seconduserName = this.chatData.seconduserName;
+        this.firstuserName = this.chatData.firstuserName;
 
       })
     })
@@ -146,16 +146,16 @@ export class ChatComponent implements OnInit {
   }
 
 
-  goToChat(username: any) {
-    this.chatService.getChatByFirstUserNameAndSecondUserName(username, sessionStorage.getItem("username")).subscribe(
+  goToChat(userName: any) {
+    this.chatService.getChatByFirstuserNameAndSeconduserName(userName, sessionStorage.getItem("userName")).subscribe(
       (data) => {
         this.chatId = data.chatId;
         sessionStorage.setItem("chatId", this.chatId);
       },
       (error) => {
         if (error.status == 404) {
-          this.chatObj.firstUserName = sessionStorage.getItem("username");
-          this.chatObj.secondUserName = username;
+          this.chatObj.firstuserName = sessionStorage.getItem("userName");
+          this.chatObj.seconduserName = userName;
           this.chatService.createChatRoom(this.chatObj).subscribe(
             (data) => {
               this.chatData = data;

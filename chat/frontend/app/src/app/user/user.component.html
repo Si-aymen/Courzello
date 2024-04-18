@@ -46,7 +46,7 @@
         <!-- ========================= -->
         <form [formGroup]="registerForm">
           <div class="form-group text-center">
-            <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1"
+            <input type="text" class="form-control" formControlName="userName" id="exampleInputEmail1"
               aria-describedby="emailHelp">
           </div>
           <div class="text-center">
@@ -54,10 +54,10 @@
           </div>
           <div class="text-center mt-3">
             <div class="small alert alert-danger feild" role="alert" *ngIf="
-                          registerForm.controls['username'].touched &&
-                          registerForm.controls['username'].invalid &&
-                          registerForm.controls['username'].errors?.['required']
-                        " style="color: red">Please enter username*
+                          registerForm.controls['userName'].touched &&
+                          registerForm.controls['userName'].invalid &&
+                          registerForm.controls['userName'].errors?.['required']
+                        " style="color: red">Please enter userName*
             </div>
             <div class="small alert alert-{{alert}} feild" role="alert" *ngIf="successregister">{{registermsg}}
             </div>
@@ -83,7 +83,7 @@
         <!-- ========================= -->
         <form [formGroup]="loginForm">
           <div class="form-group text-center">
-            <input type="text" class="form-control" formControlName="username" id="exampleInputEmail2"
+            <input type="text" class="form-control" formControlName="userName" id="exampleInputEmail2"
               aria-describedby="emailHelp">
           </div>
           <div class="text-center">
@@ -91,10 +91,10 @@
           </div>
           <div class="text-center mt-3">
             <div class="small alert alert-danger feild" role="alert" *ngIf="
-                          loginForm.controls['username'].touched &&
-                          loginForm.controls['username'].invalid &&
-                          loginForm.controls['username'].errors?.['required']
-                        " style="color: red">Please enter username*
+                          loginForm.controls['userName'].touched &&
+                          loginForm.controls['userName'].invalid &&
+                          loginForm.controls['userName'].errors?.['required']
+                        " style="color: red">Please enter userName*
             </div>
             <div class="small alert alert-{{alert2}} feild" role="alert" *ngIf="successlogin">{{loginmsg}}
             </div>

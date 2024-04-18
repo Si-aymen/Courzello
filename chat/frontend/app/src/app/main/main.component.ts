@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class MainComponent implements OnInit {
   public alluser: any = [];
-  check = sessionStorage.getItem('username');
+  check = sessionStorage.getItem('userName');
   chatId: any = 0;
   chatObj: Chat = new Chat();
   public chatData: any = [];
@@ -29,8 +29,8 @@ export class MainComponent implements OnInit {
   }
 
 
-  goToChat(username: any) {
-    this.chatService.getChatByFirstUserNameAndSecondUserName(username, sessionStorage.getItem("username")).subscribe(
+  goToChat(userName: any) {
+    this.chatService.getChatByFirstuserNameAndSeconduserName(userName, sessionStorage.getItem("userName")).subscribe(
       (data) => {
         this.chatId = data.chatId;
         sessionStorage.setItem("chatId", this.chatId);
@@ -40,8 +40,8 @@ export class MainComponent implements OnInit {
       },
       (error) => {
         if (error.status == 404) {
-          this.chatObj.firstUserName = sessionStorage.getItem("username");
-          this.chatObj.secondUserName = username;
+          this.chatObj.firstuserName = sessionStorage.getItem("userName");
+          this.chatObj.seconduserName = userName;
           this.chatService.createChatRoom(this.chatObj).subscribe(
             (data) => {
               this.chatData = data;

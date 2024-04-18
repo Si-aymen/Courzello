@@ -28,12 +28,12 @@ export class ChatService {
     return this.httpClient.post(this.baseUrl + "/chats/add", chat);
   }
 
-  getChatByFirstUserNameAndSecondUserName(firstUserName: String, secondUserName: String) {
-    return this.httpClient.get<Chat>(this.baseUrl + "/chats/getChatByFirstUserNameAndSecondUserName" + '?firstUserName=' + firstUserName + '&secondUserName=' + secondUserName)
+  getChatByFirstuserNameAndSeconduserName(firstuserName: String, seconduserName: String) {
+    return this.httpClient.get<Chat>(this.baseUrl + "/chats/getChatByFirstuserNameAndSeconduserName" + '?firstuserName=' + firstuserName + '&seconduserName=' + seconduserName)
   }
 
-  getChatByFirstUserNameOrSecondUserName(username: any) {
-    return this.httpClient.get<Chat>(this.baseUrl + "/chats/getChatByFirstUserNameOrSecondUserName/" + username)
+  getChatByFirstuserNameOrSeconduserName(userName: any) {
+    return this.httpClient.get<Chat>(this.baseUrl + "/chats/getChatByFirstuserNameOrSeconduserName/" + userName)
   }
   
   deleteChat(chatId: number): Observable<any> {
