@@ -120,6 +120,13 @@
       <c-card-header> Recommendations </c-card-header>
       <c-card-body>
 
+          <button type="submit" class="btn btn-primary mt-4"  (click)="getRecommendation()"> Get Recommendations</button>
+        
+          <ul>
+            <li *ngFor="let course of recommendations">
+              {{ course }}
+            </li>
+          </ul>
 
       </c-card-body>
     </c-card>

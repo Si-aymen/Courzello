@@ -25,6 +25,8 @@ export class CourseDetailsComponent implements OnInit {
 
   avRating:any ; 
 
+  recommendations : any ; 
+
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.GetCourseById();
@@ -120,6 +122,21 @@ export class CourseDetailsComponent implements OnInit {
       
 
     });
+  }
+
+  getRecommendation() {
+    const url = 'http://127.0.0.1:5000/recommend';
+    const payload = { course_name: this.course.courseName };
+
+    this.http.post<any>(url, payload).subscribe(
+      (response) => {
+        console.log(response);
+        this.recommendations = response.recommended_courses;
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
 
