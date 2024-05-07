@@ -24,8 +24,12 @@ public class Course {
     @MongoId
     // details course
     private String id;
+    private int index ;
     private String courseName;
     private String courseLevel;
+    private String url ;
+    private String organization ;
+    private String platform ;
     private Speciality courseDomain;
     private Long courseDuration;
     private Date dateAdded;

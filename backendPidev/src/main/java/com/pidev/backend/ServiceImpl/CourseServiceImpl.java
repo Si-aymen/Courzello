@@ -127,7 +127,13 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course getCourseById(String courseId) {
-        return courseRepository.findById(courseId).get() ;
+        Optional<Course> optionalCourse = courseRepository.findById(courseId);
+        if (optionalCourse.isPresent()) {
+            return optionalCourse.get();
+        } else {
+            // Handle the case where the course was not found
+            throw new EntityNotFoundException("Course with ID " + courseId + " not found");
+        }
     }
 
     @Override

@@ -112,7 +112,7 @@ export class CourseDetailsComponent implements OnInit {
       "avRating":this.avRating 
     };
 
-    this.http.put("http://localhost:8090/pi/courses/course-Rating/65e340822ebe9815a8fb05d6/"+ course +"/"+this.avRating , bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
+    this.http.put("http://localhost:8090/pi/courses/course-Rating/Aymen/"+ course +"/"+this.avRating , bodyData, { responseType: 'text' }).subscribe((resultData: any) => {
       console.log(resultData);
       alert("course rating  added Successfully");
       this.avRating = 0;

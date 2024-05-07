@@ -12,7 +12,6 @@ export class CourseComponent implements OnInit {
   
 
   courseArray: any[] = [];
-  id: String = "";
   courseName: String = "";
   courseLevel: string = "";
   dateAdded: Date =new Date();
@@ -49,7 +48,6 @@ export class CourseComponent implements OnInit {
 
   add() {
     let bodyData = {
-      "id" : this.id ,
       "courseName": this.courseName,
       "courseLevel": this.courseLevel,
       "dateAdded": this.dateAdded,
