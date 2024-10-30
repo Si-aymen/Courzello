@@ -9,21 +9,27 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Cloning the Git repository from the 'aymen' branch
-                git branch: 'aymen', url: 'https://github.com/Si-aymen/Courzello.git'
+                script {
+                    git branch: 'aymen', url: 'https://github.com/Si-aymen/Courzello.git'
+                }
             }
         }
 
         stage('Build') {
             steps {
                 // Running the Maven build
-                sh 'mvn clean install'
+                script {
+                    sh 'mvn clean install'
+                }
             }
         }
 
         stage('Test') {
             steps {
                 // Running Maven tests
-                sh 'mvn test'
+                script {
+                    sh 'mvn test'
+                }
             }
         }
     }
