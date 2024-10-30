@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'M2_HOME' // Ensure 'M2_HOME' matches the Maven installation name in Jenkins
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    git branch: 'yosra', url: 'https://github.com/Si-aymen/Courzello.git'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('backendPidev') {
+                    sh 'mvn clean install -Dmaven.test.skip=true'
+                }
+            }
+        }
+
+        
+
+        stage('Test') {
+            steps {
+                dir('backendPidev') {
+                    sh 'mvn test'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build, SonarQube analysis, and tests succeeded!'
+        }
+        failure {
+            echo 'Build or analysis failed. Please check the logs.'
+        }
+    }
+}
