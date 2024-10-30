@@ -9,7 +9,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Cloning the Git repository from the master branch
-                git branch: 'aymen', url: 'https://github.com/Si-aymen/Courzello/new/aymen/backendPidev'
+                git branch: 'aymen', url: 'https://github.com/Si-aymen/Courzello.git
+
             }
         }
 
