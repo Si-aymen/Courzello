@@ -3,12 +3,8 @@ pipeline {
 
     tools {
         maven 'M2_HOME' // Ensure 'M2_HOME' matches the Maven installation name in Jenkins
-        sonar 'SonarQube Scanner' // Replace with the SonarQube Scanner name in Jenkins
     }
 
-    environment {
-        SONARQUBE_ENV = credentials('sonarqube-token') // Use your SonarQube token credentials ID
-    }
 
     stages {
         stage('Checkout') {
@@ -32,7 +28,7 @@ pipeline {
                 dir('backendPidev') {
                     // Running SonarQube scanner
                     script {
-                        withSonarQubeEnv('SonarQube Server') { // Replace with your SonarQube server name
+                        withSonarQubeEnv('sonar courZelo') { // Replace with your SonarQube server name
                             sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=Aymenrahali@6631 -Dmaven.test.skip=true';
                         }
                     }
