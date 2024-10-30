@@ -17,8 +17,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Running the Maven build
-                script {
+                // Navigating to the directory containing the POM file
+                dir('backendPidev') {
+                    // Running the Maven build
                     sh 'mvn clean install'
                 }
             }
@@ -26,8 +27,9 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Running Maven tests
-                script {
+                // Navigating to the directory containing the POM file
+                dir('backendPidev') {
+                    // Running Maven tests
                     sh 'mvn test'
                 }
             }
