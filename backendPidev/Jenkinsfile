@@ -5,11 +5,6 @@ pipeline {
         maven 'M2_HOME' // Ensure 'M2_HOME' matches the Maven installation name in Jenkins
     }
 
-    environment {
-        SONARQUBE_USER = credentials('admin') // SonarQube username credential ID
-        SONARQUBE_PASS = credentials('Aymenrahali@6631') // SonarQube password credential ID
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -30,15 +25,19 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 dir('backendPidev') {
-                    // Running SonarQube scanner with secure credentials
                     script {
-                        withSonarQubeEnv('sonar courZelo') { // Replace with your SonarQube server name
-                            sh '''
-                                mvn sonar:sonar \
-                                -Dsonar.login=$SONARQUBE_USER \
-                                -Dsonar.password=$SONARQUBE_PASS \
-                                -Dmaven.test.skip=true
-                            '''
+                        // Retrieve SonarQube credentials securely
+                        withCredentials([usernamePassword(credentialsId: 'sonarqube-credentials', 
+                                                          usernameVariable: 'SONAR_USER', 
+                                                          passwordVariable: 'SONAR_PASS')]) {
+                            withSonarQubeEnv('sonar courZelo') {
+                                sh '''
+                                    mvn sonar:sonar \
+                                    -Dsonar.login=$SONAR_USER \
+                                    -Dsonar.password=$SONAR_PASS \
+                                    -Dmaven.test.skip=true
+                                '''
+                            }
                         }
                     }
                 }
