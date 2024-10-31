@@ -1,58 +1,35 @@
 pipeline {
     agent any
 
-    environment {
-        GIT_REPO_URL = 'https://github.com/Si-aymen/Courzello.git'
-        GIT_BRANCH = 'yosra'
-        GIT_TIMEOUT = 10
-        GIT_BUFFER_SIZE = '524288000' // 500MB buffer size
+    tools {
+        maven 'M2_HOME' 
     }
 
     stages {
-        stage('Initialize') {
-            steps {
-                echo 'Setting up Git configurations'
-                sh "git config --global http.postBuffer ${env.GIT_BUFFER_SIZE}"
-            }
-        }
-
         stage('Checkout') {
             steps {
-                echo 'Checking out code from Git repository'
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: "${env.GIT_BRANCH}"]],
-                    userRemoteConfigs: [[url: "${env.GIT_REPO_URL}"]],
-                    extensions: [
-                        [$class: 'CloneOption', depth: 1, timeout: env.GIT_TIMEOUT]
-                    ]
-                ])
+                script {
+                    git branch: 'yosra', url: 'https://github.com/Si-aymen/Courzello.git'
+                }
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building the project using Maven'
-                sh 'mvn clean install'
+                dir('backendPidev') {
+                    sh 'mvn clean install -Dmaven.test.skip=true'
+                }
             }
         }
+
 
         stage('Test') {
             steps {
-                echo 'Running tests'
-                sh 'mvn test'
+                dir('backendPidev') {
+                    sh 'mvn test'
+                }
             }
         }
     }
 
-    post {
-        success {
-            echo 'Build and tests succeeded'
-            // Add notification steps here if needed (e.g., email, Slack)
-        }
-        failure {
-            echo 'Build or tests failed. Please check the logs.'
-            // Add notification steps here if needed
-        }
-    }
 }
