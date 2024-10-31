@@ -25,4 +25,20 @@ pipeline {
         stage('Test') {
             steps {
                 dir('backendPidev') {
-                    sh 'mvn te
+                    sh 'mvn test' // Ensure this command is complete and correct
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and test stages completed successfully!'
+            // Add notification steps here if needed (e.g., Slack, email)
+        }
+        failure {
+            echo 'Build or test stages failed. Please check the logs.'
+            // Optionally, add notification for failure
+        }
+        cleanup {
+            echo '
