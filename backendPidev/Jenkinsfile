@@ -41,4 +41,8 @@ pipeline {
             // Optionally, add notification for failure
         }
         cleanup {
-            echo '
+            echo 'Pipeline completed. Cleaning up workspace...'
+            cleanWs() // Cleans up the workspace after the pipeline
+        }
+    }
+}
