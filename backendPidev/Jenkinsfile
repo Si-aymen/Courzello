@@ -19,7 +19,14 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out code from Git repository'
-                git branch: "${env.GIT_BRANCH}", url: "${env.GIT_REPO_URL}", depth: 1, timeout: env.GIT_TIMEOUT
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: "${env.GIT_BRANCH}"]],
+                    userRemoteConfigs: [[url: "${env.GIT_REPO_URL}"]],
+                    extensions: [
+                        [$class: 'CloneOption', depth: 1, timeout: env.GIT_TIMEOUT]
+                    ]
+                ])
             }
         }
 
