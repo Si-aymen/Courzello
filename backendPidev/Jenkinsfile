@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'M2_HOME' 
+        maven 'M2_HOME' // Make sure "M2_HOME" is configured in Jenkins under "Global Tool Configuration"
     }
 
     stages {
@@ -22,7 +22,6 @@ pipeline {
             }
         }
 
-
         stage('Test') {
             steps {
                 dir('backendPidev') {
@@ -32,4 +31,14 @@ pipeline {
         }
     }
 
+    post {
+        success {
+            echo 'Build and test stages completed successfully!'
+            // You can add notification steps here if required (e.g., Slack, email)
+        }
+        failure {
+            echo 'Build or test stages failed. Please check the logs.'
+            // Optionally, add notification for failure
+        }
+    }
 }
