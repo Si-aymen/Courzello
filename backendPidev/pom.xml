@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.pidev</groupId>
     <artifactId>backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <name>backendPidev</name>
     <description>backendPidev</description>
     <properties>
@@ -73,6 +73,13 @@
         </dependency>
 
     </dependencies>
+<distributionManagement>
+<repository>
+<id>deploymentRepo</id>
+<name>Nexus Repository</name>
+<url>http://192.168.33.10:8081/repository/maven-snapshots/</url>
+</repository>
+</distributionManagement>
 
     <build>
         <plugins>
