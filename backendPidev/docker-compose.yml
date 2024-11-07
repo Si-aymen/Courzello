@@ -1,10 +1,10 @@
 version: '3'
 services:
   mongo-db:
-    image: mongo:latest
+    image: mongo:4.4
     container_name: docker-compose-mongo-db
     ports:
-      - "27017:27017" # Port par défaut de MongoDB
+      - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
