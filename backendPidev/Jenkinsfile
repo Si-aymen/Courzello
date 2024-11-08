@@ -1,0 +1,104 @@
+pipeline {
+    agent any 
+
+
+    stages { 
+       
+         stage('verif code source from Git') {
+            steps {
+                
+                     git branch: 'omnia', credentialsId: 'cre-git', url: 'https://github.com/Si-aymen/Courzello.git'
+                
+                
+            }
+        }
+           stage('Build') {
+            steps {
+                dir('backendPidev') {
+                 sh "mvn clean install"   
+            
+                }
+                
+            }
+        }
+                stage('Test JUnit/Mockito') {
+            steps {
+                dir('backendPidev') {
+               
+               sh "mvn test"
+             
+                }
+            }
+            
+        }
+        stage('SonarQube Scanner') {
+            steps {
+                dir('backendPidev') {
+                // Use the specified Maven installation
+            withSonarQubeEnv('sonarqube') {
+                 script{
+                  
+                    sh "mvn sonar:sonar"
+                 }
+
+
+                }
+            }
+        }}
+
+ stage('nexus') {
+            steps {
+                dir('backendPidev') {
+               
+               sh "mvn deploy"
+             
+                }
+            }
+            
+        }
+    stage('Build Docker Image ') {
+            steps {
+                dir('backendPidev') {
+                script {
+                    sh 'docker build -t omnia462/courzello .'
+                }
+            }
+        }
+         }
+          stage('Deploy Docker Image') {
+            steps {
+                script {
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u omnia462 -p ${dockerhubpwd}'
+                 }  
+                 sh 'docker push omnia462/courzello'
+                }
+            }
+        }
+        stage('Deploy with Docker Compose') {
+            steps {
+                 dir('backendPidev') {
+                sh 'docker-compose up -d'
+            }}
+        }
+  /*  stage('Build Docker Image front') {
+            steps {
+                dir('Angular frontOffice') {
+                script {
+                    sh 'docker build -t omnia462/courzellofront .'
+                }
+            }
+        }
+         }
+          stage('Deploy Docker Image front') {
+            steps {
+                script {
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u omnia462 -p ${dockerhubpwd}'
+                 }  
+                 sh 'docker push omnia462/courzellofront'
+                }
+            }
+        }*/
+    }}
+
